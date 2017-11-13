@@ -1,6 +1,27 @@
+/* Fonts */
+@font-face {
+    font-family: "EDP Preon Light";
+    font-style: woff;
+    font-weight: 400;
+    src: url(../fonts/edp_preon_light.woff)
+}
+@font-face {
+    font-family: "EDP Preon";
+    font-style: woff;
+    font-weight: 400;
+    src: url(../fonts/edp_preon_regular-webfont.woff)
+}
+@font-face {
+    font-family: "EDP Preon Medium";
+    font-style: woff;
+    font-weight: 400;
+    src: url(../fonts/edp_preon_medium.woff)
+}
+
 /* Mobile Devices */
-
-
+body, h1{
+  font-family: "Edp Preon";
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
