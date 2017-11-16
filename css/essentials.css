@@ -38,6 +38,39 @@ body, h1{
   color: #333;
   letter-spacing: -.062em;
 }
+.btn {
+    border: 0 transparent;
+    border-radius: 3px;
+    background-color: #ccc;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 1em;
+    font-family: "EDP Preon Light",sans-serif;
+    font-size: 95%;
+    transition: background 200ms ease-in-out;
+}
+.btn.btn-primary {
+    background: #d52b1e;
+}
+.btn.wide {
+    display: block;
+    width: 100%;
+}
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.btn-primary.dropdown-toggle.focus, .open>.btn-primary.dropdown-toggle:focus, .open>.btn-primary.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #204d74;
+    border-color: #122b40;
+}
+.btn.active, .btn.active:focus, .btn.active:hover, .btn:active, .btn:active:focus, .btn:active:hover {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent!important;
+    border: 0;
+}
+.btn.btn-primary.active, .btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:hover {
+    background: #96172e!important;
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

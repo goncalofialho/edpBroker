@@ -1,12 +1,157 @@
+.container{
+  max-width: 500px;
+}
+
 .login-title{
   text-transform: uppercase;
   text-align: center;
   font-size: 250%;
 }
-
+.login-input-box {
+    display: table;
+    width: 100%;
+    margin: 0 0 10px;
+    background: #fff;
+    border-radius: 3px;
+    border: solid 1px #33333359;
+}
+.login-input-box .icon, .login-input-box .login-input {
+    display: table-cell;
+    vertical-align: middle;
+}
+.login-input-box .icon {
+    width: 40px;
+    text-align: center;
+    padding: 5px 0;
+    border-right: 1px solid rgba(0,0,0,.1);
+    color: #989898;
+}
+.login-inputs{
+  display: table;
+  margin: auto;
+  width:85%;
+  transition: width 200ms ease-in-out;
+}
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.login-input-box .login-input {
+    background: 0 0;
+    width: 99%;
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    outline: 0;
+    outline-offset: 0;
+}
+.login-box{
+  margin-top: 10px;
+}
+.formValidatorsBox.loginFormValidator{
+  margin-bottom: 2em;
+}
+.formValidatorsBox .form-validator {
+  margin-top: .5em;
+  text-align: center
+}
+.formValidatorsBox .form-validator.erro .msgIcon, .formValidatorsBox .form-validator.erro_funcional .msgIcon, .formValidatorsBox .form-validator.erro_tecnico .msgIcon{
+  background-position: -13px -363px;
+}
+.formValidatorsBox .form-validator .msgIcon {
+    background-image: url(../images/spriteMensagens.svg);
+    background-size: 100px 450px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+.formValidatorsBox .form-validator.erro .msgTxt, .formValidatorsBox .form-validator.erro_funcional .msgTxt, .formValidatorsBox .form-validator.erro_tecnico .msgTxt, .formValidatorsBox.erro .msgTxt, .formValidatorsBox.erro_funcional .msgTxt, .formValidatorsBox.erro_tecnico .msgTxt, .validationMessage .erro, .validationMessage .error{
+    color: red;
+}
+.public-area-content .formValidatorsBox .msgTxt, .public-area-content .msgTxt, .public-area-content .terms-and-conditions-acceptance{
+  color: #fff!important;
+  text-shadow:4px 4px 14px rgba(0,0,0,.4),
+              4px -4px 14px rgba(0,0,0,.4),
+              -4px 4px 14px rgba(0,0,0,.4),
+              -4px -4px 14px rgba(0,0,0,.4);
+}
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.dataEntry {
+    padding-bottom: 10px;
+}
+.dataEntry.recover{
+  text-align: center;
+  margin-top: .8em;
+  margin-bottom: 0;
+}
+.edpCheckBox label.msgTxt.inline {
+    display: inline;
+}
+.login .dataEntry .msgTxt {
+    color: #fff;
+}
+.public-area-content .dataEntry .msgTxt, .public-area-content .stroke-heading h4 {
+    padding: 0;
+}
+.edpCheckBox label.msgTxt {
+    font-weight: 300;
+}
+.login .edpCheckBox .checkBox-icon {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    top: 1px;
+    left: -1px;
+}
+.edpCheckBox label.msgTxt span.checkBox-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: -2px 3px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.edpCheckBox label.msgTxt span.checkBox-icon.checked {
+    background-image: url(../images/spriteTiny.svg);
+    background-repeat: no-repeat;
+    background-size: 40px 620px;
+    background-position: -2px -440px;
+}
+.public-area-content .formValidatorsBox .msgTxt, .public-area-content .msgTxt, .public-area-content .terms-and-conditions-acceptance {
+    color: #fff!important;
+    text-shadow: 4px 4px 14px rgba(0,0,0,.4), 4px -4px 14px rgba(0,0,0,.4), -4px 4px 14px rgba(0,0,0,.4), -4px -4px 14px rgba(0,0,0,.4);
+}
+.public-area-content .formValidatorsBox .msgTxt a:focus, .public-area-content .formValidatorsBox .msgTxt a:hover, .public-area-content .msgTxt a:focus, .public-area-content .msgTxt a:hover, .public-area-content .terms-and-conditions-acceptance a:focus, .public-area-content .terms-and-conditions-acceptance a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+a.recuperarPassword.active, .login-forms a.recuperarPassword:focus, .login-forms a.recuperarPassword:hover {
+    text-decoration: none;
+}
+a.recuperarPassword {
+    color: #333;
+    text-decoration: underline;
+    display: inline-block;
+    font-weight: 300;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-
+  .login-inputs{
+    width: 70%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
