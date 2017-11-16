@@ -96,7 +96,8 @@
   margin-bottom: 0;
 }
 .edpCheckBox label.msgTxt.inline {
-    display: inline;
+    width: 100%;
+    text-align: center;
 }
 .login .dataEntry .msgTxt {
     color: #fff;
