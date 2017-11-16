@@ -21,7 +21,24 @@
 /* Mobile Devices */
 body, h1{
   font-family: "Edp Preon";
+  color:#333;
 }
+.edpOn-logo{
+  text-align: center;
+  font-size: 250%;
+  text-decoration: none !important;
+  margin-top:10px;
+}
+.lettering-edp{
+  font-family: "EDP Preon Medium",sans-serif;
+  color: #d52b1e;
+}
+.lettering-online{
+  font-family: "EDP Preon Medium",sans-serif;
+  color: #333;
+  letter-spacing: -.062em;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
