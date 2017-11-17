@@ -23,6 +23,9 @@ body, h1{
   font-family: "Edp Preon";
   color:#333;
 }
+a{
+  text-decoration: none;
+}
 .edpOn-logo{
   text-align: center;
   font-size: 250%;
