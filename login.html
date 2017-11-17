@@ -24,18 +24,20 @@
         <span class="lettering-edp">edp</span>
         <span class="lettering-online">online</span>
       </a>
-      <span class="col-xs-12 login-title">Login</span>  
-	  
-	<div class="side-container">
-	<p class="side">Comprador</p>
-	<div class="side">
-	<label class="switch">
-	  <input  class="side" type="checkbox">
-	  <span class="slider round"></span></div>
-	</label>
-	<p class="side">Vendedor</p></div>
-	  
+      <span class="col-xs-12 login-title">Login</span>
+
+
+
       <div class="col-xs-12 login-box">
+        <div class="side-container col-xs-12">
+      	   <p class="side">Comprador</p>
+      	    <div class="side">
+      	       <label class="switch">
+      	          <input  class="side" type="checkbox">
+      	           <span class="slider round"></span></div>
+      	       </label>
+      	   <p class="side">Vendedor</p>
+         </div>
         <div class="login-inputs">
           <div class="login-input-box user" ng-class="">
             <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -45,7 +47,7 @@
             <span class="icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
             <input type="password" name="password" class="login-input ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="Password" ng-change="" required="" ng-enter="" style="">
           </div>
-          <div class="formValidatorsBox">
+          <div class="formValidatorsBox hidden">
             <p class="form-validator erro ">
               <span class="msgIcon smallInlineIcon"></span>
               <span class="msgTxt ng-binding">Meter mensagem de erro aqui</span>
@@ -64,13 +66,30 @@
               <a class="recuperarPassword ng-binding" href="">Esqueceu-se da password?</a>
             </span>
             </p>
-			
-			<ul class="list-unstyled social-network-login"> <li ng-click="vm.submited = false; vm.login('GOOGLE', null, null)"> <a href=""> <span class="google-login"> <span class="login-logo"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17.6px" height="18px" viewBox="0 0 17.6 18" style="enable-background:new 0 0 17.6 18" xml:space="preserve"> <g id="Google-Button" sketch:type="MSPage"> <g id="logo_googleg_48dp" transform="translate(15.000000, 15.000000)" sketch:type="MSLayerGroup"> <path id="Shape" fill="#4285F4" d="M2.6-5.8c0-0.6-0.1-1.3-0.2-1.8H-6v3.5h4.8C-1.4-3-2-2.1-3-1.4v2.3H0
+
+			<ul class="list-unstyled social-network-login">
+        <li> <a href="">
+          <span class="google-login">
+            <span class="login-logo">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17.6px" height="18px" viewBox="0 0 17.6 18" style="enable-background:new 0 0 17.6 18" xml:space="preserve"> <g id="Google-Button" sketch:type="MSPage"> <g id="logo_googleg_48dp" transform="translate(15.000000, 15.000000)" sketch:type="MSLayerGroup"> <path id="Shape" fill="#4285F4" d="M2.6-5.8c0-0.6-0.1-1.3-0.2-1.8H-6v3.5h4.8C-1.4-3-2-2.1-3-1.4v2.3H0
                                       C1.7-0.7,2.6-3.1,2.6-5.8L2.6-5.8z"></path> <path id="Shape_1_" fill="#34A853" d="M-6,3c2.4,0,4.5-0.8,6-2.2L-3-1.4c-0.8,0.5-1.8,0.9-3,0.9
                                       c-2.3,0-4.3-1.6-5-3.7h-3V-2C-12.6,1-9.5,3-6,3L-6,3z"></path> <path id="Shape_2_" fill="#FBBC05" d="M-11-4.3c-0.2-0.5-0.3-1.1-0.3-1.7s0.1-1.2,0.3-1.7V-10h-3
                                       c-0.6,1.2-1,2.6-1,4s0.3,2.8,1,4L-11-4.3L-11-4.3z"></path> <path id="Shape_3_" fill="#EA4335" d="M-6-11.4c1.3,0,2.5,0.5,3.4,1.3L0-12.7C-1.5-14.1-3.6-15-6-15
-                                      c-3.5,0-6.6,2-8,5l3,2.3C-10.3-9.8-8.3-11.4-6-11.4L-6-11.4z"></path> <path id="Shape_4_" fill="none" d="M-15-15H3V3h-18V-15z"></path> </g> </g> </svg> </span> <span class="login-txt ng-binding">Entrar com o Google</span> </span> </a> </li> <li ng-click="vm.login('FACEBOOK', null, null)"> <a href=""> <span class="facebook-login"> <span class="login-logo"> <i class="fa fa-facebook" aria-hidden="true"></i> </span> <span class="login-txt ng-binding">Entrar com o Facebook</span> </span> </a> </li> </ul>
-			
+                                      c-3.5,0-6.6,2-8,5l3,2.3C-10.3-9.8-8.3-11.4-6-11.4L-6-11.4z"></path> <path id="Shape_4_" fill="none" d="M-15-15H3V3h-18V-15z"></path> </g> </g> </svg>
+            </span>
+            <span class="login-txt ng-binding">Entrar com o Google</span>
+          </span>
+        </a> </li>
+         <li> <a href="">
+           <span class="facebook-login">
+              <span class="login-logo">
+                <i class="fa fa-facebook" aria-hidden="true"></i> </span>
+                <span class="login-txt ng-binding">Entrar com o Facebook</span>
+              </span>
+            </a>
+          </li>
+      </ul>
+
 			<div ui-view="footer" class="ng-scope"> <edp-footer type="public" class="ng-isolate-scope"><footer class="footer-ap" id="footer"> <div class="container"> <div class="login-inner-footer row"> <div class="col-xs-12 col-lg-5 footer-list"> <ul class="footerBlock nav ng-scope" ng-if="!vm.sign"> <li> <a href="https://edponline.edp.pt/contact/B2C" target="_blank" ga-track-event="'LANDING_PAGE_CONTACTS' | opConfig" ga-track-page="['/contact/#segment','edponline - Contactos #segment']" class="ng-binding ng-isolate-scope">Contactos</a> </li> <li> <a href="https://edponline.edp.pt/help/B2C" target="_blank" ga-track-event="'LANDING_PAGE_HELP' | opConfig" ga-track-page="['/help/#segment','edponline - Ajuda #segment']" class="ng-binding ng-isolate-scope">Ajuda</a> </li> <li> <a href="https://edponline.edp.pt/register/privacy-policy?public" target="_blank" class="ng-binding">Política de privacidade</a> </li> </ul> </div> </div></footer></edp-footer> </div>
 
       </div>
