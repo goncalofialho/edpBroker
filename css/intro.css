@@ -47,6 +47,75 @@
   color:#ffffff;
   background:#d52b1e;
   border-color: #ffffff;
+  cursor:pointer;
+}
+.car-icon{
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 200px;
+  border: solid 1px;
+  border-radius: 13px;
+  transition: all 250ms ease-in-out;
+}
+.car-icon svg{
+  width: 200px;
+  padding: 10px 10px;
+  fill: none;
+  stroke: #333;
+  padding-bottom: 0px;
+}
+.car-icon p{
+  text-align:center;
+}
+.car-icon:hover{
+  color:#ffffff;
+  background:#d52b1e;
+  cursor:pointer;
+}
+.car-icon:hover svg{
+  stroke:#ffffff;
+}
+.menu{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 1px #333;
+  max-height:  150px;
+  transition: max-height 300ms ease-in-out;
+}
+.menu .option{
+  text-align: center;
+
+}
+.menu .option svg{
+  width: 65px;
+  height: 65px;
+  margin-top: 30px;
+  padding: 10px;
+  border: solid 1px #333;
+  border-radius: 4px;
+  transition:all 450ms ease-in-out;
+}
+.menu .option p{
+
+}
+.menu .option:hover svg,
+.menu .option:hover p{
+  cursor:pointer;
+}
+.menu .option:hover svg{
+  background-color:#d52b1e;
+  fill:#ffffff;
+  border-color:#ffffff;
+}
+.content{
+  max-height: 600px;
+  overflow: hidden;
+  transition: all 450ms ease-in-out;
+}
+.content.seek,
+.menu.seek{
+  max-height: 0;
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
