@@ -29,7 +29,14 @@
 			<span class="lettering-online">hub</span>
 	  </div>
   	  <div target="verify-energy" class="header hidden-class">
-			<p>Informação de Energia</p>
+		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Informação de Energia</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
+	  </div>
+	  <div target="buy-energy" class="header hidden-class">
+		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Mercado</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
 	  </div>
     </div>
 	
@@ -127,16 +134,16 @@
 		</div>
 	</div>
 	<div id="buy-energy" class="col-xs-12 content hidden-class">
-		<div id="main-buy-energy">
+		<div id="main-buy-energy" class="col-xs-12">
 			<div class="col-xs-12 filters">
 				<input  type="text"/>
-				<svg class="search"><use xlink:href="images/icons.svg#plus"></svg>
+				<svg class="search"><use xlink:href="images/icons.svg#search"></svg>
 
 			</div>
 			
 			<div class="packages-list col-xs-12 reserved">
 				<div class="packs">
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -145,7 +152,7 @@
 						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
 						
 					</div>
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -154,7 +161,7 @@
 						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
 						
 					</div>
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -163,7 +170,7 @@
 						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
 						
 					</div>
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -172,7 +179,7 @@
 						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
 						
 					</div>
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -181,7 +188,7 @@
 						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
 						
 					</div>
-					<div class="pack">
+					<div target="desc-buy-energy" class="pack">
 						<div class="info">
 							<p class="title">Pacote GreenLight</p>
 							<p class="producer">EDP Portugal</p>
@@ -194,8 +201,8 @@
 				
 			</div>
 		</div>
-		<div class="desc-buy-energy">
-		
+		<div id="desc-buy-energy" class="col-xs-12 hidden-class">
+			<p>Pacote</p>
 		</div>
 	</div>
 

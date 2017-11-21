@@ -5,6 +5,9 @@
     font-size: 150%;
     margin-top: 10px;
 }
+.header[target="verify-energy"]	h2{
+	
+}
 .content#verify-energy .packages-list{
 	max-height: 160px;
     overflow-y: auto;

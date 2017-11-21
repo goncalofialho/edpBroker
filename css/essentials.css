@@ -19,6 +19,9 @@
 }
 
 /* Mobile Devices */
+html{
+	height:100%;
+}
 body, h1{
   font-family: "Edp Preon";
   color:#333;
