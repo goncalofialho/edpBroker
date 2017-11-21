@@ -20,12 +20,12 @@
   color:#d52b1e !important;
 }
 .current-energy{
-  font-size: 140%;
-  margin-bottom: 20px;
-  text-align: center;
-  margin-top: 30px;
-  text-transform: uppercase;
-  font-family: EDP Preon MEdium;
+	font-size: 130%;
+	margin-bottom: 15px;
+	text-align: center;
+	margin-top: 30px;
+	text-transform: uppercase;
+	font-family: EDP Preon MEdium;
 }
 .edp-color{
   margin: -10px;
@@ -34,14 +34,14 @@
 .info{
   text-align: center;
 }
-.verify-energy{
-  border: solid 1px #333;
-  font-size: 150%;
-  border-radius: 30px;
-  color: #333;
-  padding: 3px 20px;
-  cursor: default;
-  transition: border-color 250ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out;
+.verify-energy {
+    border: solid 1px #333;
+    font-size: 133%;
+    border-radius: 30px;
+    color: #333;
+    padding: 3px 20px;
+    cursor: default;
+    transition: border-color 250ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 .verify-energy:hover{
   color:#ffffff;
@@ -50,22 +50,28 @@
   cursor:pointer;
 }
 .car-icon{
-  margin: 0 auto;
-  margin-top: 40px;
-  width: 200px;
-  border: solid 1px;
-  border-radius: 13px;
-  transition: all 250ms ease-in-out;
+	margin: 0 auto;
+	margin-top: 10%;
+	max-width: 100px;
+	width: 44%;
+	height: 100px;
+	text-align: center;
+	border: solid 1px;
+	border-radius: 13px;
+	transition: all 250ms ease-in-out;
 }
 .car-icon svg{
-  width: 200px;
-  padding: 10px 10px;
-  fill: none;
-  stroke: #333;
-  padding-bottom: 0px;
+    width: 89%;
+    padding: 0px 10px;
+    height: 95px;
+    fill: none;
+    margin-top: -10px;
+    stroke: #333;
+    padding-bottom: 0px;
 }
 .car-icon p{
-  text-align:center;
+    text-align: center;
+    margin-top: -17px;
 }
 .car-icon:hover{
   color:#ffffff;
@@ -90,7 +96,7 @@
 .menu .option svg{
   width: 65px;
   height: 65px;
-  margin-top: 30px;
+  margin-top: 15px;
   padding: 10px;
   border: solid 1px #333;
   border-radius: 4px;
@@ -111,11 +117,28 @@
 .content{
   max-height: 600px;
   overflow: hidden;
+  padding:0px;
   transition: all 450ms ease-in-out;
 }
-.content.seek,
-.menu.seek{
+.container{
+}
+.content.hidden-class,
+.menu.hidden-class{
   max-height: 0;
+  	border-top:0px;
+}
+.hidden-class{
+  max-height: 0;
+}
+.container .header{
+	overflow:hidden;
+	transition:all 250ms ease-in-out;
+	height:100%;
+}
+@media (min-width:460px){
+	.car-icon{
+		margin-top:40px;
+	}
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

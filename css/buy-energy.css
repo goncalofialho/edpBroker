@@ -1,0 +1,99 @@
+.content#buy-energy{
+
+}
+.content#buy-energy h1 {
+    font-size: 150%;
+    margin-top: 10px;
+}
+.content#buy-energy  .filters{
+    padding: 3% 5%;
+    border: solid 1px;
+    margin-bottom: 10px;
+}
+.content#buy-energy  .filters input{
+	width: 90%;
+    border: solid 1px;
+}
+.content#buy-energy .packages-list{
+	max-height: 360px;
+	padding:0px;
+	overflow-y:auto;
+}
+
+.content#buy-energy  .packs{
+    margin: 10px 0;
+
+}
+.content#buy-energy  .pack{
+    padding: 4px;
+	position:relative;
+    border: solid 1px #333;
+    padding-bottom: 10px;
+	transition: all 250ms ease-in-out;
+	cursor:pointer;
+	height:75px;
+	margin: 10px 0px;
+}
+.content#buy-energy  .packs:hover{
+	/*background:#d52b1e;
+	color:white;*/
+}
+.content#buy-energy  .pack p{
+	margin-bottom: 3px;
+}
+.content#buy-energy  .pack .info{
+	text-align:left;
+}
+
+.content#buy-energy  .pack .info .title{
+	text-decoration: underline;
+    font-family: EDP Preon Medium;
+    font-size: 130%;
+    margin-bottom: 0;
+}
+
+.content#buy-energy  .pack .info .producer{
+	
+}
+
+.content#buy-energy  .pack .info .ammount{
+	font-size: 110%;
+}
+.content#buy-energy  .pack .info .ammount span{
+	
+}
+.content#buy-energy  .pack .info .ammount span:last-child{
+	float: right;
+    margin-right: 20%;
+}
+.content#buy-energy  .pack svg{
+    width: 30px;
+    position: absolute;
+    right: 5%;
+    height: 30px;
+    top: 24px;
+	fill:#333;
+}
+
+@media (min-width460px){
+}
+ Small devices (landscape phones, 576px and up) 
+@media (min-width 576px) {
+}
+
+ Medium devices (tablets, 768px and up) 
+@media (min-width 768px) {
+	.content#buy-energy h1 {
+		font-size: 250%;
+	}
+}
+
+ Large devices (desktops, 992px and up) 
+@media (min-width 992px) {
+
+}
+
+ Extra large devices (large desktops, 1200px and up) 
+@media (min-width 1200px) {
+
+}

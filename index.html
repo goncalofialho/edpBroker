@@ -16,20 +16,35 @@
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/essentials.css">
   <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/verify-energy.css">
+  <link rel="stylesheet" href="css/buy-energy.css">
 
 </head>
 
 <body>
   <div class="container">
     <div class="row">
-      <a class="edpOn-logo col-xs-12" href="">
-        <span class="lettering-edp">edp</span>
-        <span class="lettering-online">hub</span>
-      </a>
+	  <div target="intro" class="header edpOn-logo">
+			<span class="lettering-edp">edp</span>
+			<span class="lettering-online">hub</span>
+	  </div>
+  	  <div target="verify-energy" class="header hidden-class">
+			<p>Informação de Energia</p>
+	  </div>
     </div>
+	
+	
     <div id="intro" class="col-xs-12 content">
+	
       <div class="circle col-xs-12">
-        <div class=" c100 p12 white big edp-color">
+		<div class="hidden-md hidden-lg c100 p12 white medium edp-color">
+			<span>12%</span>
+			<div class="slice">
+				<div class="bar"></div>
+				<div class="fill"></div>
+			</div>
+		</div>
+        <div class="hidden-xs visible-md visible-lg c100 p12 white big edp-color">
             <span>12%</span>
             <div class="slice">
                 <div class="bar"></div>
@@ -39,16 +54,154 @@
       </div>
       <div class="col-xs-12 info">
         <h2 class="current-energy">Energia Actual</h2>
-        <a style="text-decoration: none!important;"><span class="verify-energy"> Verificar Energia ></span></a>
+        <a style="text-decoration: none!important;" ><span target="verify-energy" class="verify-energy"> Verificar Energia ></span></a>
       </div>
       <div class="col-xs-12" style="margin: auto;">
-        <div class="car-icon">
+        <div target="buy-energy" class="car-icon">
           <svg class=""><use xlink:href="images/icons.svg#shopping-cart"></svg>
-          <p>Comprar Energia</p>
+          <p>Comprar</p>
         </div>
       </div>
     </div>
-  </div>
+	
+	<div id="verify-energy" class="col-xs-12 content hidden-class">
+		<h1>Pacotes Activos</h1>
+		<div class="packages-list">
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote EDP</p>
+					<div class="bar">
+						<p>12%</p>
+						<div style="width:12%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h1>Pacotes Reservados</h1>
+		<div class="packages-list reserved">
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote GreenLight</p>
+					<div class="bar">
+						<p>100%</p>
+						<div style="width:100%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote BlueOcean</p>
+					<div class="bar">
+						<p>100%</p>
+						<div style="width:100%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote CloudWind</p>
+					<div class="bar">
+						<p>100%</p>
+						<div style="width:100%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote FireRed</p>
+					<div class="bar">
+						<p>100%</p>
+						<div style="width:100%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+			<div class="packs">
+				<div class="pack">
+					<p>Pacote EarthStone</p>
+					<div class="bar">
+						<p>100%</p>
+						<div style="width:100%" class="percentage"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="buy-energy" class="col-xs-12 content hidden-class">
+		<div id="main-buy-energy">
+			<div class="col-xs-12 filters">
+				<input  type="text"/>
+				<svg class="search"><use xlink:href="images/icons.svg#plus"></svg>
+
+			</div>
+			
+			<div class="packages-list col-xs-12 reserved">
+				<div class="packs">
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+					<div class="pack">
+						<div class="info">
+							<p class="title">Pacote GreenLight</p>
+							<p class="producer">EDP Portugal</p>
+							<p class="ammount"><span>350Mw</span><span>2 Meses</span></p>
+						</div>
+						<svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="desc-buy-energy">
+		
+		</div>
+	</div>
+
+	
+	
+	</div>
 
   <div class="menu">
     <div class="col-xs-4 option stats">
@@ -57,7 +210,7 @@
     </div>
     <div class="col-xs-4 option history">
       <svg class=""><use xlink:href="images/icons.svg#transaction"></svg>
-      <p>Histórico de Transações</p>
+      <p>Transações</p>
     </div>
     <div class="col-xs-4 option settings">
       <svg class=""><use xlink:href="images/icons.svg#settings"></svg>

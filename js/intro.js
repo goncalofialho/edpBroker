@@ -1,14 +1,20 @@
 $(document).ready(function(){
-  $('.menu .option.stats svg').click(toggleSettings)
-  $('.menu .option.stats p').click(toggleSettings)
-  $('.menu .option.history svg').click(toggleSettings)
-  $('.menu .option.history p').click(toggleSettings)
-  $('.menu .option.settings svg').click(toggleSettings)
-  $('.menu .option.settings p').click(toggleSettings)
+	$('.info .verify-energy').click(toggleView);
+	$('#intro .car-icon').click(toggleView);
 
 })
 
-function toggleSettings(){
-  $('.menu').toggleClass('seek')
-	$('#intro').toggleClass('seek')
+function toggleView(){
+	console.log("123123")
+  viewId = $(this).attr('target')
+  /* ESCONDER TODOS AS VIEWS */
+  $('.menu').addClass('hidden-class')
+  $('.content').addClass('hidden-class')
+  $('.content#'+viewId).removeClass('hidden-class')
+  
+  /* ESCONDER TODOS OS HEADERS 
+  $('.header').addClass('hidden-class')
+  $('.header[target="'+viewId+'"]').removeClass('hidden-class')*/
 }
+
+
