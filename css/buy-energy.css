@@ -150,17 +150,11 @@
   color: #ffffff;
 }
 
-.content#buy-energy .method-buy-energy{
-	max-height: 400px;
-	padding:0px;
-	overflow-y:auto;
-}
-
-.content#buy-energy  .cards{
+.content#buy-energy  #method-buy-energy .cards{
     margin: 10px 0;
 
 }
-.content#buy-energy  .card{
+.content#buy-energy  #method-buy-energy .card{
     padding: 4px;
 	position:relative;
     border: solid 1px #333;
@@ -170,7 +164,7 @@
 	height:75px;
 	margin: 10px 0px;
 }
-.content#buy-energy  .cards:hover{
+.content#buy-energy  #method-buy-energy .cards:hover{
 	/*background:#d52b1e;
 	color:white;*/
 }
@@ -183,6 +177,7 @@
     margin: auto;
     margin-top: 10px;
 }
+
 
 @media (min-width460px){
 }
