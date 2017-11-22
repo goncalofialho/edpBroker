@@ -130,6 +130,7 @@
 }
 .content#buy-energy #desc-buy-energy .package-description .description strong,
 .content#buy-energy #desc-buy-energy .package-description .info strong,
+.content#buy-energy #method-buy-energy .cards-list .cards .card .info strong,
 {
   font-family: Edp Preon Medium;
 }

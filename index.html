@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/verify-energy.css">
   <link rel="stylesheet" href="css/buy-energy.css">
+  <link rel="stylesheet" href="css/stats.css">
 
 </head>
 
@@ -36,6 +37,11 @@
 	  <div target="buy-energy" class="header hidden-class">
 		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
 		<h2>Mercado</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
+	  </div>
+    <div target="energy-stats" class="header hidden-class">
+		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Estatísticas</h2>
 		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
 	  </div>
     </div>
@@ -218,27 +224,57 @@
          <p target="method-buy-energy" class="buy"> Comprar </p>
       </div>
 		</div>
-		
+
 	<div id="method-buy-energy" class="col-xs-12 hidden-class">
 			<p class="title">Escolha o seu Cartão de Pagamento:</p>
 		<div class="cards-list col-xs-12 reserved">
 			<div class="cards">
 				<div class="card">
-					<p class="ccn"><strong>C.C.N: <strong>1780972838</p>
-					<p class="titular"><strong>Titular: <strong>João Rodrigues</p>
+					<p class="info"><strong>C.C.N: </strong>1780972838</p>
+					<p class="info"><strong>Titular: </strong>João Rodrigues</p>
 				</div>
 				<div class="card">
-					<p class="ccn"><strong>C.C.N: <strong>1928393839</p>
-					<p class="titular"><strong>Titular: <strong>Luisa Rodrigues</p>
+					<p class="info"><strong>C.C.N: </strong>1928393839</p>
+					<p class="info"><strong>Titular: </strong>Luisa Rodrigues</p>
 				</div>
-			</div>	
+			</div>
 		</div>
-      </div>
-		
+  </div>
+
 	</div>
-	
+
+  <div id="energy-stats" class="col-xs-12 content hidden-class">
+    <div class="stats-section open col-xs-12">
+      <p class="title col-xs-12">Consumo Atual
+        <svg class=""><use xlink:href="images/icons.svg#arrow"></svg>
+      </p>
+      <div class="stats-area col-xs-12">
+        <p class="desc-current-consumption">405 Mw</p>
+        <p class="desc-current-consumption"> - 56 Mwh</p>
+      </div>
+    </div>
+    <div class="stats-section open col-xs-12">
+      <p class="title col-xs-12">Gráfico Diário
+        <svg class=""><use xlink:href="images/icons.svg#arrow"></svg>
+      </p>
+      <div class="stats-area col-xs-12">
+        <img src="http://www.audiencedialogue.net/images/linechart.gif"/>
+      </div>
+    </div>
+    <div class="stats-section open col-xs-12">
+      <p class="title col-xs-12">Análise Mensal
+        <svg class=""><use xlink:href="images/icons.svg#arrow"></svg>
+      </p>
+      <div class="stats-area col-xs-12">
+        <img src="http://1.bp.blogspot.com/-ETaJo-t8qaA/UHQMkdxV0PI/AAAAAAAAARc/vMEVMdB531Q/s1600/monthly-sales-bar-chart.jpg"/>
+      </div>
+    </div>
+
+  </div>
+
+
   <div class="menu">
-    <div class="col-xs-4 option stats">
+    <div target="energy-stats" class="col-xs-4 option stats">
       <svg class=""><use xlink:href="images/icons.svg#bar-chart"></svg>
       <p>Estatísticas</p>
     </div>

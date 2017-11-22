@@ -2,11 +2,16 @@ $(document).ready(function(){
 	$('.info .verify-energy').click(toggleView);
 	$('#intro .car-icon').click(toggleView);
 	$('.header .home').click(toggleView);
+	$('.menu .option.stats').click(toggleView);
 	$('.header .back').click(toggleBackView);
 
 	/* BUY ENERGY */
 	$('#buy-energy #main-buy-energy .packages-list .packs .pack').click(toggleBuyPackets)
 	$('#buy-energy #desc-buy-energy .buy').click(toggleChooseCard)
+
+	/* TOGGLE STATS BOXES */
+	$('#energy-stats .stats-section .title').click(toggleStats)
+
 })
 
 function toggleView(){
@@ -57,4 +62,9 @@ function toggleChooseCard(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+}
+
+function toggleStats(){
+	console.log("this")
+	$(this).parent().toggleClass('open')
 }
