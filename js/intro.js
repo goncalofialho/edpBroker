@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 	/* BUY ENERGY */
 	$('#buy-energy #main-buy-energy .packages-list .packs .pack').click(toggleBuyPackets)
+	$('#buy-energy #desc-buy-energy .buy').click(toggleChooseCard)
 })
 
 function toggleView(){
@@ -47,6 +48,12 @@ function goToIntro(){
 }
 
 function toggleBuyPackets(){
+	viewId = $(this).attr('target')
+	$('#buy-energy > div').addClass('hidden-class');
+	$('#buy-energy #'+viewId).removeClass('hidden-class');
+}
+
+function toggleChooseCard(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');

@@ -21,6 +21,7 @@
     padding: 3% 5%;
     border: solid 1px;
     margin-bottom: 10px;
+	margin-top: 15px;
 }
 .content#buy-energy  .hidden-class .filters{
 	border:0;
@@ -42,7 +43,7 @@
 }
 
 .content#buy-energy .packages-list{
-	max-height: 360px;
+	max-height: 400px;
 	padding:0px;
 	overflow-y:auto;
 }
@@ -115,7 +116,7 @@
     margin-top: 10px;
 }
 .content#buy-energy #desc-buy-energy .package-description{
-
+	
 }
 .content#buy-energy #desc-buy-energy .package-description .duration{
   margin-top: 10px;
@@ -128,7 +129,8 @@
   margin-right: -10px;
 }
 .content#buy-energy #desc-buy-energy .package-description .description strong,
-.content#buy-energy #desc-buy-energy .package-description .info strong{
+.content#buy-energy #desc-buy-energy .package-description .info strong,
+{
   font-family: Edp Preon Medium;
 }
 .content#buy-energy #desc-buy-energy .package-description .info{
@@ -147,6 +149,41 @@
   background: #d52b1e;
   color: #ffffff;
 }
+
+.content#buy-energy .method-buy-energy{
+	max-height: 400px;
+	padding:0px;
+	overflow-y:auto;
+}
+
+.content#buy-energy  .cards{
+    margin: 10px 0;
+
+}
+.content#buy-energy  .card{
+    padding: 4px;
+	position:relative;
+    border: solid 1px #333;
+    padding-bottom: 10px;
+	transition: all 250ms ease-in-out;
+	cursor:pointer;
+	height:75px;
+	margin: 10px 0px;
+}
+.content#buy-energy  .cards:hover{
+	/*background:#d52b1e;
+	color:white;*/
+}
+
+.content#buy-energy #method-buy-energy  .title{
+	text-transform: uppercase;
+    text-align: center;
+    font-size: 150%;
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+}
+
 @media (min-width460px){
 }
  Small devices (landscape phones, 576px and up)
