@@ -15,7 +15,7 @@
 
 .content#buy-energy > div.hidden-class{
 	max-height:0px;
-	
+
 }
 .content#buy-energy  .filters{
     padding: 3% 5%;
@@ -80,14 +80,14 @@
 }
 
 .content#buy-energy  .pack .info .producer{
-	
+
 }
 
 .content#buy-energy  .pack .info .ammount{
 	font-size: 110%;
 }
 .content#buy-energy  .pack .info .ammount span{
-	
+
 }
 .content#buy-energy  .pack .info .ammount span:last-child{
 	float: right;
@@ -102,38 +102,70 @@
 	fill:#333;
 }
 .content#buy-energy #desc-buy-energy{
-	
+
 }
-.content#buy-energy #desc-buy-energy p{
+.content#buy-energy #desc-buy-energy .title{
     text-transform: uppercase;
     text-align: center;
     font-size: 200%;
-    width: 50%;
+    width: 80%;
     margin: auto;
     border: solid 1px;
     border-radius: 30px;
     margin-top: 10px;
 }
+.content#buy-energy #desc-buy-energy .package-description{
 
+}
+.content#buy-energy #desc-buy-energy .package-description .duration{
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 140%;
+  font-family: Edp Preon Medium;
+  margin-bottom: 5px;
+}
+.content#buy-energy #desc-buy-energy .package-description .description{
+  margin-right: -10px;
+}
+.content#buy-energy #desc-buy-energy .package-description .description strong,
+.content#buy-energy #desc-buy-energy .package-description .info strong{
+  font-family: Edp Preon Medium;
+}
+.content#buy-energy #desc-buy-energy .package-description .info{
+  text-align: left;
+}
+.content#buy-energy #desc-buy-energy .package-description .buy{
+  text-align: center;
+  border: solid 1px;
+  width: 65%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 13px 16px;
+  font-family: Edp Preon Medium;
+  border-radius: 4px;
+  font-size: 150%;
+  background: #d52b1e;
+  color: #ffffff;
+}
 @media (min-width460px){
 }
- Small devices (landscape phones, 576px and up) 
+ Small devices (landscape phones, 576px and up)
 @media (min-width 576px) {
 }
 
- Medium devices (tablets, 768px and up) 
+ Medium devices (tablets, 768px and up)
 @media (min-width 768px) {
 	.content#buy-energy h1 {
 		font-size: 250%;
 	}
 }
 
- Large devices (desktops, 992px and up) 
+ Large devices (desktops, 992px and up)
 @media (min-width 992px) {
 
 }
 
- Extra large devices (large desktops, 1200px and up) 
+ Extra large devices (large desktops, 1200px and up)
 @media (min-width 1200px) {
 
 }
