@@ -215,9 +215,9 @@
            Pacote de fornecimento de energia GreenLight, usa tecnologia de solarização para a
            geração de energia nos campos verdes de Viseu.
          </p>
+		 <p class="info"><strong>Produtor: </strong>GreenLight</p>
          <p class="info"><strong>Energia: </strong>300 Mw</p>
          <p class="info"><strong>Preço: </strong>5,00€</p>
-		 <p class="info"><strong>Produtor: </strong>GreenLight</p>
          <p class="info"><strong>Avaliação do Produtor: </strong>7/10</p>
          <p class="info"><strong>Avaliação do Produto: </strong>5/10</p>
 		 <p class="info"><strong>Contacto: </strong>GreenLight.com</p>
@@ -229,19 +229,43 @@
 			<p class="title">Escolha o seu Cartão de Pagamento:</p>
 		<div class="cards-list col-xs-12 reserved">
 			<div class="cards">
-				<div class="card">
+				<div class="card" target="confirm-buy-energy">
 					<p class="info"><strong>C.C.N: </strong>1780972838</p>
 					<p class="info"><strong>Titular: </strong>João Rodrigues</p>
 				</div>
-				<div class="card">
+				<div class="card" target="confirm-buy-energy">
 					<p class="info"><strong>C.C.N: </strong>1928393839</p>
 					<p class="info"><strong>Titular: </strong>Luisa Rodrigues</p>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="confirm-buy-energy" class="col-xs-12 hidden-class">
+			<p class="title">Está prestes a comprar o seguinte item:</p>
+		<div class="item-infos col-xs-12 reserved">
+			<div class="infos">
+				<p class="info"><strong><u>Pacote GreenLight</u></strong></p>
+			    <p class="info"><strong>Produtor: </strong>GreenLight</p>
+				<p class="info"><strong>Energia: </strong>300 Mw</p>
+				<p class="info"><strong>Preço: </strong>5,00€</p>
+				<p class="info"><strong>Duração: </strong>2 meses</p>
+				<p target="confirmed-product" class="finalize"> Finalizar </p>
+			</div>		
+		</div>
+	</div>
+	
+	<div id="confirmed-product" class="col-xs-12 hidden-class">
+		<p class="title">Compra Efetuada com Sucesso.</p>
+	<div class="item-infos col-xs-12 reserved">
+		<div class="infos">
+			<p target="main-buy-energy" class="finalized"> Continuar </p>
+		</div>		
+	</div>
+	</div>
   </div>
 
-	</div>
+  </div>
 
   <div id="energy-stats" class="col-xs-12 content hidden-class">
     <div class="stats-section open col-xs-12">

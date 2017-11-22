@@ -8,6 +8,9 @@ $(document).ready(function(){
 	/* BUY ENERGY */
 	$('#buy-energy #main-buy-energy .packages-list .packs .pack').click(toggleBuyPackets)
 	$('#buy-energy #desc-buy-energy .buy').click(toggleChooseCard)
+	$('#buy-energy #method-buy-energy .cards-list .cards .card').click(toggleConfirmBuy)
+	$('#buy-energy #confirm-buy-energy .item-infos .infos .finalize').click(toggleConfirmedBuy)
+	$('#buy-energy #confirmed-product .item-infos .infos .finalized').click(toggleBackHome)
 
 	/* TOGGLE STATS BOXES */
 	$('#energy-stats .stats-section .title').click(toggleStats)
@@ -62,6 +65,25 @@ function toggleChooseCard(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+}
+
+function toggleConfirmBuy(){
+	viewId = $(this).attr('target')
+	$('#buy-energy > div').addClass('hidden-class');
+	$('#buy-energy #'+viewId).removeClass('hidden-class');
+}
+
+function toggleConfirmedBuy(){
+	viewId = $(this).attr('target')
+	$('#buy-energy > div').addClass('hidden-class');
+	$('#buy-energy #'+viewId).removeClass('hidden-class');
+}
+
+function toggleBackHome(){
+	viewId = $(this).attr('target')
+	$('#buy-energy > div').addClass('hidden-class');
+	$('#buy-energy #'+viewId).removeClass('hidden-class');
+	goToIntro()
 }
 
 function toggleStats(){
