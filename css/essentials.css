@@ -29,6 +29,9 @@ body, h1{
 a{
   text-decoration: none;
 }
+strong{
+  font-family: "Edp Preon Medium";
+}
 .edpOn-logo{
   text-align: center;
   font-size: 250%;

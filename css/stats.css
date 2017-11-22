@@ -1,0 +1,88 @@
+.content#energy-stats{
+
+}
+.content#energy-stats .stats-section:first-child{
+  margin-top: 10px;
+}
+.content#energy-stats .stats-section{
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.content#energy-stats .title{
+  font-size: 150%;
+  font-family: Edp Preon Medium;
+  position: relative;
+  text-transform: uppercase;
+  border: solid 1px #333;
+  transition: border-color 250ms ease-in-out;
+  margin-bottom: 0px;
+  margin-top:1px;
+  border-bottom: 0px;
+}
+.content#energy-stats .stats-section.open .title{
+
+}
+.content#energy-stats .title svg{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  transform: rotate(90deg);
+  transition: transform 500ms ease-in-out;
+}
+.content#energy-stats .stats-section.open .title svg{
+  transform: rotate(-90deg);
+}
+.content#energy-stats .stats-area{
+  max-height: 0px;
+  transition: max-height 500ms ease-in-out, padding 500ms ease-in-out ;
+  border: solid 1px #333;
+  border-top: 0;
+}
+.content#energy-stats .stats-section.open .stats-area{
+  max-height: 200px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  overflow-x: auto;
+}
+.content#energy-stats .stats-area .desc-current-consumption{
+  width: 50%;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.content#energy-stats .stats-area img{
+  margin-top: 1px;
+  width: 120%;
+  height: 155px;
+  transition: opacity 250ms ease-in-out;
+  opacity: 0;
+}
+.content#energy-stats .stats-section.open .stats-area img{
+  opacity: 1;
+}
+@media (min-width:460px){
+
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
