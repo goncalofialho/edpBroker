@@ -3,6 +3,7 @@ $(document).ready(function(){
 	$('#intro .car-icon').click(toggleView);
 	$('.header .home').click(toggleView);
 	$('.menu .option.stats').click(toggleView);
+	$('.menu .option.settings').click(toggleView);
 	$('.header .back').click(toggleBackView);
 
 	/* BUY ENERGY */

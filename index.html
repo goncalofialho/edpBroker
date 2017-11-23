@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/verify-energy.css">
   <link rel="stylesheet" href="css/buy-energy.css">
   <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="css/settings.css">
+
 
 </head>
 
@@ -44,6 +46,11 @@
 		<h2>Estatísticas</h2>
 		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
 	  </div>
+	 <div target="settings" class="header hidden-class">
+		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Defenições</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
+	 </div>
     </div>
 
 
@@ -230,11 +237,11 @@
 		<div class="cards-list col-xs-12 reserved">
 			<div class="cards">
 				<div class="card" target="confirm-buy-energy">
-					<p class="info"><strong>C.C.N: </strong>1780972838</p>
+					<p class="info"><strong>N.C.C: </strong>1780972838</p>
 					<p class="info"><strong>Titular: </strong>João Rodrigues</p>
 				</div>
 				<div class="card" target="confirm-buy-energy">
-					<p class="info"><strong>C.C.N: </strong>1928393839</p>
+					<p class="info"><strong>N.C.C: </strong>1928393839</p>
 					<p class="info"><strong>Titular: </strong>Luisa Rodrigues</p>
 				</div>
 			</div>
@@ -295,6 +302,27 @@
     </div>
 
   </div>
+  
+  
+    <div id="settings" class="col-xs-12 content hidden-class">
+		<p class="title col-xs-12">Cartões</p>		
+		<div class="cards-list col-xs-12 ">
+			<div class="cards">
+				<div class="card">
+					<div class="info">
+						<p class="info"><strong>N.C.C: </strong>1780972838</p>
+						<p class="info"><strong>Titular: </strong>João Rodrigues</p>
+					</div>
+					<div class="edit">
+						<svg class="edit"><use xlink:href="images/icons.svg#edit"></svg>
+					</div>
+					<div class="delete">
+						<svg class="delete"><use xlink:href="images/icons.svg#delete"></svg>
+					</div>
+				</div>
+			</div>
+		</div>	
+    </div>
 
 
   <div class="menu">
@@ -306,7 +334,7 @@
       <svg class=""><use xlink:href="images/icons.svg#transaction"></svg>
       <p>Transações</p>
     </div>
-    <div class="col-xs-4 option settings">
+    <div target="settings" class="col-xs-4 option settings">
       <svg class=""><use xlink:href="images/icons.svg#settings"></svg>
       <p>Definições</p>
     </div>
