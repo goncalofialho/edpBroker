@@ -70,6 +70,7 @@
   max-height: 600px;
   transition: all 300ms ease-in-out;
   overflow: hidden;
+  padding:0px;
 }
 .content#transactions #transaction-info .transaction-section{
   padding: 0;
