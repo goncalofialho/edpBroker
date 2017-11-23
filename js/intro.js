@@ -4,6 +4,7 @@ $(document).ready(function(){
 	$('.header .home').click(toggleView);
 	$('.menu .option.stats').click(toggleView);
 	$('.menu .option.settings').click(toggleView);
+	$('.menu .option.history').click(toggleView);
 	$('.header .back').click(toggleBackView);
 	$('#settings #main-settings .item[target="bank-account"]').click(toggleView)
 

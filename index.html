@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/stats.css">
   <link rel="stylesheet" href="css/settings.css">
   <link rel="stylesheet" href="css/bank-account.css">
+  <link rel="stylesheet" href="css/transactions.css">
 
 
 </head>
@@ -55,6 +56,12 @@
    <div target="bank-account" class="header hidden-class">
 		<svg target="settings" class="back"><use xlink:href="images/icons.svg#back"></svg>
 		<h2>Conta Bancária</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
+	 </div>
+
+   <div target="transactions" class="header hidden-class">
+		<svg target="settings" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Transações</h2>
 		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
 	 </div>
     </div>
@@ -403,7 +410,61 @@
       </div>
     </div>
   </div>
-
+  <div id="transactions" class="col-xs-12 content hidden-class">
+    <div id="main-transactions" class="col-xs-12">
+      <div class="col-xs-12 filters">
+				<input  type="text"/>
+				<svg class="search"><use xlink:href="images/icons.svg#search"></svg>
+			</div>
+      <div class="col-xs-12 transaction-list">
+        <div class="col-xs-12 transaction-item">
+          <p class="date">09/11/2017</p>
+          <div class="transaction-content col-xs-12">
+            <p>Compra: <small>15.00 €</small></p>
+            <p>De: <small>GreenLight</small></p>
+            <p>Para: <small>Eu</small></p>
+            <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+        <div class="col-xs-12 transaction-item">
+          <p class="date">09/11/2017</p>
+          <div class="transaction-content col-xs-12">
+            <p>Compra: <small>15.00 €</small></p>
+            <p>De: <small>GreenLight</small></p>
+            <p>Para: <small>Eu</small></p>
+            <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+        <div class="col-xs-12 transaction-item">
+          <p class="date">09/11/2017</p>
+          <div class="transaction-content col-xs-12">
+            <p>Compra: <small>15.00 €</small></p>
+            <p>De: <small>GreenLight</small></p>
+            <p>Para: <small>Eu</small></p>
+            <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+        <div class="col-xs-12 transaction-item">
+          <p class="date">09/11/2017</p>
+          <div class="transaction-content col-xs-12">
+            <p>Compra: <small>15.00 €</small></p>
+            <p>De: <small>GreenLight</small></p>
+            <p>Para: <small>Eu</small></p>
+            <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+        <div class="col-xs-12 transaction-item">
+          <p class="date">09/11/2017</p>
+          <div class="transaction-content col-xs-12">
+            <p>Compra: <small>15.00 €</small></p>
+            <p>De: <small>GreenLight</small></p>
+            <p>Para: <small>Eu</small></p>
+            <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -413,7 +474,7 @@
       <svg class=""><use xlink:href="images/icons.svg#bar-chart"></svg>
       <p>Estatísticas</p>
     </div>
-    <div class="col-xs-4 option history">
+    <div target="transactions" class="col-xs-4 option history">
       <svg class=""><use xlink:href="images/icons.svg#transaction"></svg>
       <p>Transações</p>
     </div>

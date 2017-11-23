@@ -1,0 +1,90 @@
+.content#transactions{
+
+}
+.content#transactions #main-transactions{
+  padding:0px;
+}
+.content#transactions #main-transactions .filters{
+  padding: 3% 5%;
+  border: solid 1px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+.content#transactions #main-transactions .filters input{
+  width: 90%;
+  border: solid 1px;
+  float: left;
+  margin-top:1px;
+}
+.content#transactions #main-transactions .filters .search{
+  width: 8%;
+  height: 22px;
+  float: left;
+  margin-left: 2%;
+}
+.content#transactions #main-transactions .transaction-list{
+  padding: 0px;
+  max-height: 430px;
+  overflow-y: auto;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item{
+  padding:0px;
+  margin-bottom: 15px;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item .date{
+  margin-bottom: 0px;
+  width: 40%;
+  border: solid 1px #333;
+  border-bottom: 0px;
+  padding-left: 15px;
+  padding: 5px 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item .transaction-content{
+  position: relative;
+  border: solid 1px #333;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item .transaction-content p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: Edp Preon Medium;
+  font-size: 120%;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item .transaction-content p small{
+  font-family: Edp Preon;
+  font-size: 90%;
+}
+.content#transactions #main-transactions .transaction-list .transaction-item .transaction-content .more{
+  width: 30px;
+  position: absolute;
+  right: 5%;
+  height: 30px;
+  top: 32%;
+  fill: #333;
+}
+@media (min-width:460px){
+
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
