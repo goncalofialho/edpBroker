@@ -419,7 +419,7 @@
       <div class="col-xs-12 transaction-list">
         <div class="col-xs-12 transaction-item">
           <p class="date">09/11/2017</p>
-          <div class="transaction-content col-xs-12">
+          <div target="transaction-info" parent="main-transactions" class="transaction-content col-xs-12">
             <p>Compra: <small>15.00 €</small></p>
             <p>De: <small>GreenLight</small></p>
             <p>Para: <small>Eu</small></p>
@@ -428,7 +428,7 @@
         </div>
         <div class="col-xs-12 transaction-item">
           <p class="date">09/11/2017</p>
-          <div class="transaction-content col-xs-12">
+          <div target="transaction-info" parent="main-transactions" class="transaction-content col-xs-12">
             <p>Compra: <small>15.00 €</small></p>
             <p>De: <small>GreenLight</small></p>
             <p>Para: <small>Eu</small></p>
@@ -437,7 +437,7 @@
         </div>
         <div class="col-xs-12 transaction-item">
           <p class="date">09/11/2017</p>
-          <div class="transaction-content col-xs-12">
+          <div target="transaction-info" parent="main-transactions" class="transaction-content col-xs-12">
             <p>Compra: <small>15.00 €</small></p>
             <p>De: <small>GreenLight</small></p>
             <p>Para: <small>Eu</small></p>
@@ -446,7 +446,7 @@
         </div>
         <div class="col-xs-12 transaction-item">
           <p class="date">09/11/2017</p>
-          <div class="transaction-content col-xs-12">
+          <div target="transaction-info" parent="main-transactions" class="transaction-content col-xs-12">
             <p>Compra: <small>15.00 €</small></p>
             <p>De: <small>GreenLight</small></p>
             <p>Para: <small>Eu</small></p>
@@ -455,11 +455,48 @@
         </div>
         <div class="col-xs-12 transaction-item">
           <p class="date">09/11/2017</p>
-          <div class="transaction-content col-xs-12">
+          <div target="transaction-info" parent="main-transactions" class="transaction-content col-xs-12">
             <p>Compra: <small>15.00 €</small></p>
             <p>De: <small>GreenLight</small></p>
             <p>Para: <small>Eu</small></p>
             <svg class="more"><use xlink:href="images/icons.svg#plus"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="transaction-info" class="col-xs-12 hidden-class">
+      <div class="transaction-section open col-xs-12">
+        <p class="title col-xs-12">Transação
+          <svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/icons.svg#arrow"></use></svg>
+        </p>
+        <div class="section-area col-xs-12">
+          <p>Data: <small>09/11/2017</small></p>
+          <p>Hora: <small>12:39h</small></p>
+          <p>Cartão: <small>4856 **** ****</small></p>
+        </div>
+      </div>
+      <div class="transaction-section open col-xs-12">
+        <p class="title col-xs-12">Pacote
+          <svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/icons.svg#arrow"></use></svg>
+        </p>
+        <div class="section-area col-xs-12">
+          <p>Produtor: <small>GreenLight</small></p>
+          <p>Quantidade: <small>100Mw</small></p>
+          <p>Preço: <small>30,00 €</small></p>
+        </div>
+      </div>
+      <div class="transaction-section open col-xs-12">
+        <p class="title col-xs-12">Documentos
+          <svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/icons.svg#arrow"></use></svg>
+        </p>
+        <div class="section-area col-xs-12">
+          <div class="option">
+            <svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/icons.svg#invoice"></use></svg>
+            <p>Transferir Fatura</p>
+          </div>
+          <div class="option">
+            <svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/icons.svg#contract"></use></svg>
+            <p>Transferir Contrato</p>
           </div>
         </div>
       </div>

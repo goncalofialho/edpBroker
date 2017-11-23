@@ -19,6 +19,10 @@ $(document).ready(function(){
 	$('#bank-account #bank-account-intro *[target="bank-account-edit"]').click(toggleSubView)
 	$('#bank-account #bank-account-edit *[target="bank-account-intro"]').click(toggleSubView)
 
+	/* TRANSACTION */
+	$('#transactions #main-transactions .transaction-content').click(toggleSubView)
+	$('#transactions #transaction-info .transaction-section .title').click(toggleStats)
+
 	/* TOGGLE STATS BOXES */
 	$('#energy-stats .stats-section .title').click(toggleStats)
 
@@ -98,6 +102,5 @@ function toggleBackHome(){
 }
 
 function toggleStats(){
-	console.log("this")
 	$(this).parent().toggleClass('open')
 }

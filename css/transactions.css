@@ -66,6 +66,81 @@
   top: 32%;
   fill: #333;
 }
+.content#transactions > div{
+  max-height: 600px;
+  transition: all 300ms ease-in-out;
+  overflow: hidden;
+}
+.content#transactions #transaction-info .transaction-section{
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.content#transactions #transaction-info .transaction-section:first-child{
+  margin-top:10px;
+}
+.content#transactions #transaction-info .transaction-section .title{
+  font-size: 150%;
+  font-family: Edp Preon Medium;
+  position: relative;
+  text-transform: uppercase;
+  border: solid 1px #333;
+  transition: border-color 250ms ease-in-out;
+  margin-bottom: 0px;
+  margin-top: 1px;
+  border-bottom: 0px;
+  padding-top:5px;
+  padding-bottom: 5px;
+}
+
+.content#transactions #transaction-info .transaction-section .title svg{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 5%;
+  top: 24%;
+  transform: rotate(90deg);
+  transition: transform 500ms ease-in-out;
+}
+.content#transactions #transaction-info .transaction-section.open .title svg{
+  transform: rotate(-90deg);
+}
+.content#transactions #transaction-info .transaction-section .section-area{
+  max-height: 0px;
+  transition: max-height 500ms ease-in-out, padding 500ms ease-in-out;
+  border: solid 1px #333;
+  border-top: 0;
+}
+.content#transactions #transaction-info .transaction-section.open .section-area{
+  max-height: 200px;
+  padding-left: 15px;
+  overflow: hidden;
+  padding-right: 0;
+  padding-top: 5px;
+  overflow-x: auto;
+  padding-right: 15px;
+
+}
+.content#transactions #transaction-info .transaction-section .section-area p{
+  font-family: Edp Preon Medium;
+  font-size: 110%;
+}
+.content#transactions #transaction-info .transaction-section .section-area p small{
+  font-family: Edp Preon;
+  font-size: 95%;
+}
+.content#transactions #transaction-info .transaction-section .option{
+  width: 50%;
+  text-align: center;
+  float: left;
+}
+.content#transactions #transaction-info .transaction-section .option svg{
+  width: 50%;
+  height: 33px;
+}
+.content#transactions #transaction-info .transaction-section .option p{
+
+}
 @media (min-width:460px){
 
 }
