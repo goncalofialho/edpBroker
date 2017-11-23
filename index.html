@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/buy-energy.css">
   <link rel="stylesheet" href="css/stats.css">
   <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/bank-account.css">
 
 
 </head>
@@ -48,7 +49,12 @@
 	  </div>
 	 <div target="settings" class="header hidden-class">
 		<svg target="intro" class="back"><use xlink:href="images/icons.svg#back"></svg>
-		<h2>Defenições</h2>
+		<h2>Definições</h2>
+		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
+	 </div>
+   <div target="bank-account" class="header hidden-class">
+		<svg target="settings" class="back"><use xlink:href="images/icons.svg#back"></svg>
+		<h2>Conta Bancária</h2>
 		<svg target="intro" class="home"><use xlink:href="images/icons.svg#home"></svg>
 	 </div>
     </div>
@@ -305,34 +311,97 @@
       <p class="title col-xs-12">Geral</p>
     	<div class="col-xs-12 item-list">
         <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
+          <p class="single-p">Idioma <small>Português</small></p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
         <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
+          <p class="single-p">Informação de Conta</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
         <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
+          <p class="single-p">Termos de Utilização</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
         <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
+          <p class="single-p">Informação Financeira</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
-        <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
-        </div>
-        <div class="col-xs-12 item">
-          <p>Idioma</p>
-          <p>Português > </p>
+        <div target="bank-account" class="col-xs-12 item">
+          <p class="single-p">Conta Bancária</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
       </div>
     </div>
   </div>
-
-
+  <div id="bank-account" class="col-xs-12 content hidden-class">
+    <div id="bank-account-intro" class="col-xs-12">
+      <h1 class="title col-xs-12">Cartões</h1>
+   		<div class="cards-list col-xs-12 ">
+   			<div class="cards">
+   				<div class="card">
+   					<div class="info">
+   						<div>
+                <p>
+                  <strong>N.C.C: </strong>1780972838
+                </p>
+                <svg parent="bank-account-intro" target="bank-account-edit" class="edit"><use xlink:href="images/icons.svg#edit"></svg>
+              </div>
+   						<div>
+                <p>
+                  <strong>Titular: </strong>João Rodrigues
+                </p>
+                <svg class="delete"><use xlink:href="images/icons.svg#delete"></svg>
+              </div>
+   					</div>
+   				</div>
+          <div class="card">
+            <div class="info">
+              <div>
+                <p>
+                  <strong>N.C.C: </strong>1928393839
+                </p>
+                <svg parent="bank-account-intro" target="bank-account-edit" class="edit"><use xlink:href="images/icons.svg#edit"></svg>
+              </div>
+              <div>
+                <p>
+                  <strong>Titular: </strong>Luisa Rodrigues
+                </p>
+                <svg class="delete"><use xlink:href="images/icons.svg#delete"></svg>
+              </div>
+            </div>
+          </div>
+   			</div>
+        <div parent="bank-account-intro" target="bank-account-edit" class="col-xs-12 add-card">
+          <p>Adicionar cartão</p>
+        </div>
+      </div>
+    </div>
+    <div id="bank-account-edit" class="col-xs-12 hidden-class">
+      <h1 class="title col-xs-12">Editar Cartão</h1>
+      <div class="col-xs-12 edit-field">
+        <p>C.C.N :</p>
+        <input type="number" placeholder="0000 - 0000 - 0000" />
+      </div>
+      <div class="col-xs-12 edit-field">
+        <p>Titular :</p>
+        <input type="text" placeholder="Nome" />
+      </div>
+      <div class="col-xs-12 edit-field">
+        <p>Morada :</p>
+        <input type="text" placeholder="Rua, Cidade" />
+      </div>
+      <div class="col-xs-12 edit-field">
+        <p>Cód. Postal :</p>
+        <input type="number" placeholder="000-0000" />
+      </div>
+      <div class="col-xs-12 edit-field">
+        <p>Cód. Segurança :</p>
+        <input type="password" placeholder="****" />
+      </div>
+      <div parent="bank-account-edit" target="bank-account-intro" class="col-xs-12 add-card">
+        <p>Guardar</p>
+      </div>
+    </div>
   </div>
 
 

@@ -5,6 +5,7 @@ $(document).ready(function(){
 	$('.menu .option.stats').click(toggleView);
 	$('.menu .option.settings').click(toggleView);
 	$('.header .back').click(toggleBackView);
+	$('#settings #main-settings .item[target="bank-account"]').click(toggleView)
 
 	/* BUY ENERGY */
 	$('#buy-energy #main-buy-energy .packages-list .packs .pack').click(toggleBuyPackets)
@@ -13,14 +14,22 @@ $(document).ready(function(){
 	$('#buy-energy #confirm-buy-energy .item-infos .infos .finalize').click(toggleConfirmedBuy)
 	$('#buy-energy #confirmed-product .item-infos .infos .finalized').click(toggleBackHome)
 
+	/* BANK ACCOUNT */
+	$('#bank-account #bank-account-intro *[target="bank-account-edit"]').click(toggleSubView)
+	$('#bank-account #bank-account-edit *[target="bank-account-intro"]').click(toggleSubView)
+
 	/* TOGGLE STATS BOXES */
 	$('#energy-stats .stats-section .title').click(toggleStats)
 
 })
-
+function toggleSubView(){
+	viewId = $(this).attr('target')
+	parentId = $(this).attr('parent')
+	$('#'+parentId).parent().children().addClass('hidden-class')
+	$('#'+parentId).parent().find('#'+viewId).removeClass('hidden-class')
+}
 function toggleView(){
   viewId = $(this).attr('target')
-	console.log("1" , $(this))
   /* ESCONDER TODOS AS VIEWS */
   $('.menu').addClass('hidden-class')
   $('.content').addClass('hidden-class')
@@ -39,7 +48,7 @@ function toggleBackView(){
 		goToIntro()
 	}else{
 		el = $('.content:not(.hidden-class)')
-		index = $('#buy-energy > div').index($('#buy-energy > div:not(.hidden-class)'))
+		index = $('.container .content:not(.hidden-class) > div').index($('.container .content:not(.hidden-class) > div:not(.hidden-class)'))
 		if(index-1 == -1){
 			goToIntro()
 		}else{

@@ -1,57 +1,15 @@
 
 .content#settings .title{
-  text-transform: uppercase;
   font-size: 150%;
   width: 100%;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 5px;
+  font-size: 150%;
+  margin-top: 10px;
 }
 
-.content#settings .cards-list .card{
-  transition: max-height 500ms ease-in-out, padding 500ms ease-in-out ;
-  border: solid 1px #333;
-  border-top: 0;
-}
-
-.content#settings  .card .info{
-	text-align:left;
-}
-
-.content#settings  .card .delete{
-	text-align:right;
-}
-
-.content#settings  .card .edit{
-	text-align:right;
-}
-
-.content#settings .cards-list{
-    overflow-y: auto;
-}
-.content#settings .cards-list.reserved{
-	max-height: 600px;
-}
-.content#settings .cards-list .cards{
-    margin: 10px 0;
-}
-.content#settings .cards-list .cards .card{
-	padding: 5px;
-	position:relative;
-    border: solid 1px #333;
-	transition: all 250ms ease-in-out;
-	cursor:pointer;
-	height:75px;
-}
-
-.content#settings .cards-list .card:hover{
-	/*background:#d52b1e;
-	color:white;*/
-}
-.content#settings  .card p{
-	margin-bottom: 3px;
-}
 .content#settings > div{
   padding:0px;
 }
@@ -59,9 +17,16 @@
   padding: 0px;
 }
 .content#settings #main-settings  .item-list .item{
-  padding: 15px 10px;
+  padding: 20px 10px;
   border: solid 1px;
   border-bottom: 0px;
+  position: relative;
+  transition: all 350ms ease-in-out;
+}
+.content#settings #main-settings  .item-list .item:hover{
+  background: #d52b1e;
+  color:#fff;
+  fill:#fff;
 }
 .content#settings #main-settings  .item-list .item:last-child{
   border-bottom: solid 1px;
@@ -72,29 +37,47 @@
   font-size: 115%;
   margin: 0;
 }
+
+.content#settings #main-settings  .item-list .item .single-p{
+  width: 90%;
+  text-align: left !important;
+  text-transform: uppercase;
+  font-family: Edp Preon Medium;
+}
+.content#settings #main-settings  .item-list .item .single-p small{
+  font-family: Edp Preon;
+  text-transform: none;
+  font-size: 85%;
+}
+.content#settings #main-settings  .item-list .item .arrow{
+  width: 10%;
+  height: 15px;
+  position: absolute;
+  top: 40%;
+}
 .content#settings #main-settings  .item-list .item p:last-child{
   text-align: right;
 }
-.content#settings .item-list
+
 @media (min-width460px){
 }
- Small devices (landscape phones, 576px and up)
+/* Small devices (landscape phones, 576px and up)*/
 @media (min-width 576px) {
 }
 
- Medium devices (tablets, 768px and up)
+/* Medium devices (tablets, 768px and up)*/
 @media (min-width 768px) {
 	.content#verify-energy h1 {
 		font-size: 250%;
 	}
 }
 
- Large devices (desktops, 992px and up)
+/* Large devices (desktops, 992px and up)*/
 @media (min-width 992px) {
 
 }
 
- Extra large devices (large desktops, 1200px and up)
+/* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width 1200px) {
 
 }

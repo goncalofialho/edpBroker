@@ -1,0 +1,133 @@
+
+.content#bank-account .t .card{
+  transition: max-height 500ms ease-in-out, padding 500ms ease-in-out ;
+  border: solid 1px #333;
+  border-top: 0;
+}
+
+.content#bank-account  .card .info{
+  text-align: left;
+  position: relative;
+  height: 35px;
+  padding-left: 2px;
+  padding-top: 0;
+}
+.content#bank-account  .card .info > div{
+  position: relative;
+  height: 35px;
+}
+
+.content#bank-account  .card .delete{
+	text-align:right;
+}
+
+.content#bank-account  .card .edit{
+	text-align:right;
+}
+
+.content#bank-account .cards-list{
+    overflow-y: auto;
+    padding: 0px;
+}
+.content#bank-account .cards-list.reserved{
+	max-height: 600px;
+}
+.content#bank-account .cards-list .cards{
+    margin: 10px 0;
+}
+.content#bank-account .cards-list .cards .card{
+  padding: 5px;
+  position: relative;
+  border: solid 1px #333;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  height: 80px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.content#bank-account .add-card {
+  padding:0px;
+}
+.content#bank-account .add-card p{
+  text-align: center;
+  border: solid 1px;
+  width: 78%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 13px 16px;
+  font-family: Edp Preon Medium;
+  border-radius: 4px;
+  font-size: 150%;
+  background: #d52b1e;
+  color: #ffffff;
+}
+.content#bank-account  #bank-account-intro{
+  padding:0px;
+}
+.content#bank-account .cards-list .card:hover{
+	/*background:#d52b1e;
+	color:white;*/
+}
+.content#bank-account  .card p{
+	margin-bottom: 3px;
+}
+.content#bank-account h1{
+    font-size: 150%;
+    margin-top: 10px;
+    padding: 0px;
+}
+.content#bank-account  .card .info svg{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -5px;
+  border: solid 1px #333;
+  padding: 5px;
+  border-radius: 10px;
+  right: 0px;
+}
+.content#bank-account > div{
+  max-height: 600px;
+  overflow: hidden;
+  padding:0px;
+  transition: max-height 300ms ease-in-out;
+}
+.content#bank-account #bank-account-edit {
+
+}
+.content#bank-account #bank-account-edit .edit-field{
+  padding-right: 15px;
+  height: 70px;
+  padding-top: 10px;
+}
+.content#bank-account #bank-account-edit .edit-field p{
+  width: 100%;
+  float: left;
+  margin-bottom: 5px;
+  font-size: 120%;
+}
+.content#bank-account #bank-account-edit .edit-field input{
+  text-align: center;
+  width: 100%;
+  font-size: 120%;
+  height: 32px;
+}
+@media (min-width460px){
+}
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width 576px) {
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width 768px) {
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width 1200px) {
+
+}
