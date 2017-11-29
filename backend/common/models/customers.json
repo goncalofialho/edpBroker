@@ -44,7 +44,7 @@
     "creditCards": {
       "type": "hasMany",
       "model": "creditCards",
-      "foreignKey": "creditcard_id"
+      "foreignKey": "holder"
     }
   },
   "acls": [],
