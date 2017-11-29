@@ -7,11 +7,6 @@ $(document).ready(function(){
 
   $('.btn.btn-primary').click(trylogin)
 
-
-
-
-
-
 })
 
 var x;
@@ -20,6 +15,9 @@ function trylogin(){
 
   mail = $('.login-input-box.user .login-input').val()
   psswd = $('.login-input-box.password .login-input').val()
+  successLogin(2)
+
+  /*
   console.log('http://85.247.219.175:4567/api/customers/login?email='+mail+'&password='+psswd+'')
 
   $.getJSON( 'http://85.247.219.175:4567/api/customers/login?email='+mail+'&password='+psswd+'').done(function(data){
@@ -32,7 +30,12 @@ function trylogin(){
     }else{
       console.log(x["customer_id"][0])
     }
-  })
+  })*/
+}
+
+function successLogin(id){
+  localStorage.setItem("user_id", id);
+  window.location.replace("./index.html");
 }
 
 // http://85.247.219.175:4567/api/customers?filter={"where":{"customer_id":10}}
