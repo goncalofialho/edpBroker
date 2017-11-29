@@ -32,6 +32,9 @@ a{
 strong{
   font-family: "Edp Preon Medium";
 }
+.template{
+  display: none;
+}
 .edpOn-logo{
   text-align: center;
   font-size: 250%;
