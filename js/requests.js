@@ -5,17 +5,17 @@ user_id = localStorage.getItem('user_id')
 
 // request current energy
 function getCurrentEnergy(){
-  /* THIS CODE GOES INSIDE AJAX FUNCTION */
-
-  percentage = 50 // VALUE RETRIEVED
-  $("#intro .circle .edp-color").removeClass (function (index, className) {
-    return (className.match (/(^|\s)p\S+/g) || []).join(' ');
-  });
-  $("#intro .circle .edp-color").addClass('p'+percentage);
-  $("#intro .circle .edp-color span").text(percentage+"%");
-  $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage+'%')
-  $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage+'%')
-
+  $.getJSON( url + 'customers/' + user_id + '/energy', function(json) {
+    console.log(json[0].percentage);
+    json[0].percentage != null ? percentage = json[0].percentage : percentage = 0; // VALUE RETRIEVED
+    $("#intro .circle .edp-color").removeClass (function (index, className) {
+      return (className.match (/(^|\s)p\S+/g) || []).join(' ');
+    });
+    $("#intro .circle .edp-color").addClass('p'+percentage);
+    $("#intro .circle .edp-color span").text(percentage+"%");
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage+'%')
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage+'%')
+  })
 }
 
 function getReservedPacks(){

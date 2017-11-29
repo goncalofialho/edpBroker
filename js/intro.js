@@ -2,7 +2,7 @@ $(document).ready(function(){
 	enableClicks();
 
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	// getCurrentEnergy()
+	getCurrentEnergy()
 })
 
 function enableClicks(){
