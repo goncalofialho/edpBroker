@@ -28,6 +28,35 @@ module.exports = function(Customers) {
 		}
 	);
 
+	Customers.login = function(login, password ,cb){
+		Customers.find({where: {and: [{login: login}, {password: password}]} }, function (err, instance){
+			var response = instance;
+			cb(null, response);
+        	console.log(response);
+		})
+	}
+
+	Customers.remoteMethod (
+		'login' ,
+		{
+			http: {path: '/login', verb: 'get'},
+			accepts: [
+				{arg: 'login', type: 'string', http: {source: 'query'}},
+				{arg: 'password', type: 'string', http: {source: 'query'}},
+				],
+			returns: [
+			{arg: 'customer_id', type: 'number'},
+			{arg: 'login', type: 'string'},
+			{arg: 'password', type: 'string'},
+			{arg: 'email', type: 'string'},
+			{arg: 'customer_name', type: 'string'},
+			{arg: 'customer_address', type: 'string'},
+			{arg: 'creditcard', type: 'string'},
+			{arg: 'lastlogin', type: 'date'}
+			]
+		}
+	);
+
 	Customers.packsForSale = function(cb){
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
