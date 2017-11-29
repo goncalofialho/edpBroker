@@ -23,10 +23,13 @@ function getReservedPacks(){
   l = ["GreenLight", "BlueOcean", "CloudWind", "FireRed", "EarthStone"] // VALIE RETRIEVED
   clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
 
+  // REMOVING ALL TRASH ELEMENTS
+  $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
+
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
-    pack.find('.pack > p').text(element)
+    pack.find('.pack > p').text("Pacote" + element)
     $('.content#verify-energy .packages-list.reserved').append(pack)
   })
 
@@ -37,6 +40,9 @@ function getPacks(){
       {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes"}] // VALUES RETRIEVED
 
   clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
+
+  // REMOVING ALL TRASH
+  $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
 
   l.forEach(function(element){
     pack = clone.clone()
