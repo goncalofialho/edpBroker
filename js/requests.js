@@ -36,8 +36,8 @@ function getReservedPacks(){
 }
 
 function getPacks(){
-  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses"},
-      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes"}] // VALUES RETRIEVED
+  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses" , "id" : 52},
+      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes" , "id" :42 }] // VALUES RETRIEVED
 
   clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
 
@@ -47,6 +47,7 @@ function getPacks(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info .title').text("Pacote "+element["Name"])
     pack.find('.info .producer').text(element["Company"])
     pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
@@ -59,8 +60,8 @@ function getPacks(){
 }
 
 function getCreditCardsMarket(){
-  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues"},
-       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues"}
+  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
+       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
       ] // VALUES RETRIEVED
   clone = $('.content#buy-energy  #method-buy-energy .card.template').clone()
 
@@ -70,6 +71,7 @@ function getCreditCardsMarket(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info:first-child').html("<strong>N.C.C:</strong> "+element["N.C.C"])
     pack.find('.info:last-child').html("<strong>Titular:</strong> "+element["Owner"])
     $('.content#buy-energy  #method-buy-energy .cards-list .cards').append(pack)
@@ -80,8 +82,8 @@ function getCreditCardsMarket(){
 }
 
 function getCreditCardsSettings(){
-  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues"},
-       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues"}
+  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
+       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
       ] // VALUES RETRIEVED
 
   clone = $('.content#bank-account .cards-list .cards .card.template').clone()
@@ -92,6 +94,7 @@ function getCreditCardsSettings(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info > div:first-child p').html("<strong>N.C.C:</strong> "+element["N.C.C"])
     pack.find('.info > div:last-child p').html("<strong>Titular:</strong> "+element["Owner"])
     $('.content#bank-account .cards-list .cards').append(pack)
@@ -127,10 +130,78 @@ function getTransactions(){
   enableClicks()
 }
 
-function insertCreditCard(){
+// O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
+function getTransactionDetails(id){
+  element = {"Date" : "14/09/2017" ,
+      "Time" : "21:49h" ,
+      "Card" : 2583972838 ,
+      "Company" : "RedEnergie" ,
+      "Ammount" : 150 ,
+      "Price" : "25,00 €"
+    }
+
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0,4) + " **** ****")
+
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
 
 }
 
-function updateCreditCard(){
+// O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
+function getPackDetails(id){
+  pack = {"Name" : "GoldEnergy" ,
+      "Time" : "2 Meses" ,
+      "Description" : "Pacote de fornecimento de energia eolica com baixo teor de poluição" ,
+      "Company" : "SaviorEnergy" ,
+      "Ammount" : 120 ,
+      "Price" : "25,00 €" ,
+      "Product Rating" : 5,
+      "Company Rating" : 6,
+      "Contact" : "Saviorenergy.com"
+    } // RESPOSTA DOS DETALHES DO ID {X}
+
+  $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
+  $('.content#buy-energy #desc-buy-energy .package-description .duration').text("Pacote "+pack["Time"])
+  $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Preço:</strong> "+pack["Price"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(7)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(8)').html("<strong>Contacto:</strong> "+pack["Contact"])
+}
+
+function updateCreditCard(id){
+  console.log(id)
+
+  if(id == null){
+    // CREATE CARD
+    $('.content#bank-account #bank-account-edit h1').text("Adicionar Cartão")
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val('')
+
+  }else{
+    // MODIFY CARD WITH THIS ID
+    card = { "C.C.N" : 123456789482,
+             "Name"  : "João Rodrigues",
+             "Date"  : "12/17" ,
+             "Code"  : 124  } // RETRIEVED DATA FROM CARD ID
+
+    $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
+
+
+  }
+}
+
+function buyPackage(id){
 
 }

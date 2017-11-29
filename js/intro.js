@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	enableClicks();
 
+	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+	// getCurrentEnergy()
 })
 
 function enableClicks(){
@@ -37,6 +39,16 @@ function toggleSubView(){
 	parentId = $(this).attr('parent')
 	$('#'+parentId).parent().children().addClass('hidden-class')
 	$('#'+parentId).parent().find('#'+viewId).removeClass('hidden-class')
+
+	if(viewId == "transaction-info"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// getCreditCardsSettings($(this).parent().attr("id"))
+	}
+	if(viewId == "bank-account-edit"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// updateCreditCard($(this).closest('.card').attr("id"))
+	}
+
 }
 function toggleView(){
   viewId = $(this).attr('target')
@@ -50,6 +62,24 @@ function toggleView(){
   $('.header[target="'+viewId+'"]').removeClass('hidden-class')
   if(viewId == "intro")
 	  $('.menu').removeClass('hidden-class')
+
+	if(viewId == "buy-energy"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// getPacks()
+	}
+	if(viewId == "verify-energy"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// getReservedPacks()
+	}
+	if(viewId == "buy-energy"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// getCreditCardsSettings()
+	}
+	if(viewId == "transactions"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// getTransactions()
+	}
+
 }
 
 /* VERIFICA SE VOLTAR PARA TRAS É SUBVIEW OU VIEW PRINCIPAL */
@@ -79,12 +109,18 @@ function toggleBuyPackets(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+
+	// CHAMAR AQUI A FUNÇÃO getPackDetails
+	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+  // getPackDetails($(this).attr('id'))
 }
 
-function toggleChooseCard(){
+function toggleChooseCardgetTransactionDetails(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+	// getCreditCardsMarket()
 }
 
 function toggleConfirmBuy(){
