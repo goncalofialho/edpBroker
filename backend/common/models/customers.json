@@ -35,7 +35,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "transactions": {
+      "type": "hasMany",
+      "model": "transactions",
+      "foreignKey": "client_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }
