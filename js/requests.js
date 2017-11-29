@@ -1,62 +1,73 @@
 // THIS FILE CONTAINS THE REQUESTS TO THE APP
-
+var url = 'http://85.247.219.175:4567/api/';
+user_id = localStorage.getItem('user_id')
 
 
 // request current energy
 function getCurrentEnergy(){
-  /* THIS CODE GOES INSIDE AJAX FUNCTION */
-
-  percentage = 50 // VALUE RETRIEVED
-  $("#intro .circle .edp-color").removeClass (function (index, className) {
-    return (className.match (/(^|\s)p\S+/g) || []).join(' ');
-  });
-  $("#intro .circle .edp-color").addClass('p'+percentage);
-  $("#intro .circle .edp-color span").text(percentage+"%");
-  $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage+'%')
-  $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage+'%')
-
+  $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
+    percentage = json.energy_id[0].percentage;
+    percentage = (percentage == null ? 0 : percentage);  // VALUE RETRIEVED
+    $("#intro .circle .edp-color").removeClass (function (index, className) {
+      return (className.match (/(^|\s)p\S+/g) || []).join(' ');
+    });
+    $("#intro .circle .edp-color").addClass('p'+percentage);
+    $("#intro .circle .edp-color span").text(percentage+"%");
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage+'%')
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage+'%')
+  })
 }
 
 function getReservedPacks(){
-  /* THIS CODE GOES INSIDE AJAX FUNCTION */
+  var l = [];
+  $.getJSON( url + 'customers/' + user_id + '/energy', function(json) {
+    $.each(json, function(index, packs){
+      l.push(packs.packName);
+    });
 
-  l = ["GreenLight", "BlueOcean", "CloudWind", "FireRed", "EarthStone"] // VALIE RETRIEVED
-  clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
+    clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
 
-  // REMOVING ALL TRASH ELEMENTS
-  $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
+    // REMOVING ALL TRASH ELEMENTS
+    $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
 
-  l.forEach(function(element){
-    pack = clone.clone()
-    pack.removeClass('template')
-    pack.find('.pack > p').text("Pacote" + element)
-    $('.content#verify-energy .packages-list.reserved').append(pack)
+    l.forEach(function(element){
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.find('.pack > p').text("Pacote   " + element)
+      $('.content#verify-energy .packages-list.reserved').append(pack)
+    });
   })
-
 }
 
 function getPacks(){
-  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses" , "id" : 52},
-      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes" , "id" :42 }] // VALUES RETRIEVED
+  packsArray = []
+  $.getJSON( url + 'customers/packsForSale', function(json) {
+    clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
+    // REMOVING ALL TRASH
+    $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
+    json.energy_id.forEach(function(pack){
+      $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+        name = prod.customer_name;
+      });
+      temp = {"Name" : pack.packName, "Company" : name, "Watts" : pack.quantity}
+      packsArray.push(temp);
+    })
 
-  clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
 
-  // REMOVING ALL TRASH
-  $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
+    packsArray.forEach(function(element){
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.attr('id', element["id"])
+      pack.find('.info .title').text("Pacote "+element["Name"])
+      pack.find('.info .producer').text(element["Company"])
+      pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
+      // pack.find('.info .ammount span:last-child').text(element["Duration"])
+      $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
 
-  l.forEach(function(element){
-    pack = clone.clone()
-    pack.removeClass('template')
-    pack.attr('id', element["id"])
-    pack.find('.info .title').text("Pacote "+element["Name"])
-    pack.find('.info .producer').text(element["Company"])
-    pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
-    pack.find('.info .ammount span:last-child').text(element["Duration"])
-    $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+    })
+    // ENABLING CLICKS FOR NEW ELEMENTS
+    enableClicks()
   })
-
-  // ENABLING CLICKS FOR NEW ELEMENTS
-  enableClicks()
 }
 
 function getCreditCardsMarket(){
@@ -153,7 +164,6 @@ function getTransactionDetails(id){
 // O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
 function getPackDetails(id){
   pack = {"Name" : "GoldEnergy" ,
-      "Time" : "2 Meses" ,
       "Description" : "Pacote de fornecimento de energia eolica com baixo teor de poluição" ,
       "Company" : "SaviorEnergy" ,
       "Ammount" : 120 ,
@@ -164,7 +174,6 @@ function getPackDetails(id){
     } // RESPOSTA DOS DETALHES DO ID {X}
 
   $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
-  $('.content#buy-energy #desc-buy-energy .package-description .duration').text("Pacote "+pack["Time"])
   $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
   $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
   $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")

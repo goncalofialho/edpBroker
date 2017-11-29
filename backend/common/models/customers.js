@@ -28,11 +28,40 @@ module.exports = function(Customers) {
 		}
 	);
 
+	Customers.login = function(email, password ,cb){
+		Customers.find({where: {and: [{email: email}, {password: password}]} }, function (err, instance){
+			var response = instance;
+			cb(null, response);
+        	console.log(response);
+		})
+	}
+
+	Customers.remoteMethod (
+		'login' ,
+		{
+			http: {path: '/login', verb: 'get'},
+			accepts: [
+				{arg: 'email', type: 'string', required: true,http: {source: 'query'}},
+				{arg: 'password', type: 'string', required: true , http: {source: 'query'}},
+				],
+			returns: [
+			{arg: 'customer_id', type: 'number'},
+			{arg: 'login', type: 'string'},
+			{arg: 'password', type: 'string'},
+			{arg: 'email', type: 'string'},
+			{arg: 'customer_name', type: 'string'},
+			{arg: 'customer_address', type: 'string'},
+			{arg: 'creditcard', type: 'string'},
+			{arg: 'lastlogin', type: 'date'}
+			]
+		}
+	);
+
 	Customers.packsForSale = function(cb){
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
-		e.find({where: {holder: null}}, function(err, instance) {
+		e.find({where:{or: [{holder: null}, {holder: 0}]} }, function(err, instance) {
 			var response = instance;
 			cb(null, response);
 			console.log(response);
@@ -61,7 +90,7 @@ module.exports = function(Customers) {
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
-		e.find({where: {and: [{customer_id: customer_id}, {active : 1}]}}, function(err, instance) {
+		e.find({where: {and: [{holder: customer_id}, {active : 1}]}}, function(err, instance) {
 			var response = instance;
 			cb(null, response);
 			console.log(response);
