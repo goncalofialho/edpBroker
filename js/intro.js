@@ -2,7 +2,7 @@ $(document).ready(function(){
 	enableClicks();
 
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	getCurrentEnergy()
+	// getCurrentEnergy()
 })
 
 function enableClicks(){
@@ -65,11 +65,11 @@ function toggleView(){
 
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		getPacks()
+		// getPacks()
 	}
 	if(viewId == "verify-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		getReservedPacks()
+		// getReservedPacks()
 	}
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
@@ -115,7 +115,7 @@ function toggleBuyPackets(){
   // getPackDetails($(this).attr('id'))
 }
 
-function toggleChooseCard(){
+function toggleChooseCardgetTransactionDetails(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
@@ -217,15 +217,18 @@ function toggleStats(){
             
             // Get the value.
             var input = $this.val();
+			
+			if ( $.inArray( event.keyCode, [8] ) !== -1  && input.toString().length==2) {
+				return input.toString()[0];
+			}
             
             var input = input.replace(/[\D\s\._\-]+/g, "");
-                    input = input ? parseInt( input., 10 ) : 0;
-
                     $this.val( function() {
 						var res=input.toString();
-						if(res>=2)
+		
+						if(res.length>=2)
 							res = input.toString().substring(0,2)+"/"+input.toString().substring(2,4);
-                        return ( parseInt(input.toString().substring(0,2),10) > 12 || parseInt(input.toString().substring(0,2),10) < 0 ) ? "" : res;
+                        return ( parseInt(input.toString().substring(0,2),10) > 12 || input.toString().substring(0,2)=="00") ? "" : res;
                     } );
         } );
         
