@@ -73,7 +73,7 @@ function toggleView(){
 	}
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getCreditCardsSettings()
+		getCreditCardsSettings()
 	}
 	if(viewId == "transactions"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
@@ -112,7 +112,7 @@ function toggleBuyPackets(){
 
 	// CHAMAR AQUI A FUNÇÃO getPackDetails
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-  // getPackDetails($(this).attr('id'))
+  getPackDetails($(this).attr('id'))
 }
 
 function toggleChooseCard(){
@@ -120,7 +120,7 @@ function toggleChooseCard(){
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	// getCreditCardsMarket()
+	getCreditCardsMarket()
 }
 
 function toggleConfirmBuy(){
