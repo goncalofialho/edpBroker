@@ -28,7 +28,7 @@ module.exports = function(Customers) {
 		}
 	);
 
-	Customers.packsForSale = function(customer_id, cb){
+	Customers.packsForSale = function (cb){
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
@@ -44,7 +44,7 @@ module.exports = function(Customers) {
 		'packsForSale',
 		{
 			http: {path: '/packsForSale', verb: 'get'},
-			accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			// accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
 			returns: [
 			{arg: 'energy_id', type: 'number'},
 			{arg: 'producer_id', type: 'number'},
