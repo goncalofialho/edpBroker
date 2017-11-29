@@ -1,6 +1,6 @@
 // THIS FILE CONTAINS THE REQUESTS TO THE APP
 var url = 'http://85.247.219.175:4567/api/';
-var userID = 1;
+user_id = localStorage.getItem('user_id')
 
 
 // request current energy
@@ -20,7 +20,7 @@ function getCurrentEnergy(){
 
 function getReservedPacks(){
   var l = [];
-  $.getJSON( url + 'customers/' + userID + '/energy', function(json) {
+  $.getJSON( url + 'customers/' + user_id + '/energy', function(json) {
     $.each(json, function(index, packs){
       l.push(packs.packName);
     });
