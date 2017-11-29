@@ -2,7 +2,7 @@ $(document).ready(function(){
 	enableClicks();
 
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	// getCurrentEnergy()
+	getCurrentEnergy()
 })
 
 function enableClicks(){
@@ -65,7 +65,7 @@ function toggleView(){
 
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getPacks()
+		getPacks()
 	}
 	if(viewId == "verify-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
