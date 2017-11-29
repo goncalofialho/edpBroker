@@ -1,4 +1,10 @@
 $(document).ready(function(){
+	enableClicks();
+
+})
+
+function enableClicks(){
+	$('body *').off('click');
 	$('.info .verify-energy').click(toggleView);
 	$('#intro .car-icon').click(toggleView);
 	$('.header .home').click(toggleView);
@@ -25,8 +31,7 @@ $(document).ready(function(){
 
 	/* TOGGLE STATS BOXES */
 	$('#energy-stats .stats-section .title').click(toggleStats)
-
-})
+}
 function toggleSubView(){
 	viewId = $(this).attr('target')
 	parentId = $(this).attr('parent')
