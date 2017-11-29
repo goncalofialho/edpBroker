@@ -60,8 +60,8 @@ function getPacks(){
 }
 
 function getCreditCardsMarket(){
-  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues"},
-       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues"}
+  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
+       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
       ] // VALUES RETRIEVED
   clone = $('.content#buy-energy  #method-buy-energy .card.template').clone()
 
@@ -71,6 +71,7 @@ function getCreditCardsMarket(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info:first-child').html("<strong>N.C.C:</strong> "+element["N.C.C"])
     pack.find('.info:last-child').html("<strong>Titular:</strong> "+element["Owner"])
     $('.content#buy-energy  #method-buy-energy .cards-list .cards').append(pack)
@@ -81,8 +82,8 @@ function getCreditCardsMarket(){
 }
 
 function getCreditCardsSettings(){
-  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues"},
-       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues"}
+  l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
+       {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
       ] // VALUES RETRIEVED
 
   clone = $('.content#bank-account .cards-list .cards .card.template').clone()
@@ -93,6 +94,7 @@ function getCreditCardsSettings(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info > div:first-child p').html("<strong>N.C.C:</strong> "+element["N.C.C"])
     pack.find('.info > div:last-child p').html("<strong>Titular:</strong> "+element["Owner"])
     $('.content#bank-account .cards-list .cards').append(pack)
@@ -172,10 +174,34 @@ function getPackDetails(id){
   $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(8)').html("<strong>Contacto:</strong> "+pack["Contact"])
 }
 
-function insertCreditCard(){
+function updateCreditCard(id){
+  console.log(id)
 
+  if(id == null){
+    // CREATE CARD
+    $('.content#bank-account #bank-account-edit h1').text("Adicionar Cartão")
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val('')
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val('')
+
+  }else{
+    // MODIFY CARD WITH THIS ID
+    card = { "C.C.N" : 123456789482,
+             "Name"  : "João Rodrigues",
+             "Date"  : "12/17" ,
+             "Code"  : 124  } // RETRIEVED DATA FROM CARD ID
+
+    $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
+
+
+  }
 }
 
-function updateCreditCard(){
+function buyPackage(id){
 
 }

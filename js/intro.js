@@ -44,6 +44,11 @@ function toggleSubView(){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 		// getCreditCardsSettings($(this).parent().attr("id"))
 	}
+	if(viewId == "bank-account-edit"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		// updateCreditCard($(this).closest('.card').attr("id"))
+	}
+
 }
 function toggleView(){
   viewId = $(this).attr('target')
@@ -110,7 +115,7 @@ function toggleBuyPackets(){
   // getPackDetails($(this).attr('id'))
 }
 
-function toggleChooseCard(){
+function toggleChooseCardgetTransactionDetails(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
