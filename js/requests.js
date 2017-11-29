@@ -36,8 +36,8 @@ function getReservedPacks(){
 }
 
 function getPacks(){
-  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses"},
-      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes"}] // VALUES RETRIEVED
+  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses" , "id" : 52},
+      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes" , "id" :42 }] // VALUES RETRIEVED
 
   clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
 
@@ -47,6 +47,7 @@ function getPacks(){
   l.forEach(function(element){
     pack = clone.clone()
     pack.removeClass('template')
+    pack.attr('id', element["id"])
     pack.find('.info .title').text("Pacote "+element["Name"])
     pack.find('.info .producer').text(element["Company"])
     pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
@@ -125,6 +126,50 @@ function getTransactions(){
 
   // ENABLING CLICKS FOR NEW ELEMENTS
   enableClicks()
+}
+
+// O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
+function getTransactionDetails(id){
+  element = {"Date" : "14/09/2017" ,
+      "Time" : "21:49h" ,
+      "Card" : 2583972838 ,
+      "Company" : "RedEnergie" ,
+      "Ammount" : 150 ,
+      "Price" : "25,00 €"
+    }
+
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
+  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0,4) + " **** ****")
+
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
+  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
+
+}
+
+// O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
+function getPackDetails(id){
+  pack = {"Name" : "GoldEnergy" ,
+      "Time" : "2 Meses" ,
+      "Description" : "Pacote de fornecimento de energia eolica com baixo teor de poluição" ,
+      "Company" : "SaviorEnergy" ,
+      "Ammount" : 120 ,
+      "Price" : "25,00 €" ,
+      "Product Rating" : 5,
+      "Company Rating" : 6,
+      "Contact" : "Saviorenergy.com"
+    } // RESPOSTA DOS DETALHES DO ID {X}
+
+  $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
+  $('.content#buy-energy #desc-buy-energy .package-description .duration').text("Pacote "+pack["Time"])
+  $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Preço:</strong> "+pack["Price"])
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(7)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
+  $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(8)').html("<strong>Contacto:</strong> "+pack["Contact"])
 }
 
 function insertCreditCard(){
