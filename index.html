@@ -91,7 +91,7 @@
       </div>
       <div class="col-xs-12 info">
         <h2 class="current-energy">Energia Actual</h2>
-        <a style="text-decoration: none!important;" ><span target="verify-energy" class="verify-energy"> Verificar Energia ></span></a>
+        <a style="text-decoration: none!important;" ><span target="verify-energy" class="verify-energy"> Verificar Pacotes ></span></a>
       </div>
       <div class="col-xs-12" style="margin: auto;">
         <div target="buy-energy" class="car-icon">
@@ -102,7 +102,7 @@
     </div>
 
 	<div id="verify-energy" class="col-xs-12 content hidden-class">
-		<h1>Pacotes Activos</h1>
+		<h1>Pacote Activo</h1>
 		<div class="packages-list">
 			<div class="packs">
 				<div class="pack">
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 		</div>
-		<h1>Pacotes Reservados</h1>
+		<h1>Pacotes Disponíveis</h1>
 		<div class="packages-list reserved">
       <div class="packs template">
 				<div class="pack">
@@ -344,23 +344,23 @@
       <p class="title col-xs-12">Geral</p>
     	<div class="col-xs-12 item-list">
         <div class="col-xs-12 item">
-          <p class="single-p">Idioma <small>Português</small></p>
-          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
-        </div>
-        <div class="col-xs-12 item">
-          <p class="single-p">Informação de Conta</p>
-          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
-        </div>
-        <div class="col-xs-12 item">
-          <p class="single-p">Termos de Utilização</p>
-          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
-        </div>
-        <div class="col-xs-12 item">
-          <p class="single-p">Informação Financeira</p>
+          <p class="single-p">Gerir Dados Pessoais</p>
           <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
         <div target="bank-account" class="col-xs-12 item">
-          <p class="single-p">Conta Bancária</p>
+          <p class="single-p">Gerir Cartões</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
+        </div>
+		<div class="col-xs-12 item">
+          <p class="single-p">Idioma <small>Português</small></p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
+        </div>
+		<div class="col-xs-12 item">
+          <p class="single-p">Termos de Utilização</p>
+          <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
+        </div>
+		<div class="col-xs-12 item">
+          <p class="single-p">Ajuda</p>
           <svg class="arrow"><use xlink:href="images/icons.svg#arrow"></svg>
         </div>
       </div>
@@ -428,20 +428,20 @@
     <div id="bank-account-edit" class="col-xs-12 hidden-class">
       <h1 class="title col-xs-12">Editar Cartão</h1>
       <div class="col-xs-12 edit-field">
-        <p>C.C.N :</p>
-        <input type="number" placeholder="0000 - 0000 - 0000" />
+        <p>Número do Cartão :</p>
+        <input id="ccn-input" type="text" placeholder=" 111 128 780 972 838" maxlength="15"/>
       </div>
       <div class="col-xs-12 edit-field">
-        <p>Titular :</p>
+        <p>Titular:</p>
         <input type="text" placeholder="Nome" />
       </div>
       <div class="col-xs-12 edit-field">
-        <p>Validade :</p>
-        <input type="text" placeholder="MM/AA" />
+        <p>Validade: (MM/AA)</p>
+        <input id="validade" type="text" placeholder="02/18" maxlength="5"/>
       </div>
       <div class="col-xs-12 edit-field">
-        <p>Cód. Segurança :</p>
-        <input type="text" placeholder="000" />
+        <p>Cód. Segurança:</p>
+        <input type="text" placeholder="000" maxlength="3" />
       </div>
       <div parent="bank-account-edit" target="bank-account-intro" class="col-xs-12 add-card">
         <p>Guardar</p>
