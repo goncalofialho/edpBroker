@@ -28,8 +28,8 @@ module.exports = function(Customers) {
 		}
 	);
 
-	Customers.login = function(login, password ,cb){
-		Customers.find({where: {and: [{login: login}, {password: password}]} }, function (err, instance){
+	Customers.login = function(email, password ,cb){
+		Customers.find({where: {and: [{email: email}, {password: password}]} }, function (err, instance){
 			var response = instance;
 			cb(null, response);
         	console.log(response);
@@ -41,7 +41,7 @@ module.exports = function(Customers) {
 		{
 			http: {path: '/login', verb: 'get'},
 			accepts: [
-				{arg: 'login', type: 'string', required: true,http: {source: 'query'}},
+				{arg: 'email', type: 'string', required: true,http: {source: 'query'}},
 				{arg: 'password', type: 'string', required: true , http: {source: 'query'}},
 				],
 			returns: [
