@@ -40,6 +40,11 @@
       "type": "hasMany",
       "model": "transactions",
       "foreignKey": "client_id"
+    },
+    "creditCards": {
+      "type": "hasMany",
+      "model": "creditCards",
+      "foreignKey": "creditcard_id"
     }
   },
   "acls": [],

@@ -40,5 +40,9 @@
   "transactions": {
     "dataSource": "db",
     "public": true
+  },
+  "creditCards": {
+    "dataSource": "db",
+    "public": true
   }
 }
