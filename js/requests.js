@@ -63,13 +63,11 @@ function getPacks(){
       pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
       // pack.find('.info .ammount span:last-child').text(element["Duration"])
       $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+
     })
     // ENABLING CLICKS FOR NEW ELEMENTS
     enableClicks()
   })
-
-
-
 }
 
 function getCreditCardsMarket(){
@@ -166,7 +164,6 @@ function getTransactionDetails(id){
 // O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
 function getPackDetails(id){
   pack = {"Name" : "GoldEnergy" ,
-      "Time" : "2 Meses" ,
       "Description" : "Pacote de fornecimento de energia eolica com baixo teor de poluição" ,
       "Company" : "SaviorEnergy" ,
       "Ammount" : 120 ,
@@ -177,7 +174,6 @@ function getPackDetails(id){
     } // RESPOSTA DOS DETALHES DO ID {X}
 
   $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
-  $('.content#buy-energy #desc-buy-energy .package-description .duration').text("Pacote "+pack["Time"])
   $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
   $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
   $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
