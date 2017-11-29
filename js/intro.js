@@ -18,7 +18,7 @@ function enableClicks(){
 
 	/* BUY ENERGY */
 	$('#buy-energy #main-buy-energy .packages-list .packs .pack').click(toggleBuyPackets)
-	$('#buy-energy #desc-buy-energy .buy').click(toggleChooseCard)
+	$('#buy-energy #desc-buy-energy .buy').click(toggleChooseCardgetTransactionDetails)
 	$('#buy-energy #method-buy-energy .cards-list .cards .card').click(toggleConfirmBuy)
 	$('#buy-energy #confirm-buy-energy .item-infos .infos .finalize').click(toggleConfirmedBuy)
 	$('#buy-energy #confirmed-product .item-infos .infos .finalized').click(toggleBackHome)
@@ -145,3 +145,89 @@ function toggleBackHome(){
 function toggleStats(){
 	$(this).parent().toggleClass('open')
 }
+
+// https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745
+(function($, undefined) {
+
+    "use strict";
+
+    // When ready.
+    $(function() {
+        
+        var $input = $( "#ccn-input" );
+
+        $input.on( "keyup", function( event ) {
+            
+            
+            // When user select text in the document, also abort.
+            var selection = window.getSelection().toString();
+            if ( selection !== '' ) {
+                return;
+            }
+            
+            // When the arrow keys are pressed, abort.
+            if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                return;
+            }
+            
+            
+            var $this = $( this );
+            
+            // Get the value.
+            var input = $this.val();
+            
+            var input = input.replace(/[\D\s\._\-]+/g, "");
+                    input = input ? parseInt( input, 10 ) : 0;
+
+                    $this.val( function() {
+                        return ( input === 0 ) ? "" : input.toLocaleString( "pt-Pt" );
+                    } );
+        } );
+        
+    });
+})(jQuery);
+
+
+// https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745
+(function($, undefined) {
+
+    "use strict";
+
+    // When ready.
+    $(function() {
+        
+        var $input = $( "#validade" );
+
+        $input.on( "keyup", function( event ) {
+            
+            
+            // When user select text in the document, also abort.
+            var selection = window.getSelection().toString();
+            if ( selection !== '' ) {
+                return;
+            }
+            
+            // When the arrow keys are pressed, abort.
+            if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                return;
+            }
+            
+            
+            var $this = $( this );
+            
+            // Get the value.
+            var input = $this.val();
+            
+            var input = input.replace(/[\D\s\._\-]+/g, "");
+                    input = input ? parseInt( input., 10 ) : 0;
+
+                    $this.val( function() {
+						var res=input.toString();
+						if(res>=2)
+							res = input.toString().substring(0,2)+"/"+input.toString().substring(2,4);
+                        return ( parseInt(input.toString().substring(0,2),10) > 12 || parseInt(input.toString().substring(0,2),10) < 0 ) ? "" : res;
+                    } );
+        } );
+        
+    });
+})(jQuery);
