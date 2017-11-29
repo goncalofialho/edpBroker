@@ -46,7 +46,10 @@ function getPacks(){
     // REMOVING ALL TRASH
     $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
     json.energy_id.forEach(function(pack){
-      temp = {"Name" : pack.packName, "Company" : pack.producer_id, "Watts" : pack.quantity}
+      $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+        name = prod.customer_name;
+      });
+      temp = {"Name" : pack.packName, "Company" : name, "Watts" : pack.quantity}
       packsArray.push(temp);
     })
 
@@ -61,9 +64,9 @@ function getPacks(){
       // pack.find('.info .ammount span:last-child').text(element["Duration"])
       $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
     })
+    // ENABLING CLICKS FOR NEW ELEMENTS
+    enableClicks()
   })
-  // ENABLING CLICKS FOR NEW ELEMENTS
-  enableClicks()
 
 
 
