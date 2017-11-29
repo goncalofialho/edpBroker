@@ -41,8 +41,8 @@ module.exports = function(Customers) {
 		{
 			http: {path: '/login', verb: 'get'},
 			accepts: [
-				{arg: 'login', type: 'string', http: {source: 'query'}},
-				{arg: 'password', type: 'string', http: {source: 'query'}},
+				{arg: 'login', type: 'string', required: true,http: {source: 'query'}},
+				{arg: 'password', type: 'string', required: true , http: {source: 'query'}},
 				],
 			returns: [
 			{arg: 'customer_id', type: 'number'},
