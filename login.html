@@ -15,7 +15,10 @@
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/essentials.css">
   <link rel="stylesheet" href="css/login.css">
-
+  <script>
+    if(localStorage.getItem('user_id') != null)
+      window.location.replace("./index.html");
+  </script>
 </head>
 
 <body>

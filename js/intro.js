@@ -69,7 +69,7 @@ function toggleView(){
 	}
 	if(viewId == "verify-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getReservedPacks()
+		getReservedPacks()
 	}
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
