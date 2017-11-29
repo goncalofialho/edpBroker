@@ -31,6 +31,14 @@
     "holder": {
       "type": "number",
       "default": null
+    },
+    "active": {
+      "type": "number",
+      "default": 0
+    },
+    "percentage": {
+      "type": "number",
+      "default": 100
     }
   },
   "validations": [],
