@@ -5,9 +5,9 @@ user_id = localStorage.getItem('user_id')
 
 // request current energy
 function getCurrentEnergy(){
-  $.getJSON( url + 'customers/' + user_id + '/energy', function(json) {
-    console.log(json[0].percentage);
-    json[0].percentage != null ? percentage = json[0].percentage : percentage = 0; // VALUE RETRIEVED
+  $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
+    percentage = json.energy_id[0].percentage;
+    percentage = (percentage == null ? 0 : percentage);  // VALUE RETRIEVED
     $("#intro .circle .edp-color").removeClass (function (index, className) {
       return (className.match (/(^|\s)p\S+/g) || []).join(' ');
     });
@@ -40,27 +40,33 @@ function getReservedPacks(){
 }
 
 function getPacks(){
-  l = [{"Name": "GreenLight" , "Company": "AlenSolar" , "Watts": 350 , "Duration" : "2 Meses" , "id" : 52},
-      {"Name": "BlueEnergie" , "Company": "EDP" , "Watts": 150 , "Duration" : "1 Mes" , "id" :42 }] // VALUES RETRIEVED
+  packsArray = []
+  $.getJSON( url + 'customers/packsForSale', function(json) {
+    clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
+    // REMOVING ALL TRASH
+    $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
+    json.energy_id.forEach(function(pack){
+      temp = {"Name" : pack.packName, "Company" : pack.producer_id, "Watts" : pack.quantity}
+      packsArray.push(temp);
+    })
 
-  clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
 
-  // REMOVING ALL TRASH
-  $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
-
-  l.forEach(function(element){
-    pack = clone.clone()
-    pack.removeClass('template')
-    pack.attr('id', element["id"])
-    pack.find('.info .title').text("Pacote "+element["Name"])
-    pack.find('.info .producer').text(element["Company"])
-    pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
-    pack.find('.info .ammount span:last-child').text(element["Duration"])
-    $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+    packsArray.forEach(function(element){
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.attr('id', element["id"])
+      pack.find('.info .title').text("Pacote "+element["Name"])
+      pack.find('.info .producer').text(element["Company"])
+      pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
+      // pack.find('.info .ammount span:last-child').text(element["Duration"])
+      $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+    })
   })
-
   // ENABLING CLICKS FOR NEW ELEMENTS
   enableClicks()
+
+
+
 }
 
 function getCreditCardsMarket(){
