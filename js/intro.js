@@ -115,7 +115,7 @@ function toggleBuyPackets(){
   // getPackDetails($(this).attr('id'))
 }
 
-function toggleChooseCardgetTransactionDetails(){
+function toggleChooseCard(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
