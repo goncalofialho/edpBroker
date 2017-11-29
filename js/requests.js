@@ -5,10 +5,12 @@ user_id = localStorage.getItem('user_id')
 
 // request current energy
 function getCurrentEnergy(){
-  console.log("HERE");
   $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
-    percentage = json.energy_id[0].percentage;
-    percentage = (percentage == null ? 0 : percentage);  // VALUE RETRIEVED
+    if(typeof json.energy_id[0] !== 'undefined' && typeof json.energy_id[0].percentage !== 'undefined'){
+      percentage = json.energy_id[0].percentage;
+    } else {
+      percentage = 0;  // VALUE RETRIEVED
+    }
     $("#intro .circle .edp-color").removeClass (function (index, className) {
       return (className.match (/(^|\s)p\S+/g) || []).join(' ');
     });
