@@ -77,7 +77,7 @@ module.exports = function(Customers) {
 			returns: [
 			{arg: 'energy_id', type: 'number'},
 			{arg: 'producer_id', type: 'number'},
-			{arg: 'quatity', type: 'string'},
+			{arg: 'quatity', type: 'number'},
 			{arg: 'packName', type: 'string'},
 			{arg: 'packDescript', type: 'string'},
 			{arg: 'posted_time', type: 'date'},
@@ -106,7 +106,36 @@ module.exports = function(Customers) {
 			returns: [
 			{arg: 'energy_id', type: 'number'},
 			{arg: 'producer_id', type: 'number'},
-			{arg: 'quatity', type: 'string'},
+			{arg: 'quatity', type: 'number'},
+			{arg: 'packName', type: 'string'},
+			{arg: 'packDescript', type: 'string'},
+			{arg: 'posted_time', type: 'date'},
+			{arg: 'holder', type: 'number'}
+			]
+		}
+		);
+
+	Customers.producedEnergy = function(customer_id,cb){
+		var filter = { include : [ 'energy'] };
+		var capp = Customers.app;
+		var e = capp.models.Energy;
+		e.find({where: {producer_id: customer_id} }, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'producedEnergy',
+		{
+			http: {path: '/producedEnergy', verb: 'get'},
+			accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			returns: [
+			{arg: 'energy_id', type: 'number'},
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'quatity', type: 'number'},
 			{arg: 'packName', type: 'string'},
 			{arg: 'packDescript', type: 'string'},
 			{arg: 'posted_time', type: 'date'},

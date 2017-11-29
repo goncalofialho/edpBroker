@@ -2,7 +2,7 @@ $(document).ready(function(){
 	enableClicks();
 
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	// getCurrentEnergy()
+	getCurrentEnergy()
 })
 
 function enableClicks(){
@@ -65,15 +65,15 @@ function toggleView(){
 
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getPacks()
+		getPacks()
 	}
 	if(viewId == "verify-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getReservedPacks()
+		getReservedPacks()
 	}
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getCreditCardsSettings()
+		getCreditCardsSettings()
 	}
 	if(viewId == "transactions"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
@@ -112,7 +112,7 @@ function toggleBuyPackets(){
 
 	// CHAMAR AQUI A FUNÇÃO getPackDetails
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-  // getPackDetails($(this).attr('id'))
+  getPackDetails($(this).attr('id'))
 }
 
 function toggleChooseCardgetTransactionDetails(){
@@ -120,7 +120,7 @@ function toggleChooseCardgetTransactionDetails(){
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	// getCreditCardsMarket()
+	getCreditCardsMarket()
 }
 
 function toggleConfirmBuy(){
@@ -153,29 +153,29 @@ function toggleStats(){
 
     // When ready.
     $(function() {
-        
+
         var $input = $( "#ccn-input" );
 
         $input.on( "keyup", function( event ) {
-            
-            
+
+
             // When user select text in the document, also abort.
             var selection = window.getSelection().toString();
             if ( selection !== '' ) {
                 return;
             }
-            
+
             // When the arrow keys are pressed, abort.
             if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
                 return;
             }
-            
-            
+
+
             var $this = $( this );
-            
+
             // Get the value.
             var input = $this.val();
-            
+
             var input = input.replace(/[\D\s\._\-]+/g, "");
                     input = input ? parseInt( input, 10 ) : 0;
 
@@ -183,7 +183,7 @@ function toggleStats(){
                         return ( input === 0 ) ? "" : input.toLocaleString( "pt-Pt" );
                     } );
         } );
-        
+
     });
 })(jQuery);
 
@@ -195,42 +195,42 @@ function toggleStats(){
 
     // When ready.
     $(function() {
-        
+
         var $input = $( "#validade" );
 
         $input.on( "keyup", function( event ) {
-            
-            
+
+
             // When user select text in the document, also abort.
             var selection = window.getSelection().toString();
             if ( selection !== '' ) {
                 return;
             }
-            
+
             // When the arrow keys are pressed, abort.
             if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
                 return;
             }
-            
-            
+
+
             var $this = $( this );
-            
+
             // Get the value.
             var input = $this.val();
-			
+
 			if ( $.inArray( event.keyCode, [8] ) !== -1  && input.toString().length==2) {
 				return input.toString()[0];
 			}
-            
+
             var input = input.replace(/[\D\s\._\-]+/g, "");
                     $this.val( function() {
 						var res=input.toString();
-		
+
 						if(res.length>=2)
 							res = input.toString().substring(0,2)+"/"+input.toString().substring(2,4);
                         return ( parseInt(input.toString().substring(0,2),10) > 12 || input.toString().substring(0,2)=="00") ? "" : res;
                     } );
         } );
-        
+
     });
 })(jQuery);
