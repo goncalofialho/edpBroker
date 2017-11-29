@@ -5,6 +5,7 @@ user_id = localStorage.getItem('user_id')
 
 // request current energy
 function getCurrentEnergy(){
+  console.log("HERE");
   $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
     percentage = json.energy_id[0].percentage;
     percentage = (percentage == null ? 0 : percentage);  // VALUE RETRIEVED
@@ -115,7 +116,6 @@ function getCreditCardsSettings(){
     $('.content#bank-account .cards-list .cards .card:not(.template)').remove()
 
     cards.forEach(function(element){
-      console.log(element);
       pack = clone.clone()
       pack.removeClass('template')
       pack.attr('id', element["id"])
