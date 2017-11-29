@@ -111,20 +111,38 @@
     margin: auto;
     border: solid 1px;
     border-radius: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .content#buy-energy #desc-buy-energy .package-description{
 	
 }
-.content#buy-energy #desc-buy-energy .package-description .duration{
-  margin-top: 10px;
-  text-decoration: underline;
-  font-size: 140%;
+
+.content#buy-energy #desc-buy-energy .package-description .package-important {
+	float:left;
+	height: 100%;
+	width:100%;
+	padding:0px;
+	margin-top: 15px;
+}
+
+.content#buy-energy #desc-buy-energy .package-description .package-important .important{
+  font-size: 110%;
   font-family: Edp Preon Medium;
   margin-bottom: 5px;
+  position:absolute;
 }
+
+.content#buy-energy #desc-buy-energy .package-description .package-important #quantity{
+left: 0%;
+}
+
+.content#buy-energy #desc-buy-energy .package-description .package-important #price{
+right: 0%;
+}
+
 .content#buy-energy #desc-buy-energy .package-description .description{
-  margin-right: -10px;
+    margin-right: -10px;
+    margin-top: 55px;
 }
 .content#buy-energy #desc-buy-energy .package-description .description strong,
 .content#buy-energy #desc-buy-energy .package-description .info strong,
