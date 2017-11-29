@@ -29,7 +29,8 @@
       "required": true
     },
     "holder": {
-      "type": "number"
+      "type": "number",
+      "default": null
     }
   },
   "validations": [],
