@@ -48,3 +48,11 @@ function getPacks(){
     $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
   })
 }
+
+function getCreditCards(){
+
+}
+
+function getTransactions(){
+
+}
