@@ -90,7 +90,7 @@ module.exports = function(Customers) {
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
-		e.find({where: {and: [{customer_id: customer_id}, {active : 1}]}}, function(err, instance) {
+		e.find({where: {and: [{holder: customer_id}, {active : 1}]}}, function(err, instance) {
 			var response = instance;
 			cb(null, response);
 			console.log(response);
