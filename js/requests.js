@@ -1,5 +1,6 @@
 // THIS FILE CONTAINS THE REQUESTS TO THE APP
-
+var url = 'http://85.247.219.175:4567/api/';
+var userID = 1;
 
 
 // request current energy
@@ -18,21 +19,24 @@ function getCurrentEnergy(){
 }
 
 function getReservedPacks(){
-  /* THIS CODE GOES INSIDE AJAX FUNCTION */
+  var l = [];
+  $.getJSON( url + 'customers/' + userID + '/energy', function(json) {
+    $.each(json, function(index, packs){
+      l.push(packs.packName);
+    });
 
-  l = ["GreenLight", "BlueOcean", "CloudWind", "FireRed", "EarthStone"] // VALIE RETRIEVED
-  clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
+    clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
 
-  // REMOVING ALL TRASH ELEMENTS
-  $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
+    // REMOVING ALL TRASH ELEMENTS
+    $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
 
-  l.forEach(function(element){
-    pack = clone.clone()
-    pack.removeClass('template')
-    pack.find('.pack > p').text("Pacote" + element)
-    $('.content#verify-energy .packages-list.reserved').append(pack)
+    l.forEach(function(element){
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.find('.pack > p').text("Pacote   " + element)
+      $('.content#verify-energy .packages-list.reserved').append(pack)
+    });
   })
-
 }
 
 function getPacks(){
