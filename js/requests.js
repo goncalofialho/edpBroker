@@ -20,7 +20,7 @@ function getCurrentEnergy(){
 function getReservedPacks(){
   /* THIS CODE GOES INSIDE AJAX FUNCTION */
 
-  l = ["GreenLight", "BlueOcean", "CloudWind", "FireRed", "EarthStone"] // VALIE RETRIEVED
+  l = ["GreenLight"] // VALIE RETRIEVED
   clone = $('.content#verify-energy .packages-list.reserved .packs.template').clone()
 
   // REMOVING ALL TRASH ELEMENTS
