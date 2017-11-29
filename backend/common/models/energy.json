@@ -27,6 +27,9 @@
     "posted_time": {
       "type": "date",
       "required": true
+    },
+    "holder": {
+      "type": "number"
     }
   },
   "validations": [],

@@ -45,6 +45,11 @@
       "type": "hasMany",
       "model": "creditCards",
       "foreignKey": "holder"
+    },
+    "energy": {
+      "type": "hasMany",
+      "model": "energy",
+      "foreignKey": "holder"
     }
   },
   "acls": [],
