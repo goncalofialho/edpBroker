@@ -1,5 +1,5 @@
 // THIS FILE CONTAINS THE REQUESTS TO THE APP
-
+user_id = localStorage.getItem('user_id')
 
 
 // request current energy
