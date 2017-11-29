@@ -3,7 +3,7 @@
 
 
 // request current energy
-function setCurrentEnergy(){
+function getCurrentEnergy(){
   /* THIS CODE GOES INSIDE AJAX FUNCTION */
 
   percentage = 50 // VALUE RETRIEVED
