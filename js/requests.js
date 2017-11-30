@@ -6,6 +6,7 @@ user_id = localStorage.getItem('user_id')
 // request current energy
 function getCurrentEnergy(){
   $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
+    console.log(json);
     if(typeof json.energy_id[0] !== 'undefined' && typeof json.energy_id[0].percentage !== 'undefined'){
       percentage = json.energy_id[0].percentage;
     } else {
@@ -157,65 +158,73 @@ function getCreditCardsSettings(){
       pack.find('.info > div:last-child p').html("<strong>Titular:</strong> "+element["Owner"])
       $('.content#bank-account .cards-list .cards').append(pack)
 
-	})
-
-  // l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
-  //      {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
-  //     ] // VALUES RETRIEVED
-
+	  })
+    // ENABLING CLICKS FOR NEW ELEMENTS
+    enableClicks()
   })
 
-  // ENABLING CLICKS FOR NEW ELEMENTS
-  enableClicks()
 }
 
 function getTransactions(){
+  l = [];
   $.getJSON(url + 'customers/' + user_id + '/transactions', function(json) {
-    console.log(json);
+    json.forEach(function(transaction){
+      $.getJSON(url + 'energies/' + transaction.energy_id , function(energy) {
+        $.getJSON(url + 'customers/' + energy.producer_id , function(provider) {
+          time = transaction.transaction_time.split('-')
+          obj = {'Value' : parseInt(energy.quantity) * energy.KWhPrice + "€",
+              'Date' : time[2].substring(0,2) + '/' + time[1] + '/' + time[0],
+              'Company' : provider.customer_name,
+              'id' : transaction.transaction_id};
+          l.push(obj);
+
+          clone = $('.content#transactions #main-transactions .transaction-list .transaction-item.template').clone()
+
+          // REMOVING ALL TRASH
+          $('.content#transactions #main-transactions .transaction-list .transaction-item:not(.template)').remove()
+
+          l.forEach(function(element){
+            transaction  = clone.clone()
+            transaction.removeClass('template')
+            transaction.find('.date').text(element["Date"])
+            transaction.find('.transaction-content p:first-child small').text(element["Value"])
+            transaction.find('.transaction-content p:nth-child(2) small').text(element["Company"])
+            transaction.attr('id', element["id"])
+            $('.content#transactions #main-transactions .transaction-list').append(transaction)
+          })
+
+          // ENABLING CLICKS FOR NEW ELEMENTS
+          enableClicks()
+        })
+      })
+    })
 	})
-  l = [{"Value" : "5.00 €"  , "Date" : "24/11/2017" , "Company" : "EDP", "id" : 24},
-       {"Value" : "65.00 €" , "Date" : "25/10/2017" , "Company" : "GreenLight", "id" : 54},
-       {"Value" : "52.00 €" , "Date" : "26/09/2017" , "Company" : "RedPower", "id" : 14},
-       {"Value" : "45.00 €" , "Date" : "23/08/2017" , "Company" : "Dlig", "id" : 26}
-      ] // VALUES RETRIEVED
 
-  clone = $('.content#transactions #main-transactions .transaction-list .transaction-item.template').clone()
-
-  // REMOVING ALL TRASH
-  $('.content#transactions #main-transactions .transaction-list .transaction-item:not(.template)').remove()
-
-  l.forEach(function(element){
-    transaction  = clone.clone()
-    transaction.removeClass('template')
-    transaction.find('.date').text(element["Date"])
-    transaction.find('.transaction-content p:first-child small').text(element["Value"])
-    transaction.find('.transaction-content p:nth-child(2) small').text(element["Company"])
-    transaction.attr('id', element["id"])
-    $('.content#transactions #main-transactions .transaction-list').append(transaction)
-  })
-
-  // ENABLING CLICKS FOR NEW ELEMENTS
-  enableClicks()
 }
 
 // O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
 function getTransactionDetails(id){
-  element = {"Date" : "14/09/2017" ,
-      "Time" : "21:49h" ,
-      "Card" : 2583972838 ,
-      "Company" : "RedEnergie" ,
-      "Ammount" : 150 ,
-      "Price" : "25,00 €"
-    }
+  $.getJSON(url + 'transactions/' + id, function(json) {
+    $.getJSON(url + 'energies/' + json.energy_id, function(energy) {
+      $.getJSON(url + 'customers/' + energy.producer_id, function(producer) {
+        date = json.transaction_time.split('-');
+        time = json.transaction_time.split('T')[1].split(':');
+    		element = {"Date" : date[2].substring(0,2) + '/' + date[1] + '/' + date[0],
+                  "Time" : time[0] + ':' + time[1] + 'h',
+                  "Card" : 2583972838,
+                  "Company" : producer.customer_name,
+                  "Ammount" : energy.quantity,
+                  "Price" : parseInt(energy.quantity) * energy.KWhPrice + ',00 €'}
+        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
+        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
+        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0,4) + " **** ****")
 
-  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
-  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
-  $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0,4) + " **** ****")
-
-  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
-  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
-  $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
-
+        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
+        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
+        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
+	   })
+	  })
+	})
 }
 
 // O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
