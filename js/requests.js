@@ -141,36 +141,57 @@ function getCreditCardsSettings(){
 }
 
 function getTransactions(){
+  l = [];
   $.getJSON(url + 'customers/' + user_id + '/transactions', function(json) {
-    console.log(json);
+    json.forEach(function(transaction){
+      $.getJSON(url + 'energies/' + transaction.energy_id , function(energy) {
+        $.getJSON(url + 'customers/' + energy.producer_id , function(provider) {
+          time = transaction.transaction_time.split('-')
+          obj = {'Value' : parseInt(energy.quantity) * energy.KWhPrice + "€",
+              'Date' : time[2].substring(0,2) + '/' + time[1] + '/' + time[0],
+              'Company' : provider.customer_name,
+              'id' : transaction.transaction_id};
+          l.push(obj);
+
+          clone = $('.content#transactions #main-transactions .transaction-list .transaction-item.template').clone()
+
+          // REMOVING ALL TRASH
+          $('.content#transactions #main-transactions .transaction-list .transaction-item:not(.template)').remove()
+
+          l.forEach(function(element){
+            transaction  = clone.clone()
+            transaction.removeClass('template')
+            transaction.find('.date').text(element["Date"])
+            transaction.find('.transaction-content p:first-child small').text(element["Value"])
+            transaction.find('.transaction-content p:nth-child(2) small').text(element["Company"])
+            transaction.attr('id', element["id"])
+            $('.content#transactions #main-transactions .transaction-list').append(transaction)
+          })
+
+          // ENABLING CLICKS FOR NEW ELEMENTS
+          enableClicks()
+        })
+      })
+    }) // THIS
 	})
-  l = [{"Value" : "5.00 €"  , "Date" : "24/11/2017" , "Company" : "EDP", "id" : 24},
-       {"Value" : "65.00 €" , "Date" : "25/10/2017" , "Company" : "GreenLight", "id" : 54},
-       {"Value" : "52.00 €" , "Date" : "26/09/2017" , "Company" : "RedPower", "id" : 14},
-       {"Value" : "45.00 €" , "Date" : "23/08/2017" , "Company" : "Dlig", "id" : 26}
-      ] // VALUES RETRIEVED
+  // l = [{"Value" : "5.00 €"  , "Date" : "24/11/2017" , "Company" : "EDP", "id" : 24},
+  //      {"Value" : "65.00 €" , "Date" : "25/10/2017" , "Company" : "GreenLight", "id" : 54},
+  //      {"Value" : "52.00 €" , "Date" : "26/09/2017" , "Company" : "RedPower", "id" : 14},
+  //      {"Value" : "45.00 €" , "Date" : "23/08/2017" , "Company" : "Dlig", "id" : 26}
+  //     ] // VALUES RETRIEVED
 
-  clone = $('.content#transactions #main-transactions .transaction-list .transaction-item.template').clone()
-
-  // REMOVING ALL TRASH
-  $('.content#transactions #main-transactions .transaction-list .transaction-item:not(.template)').remove()
-
-  l.forEach(function(element){
-    transaction  = clone.clone()
-    transaction.removeClass('template')
-    transaction.find('.date').text(element["Date"])
-    transaction.find('.transaction-content p:first-child small').text(element["Value"])
-    transaction.find('.transaction-content p:nth-child(2) small').text(element["Company"])
-    transaction.attr('id', element["id"])
-    $('.content#transactions #main-transactions .transaction-list').append(transaction)
-  })
-
-  // ENABLING CLICKS FOR NEW ELEMENTS
-  enableClicks()
 }
 
 // O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
 function getTransactionDetails(id){
+  console.log("HEHEHHE");
+  $.getJSON(url + 'transactions/' + id, function(json) {
+    date = transaction.transaction_time.split('-');
+    time = transaction.transaction_time.split('T')[1];
+    console.log(time);
+		element = {"Date" : date[2].substring(0,2) + '/' + date[1] + '/' + date[0],
+              "Time" : time}
+	})
   element = {"Date" : "14/09/2017" ,
       "Time" : "21:49h" ,
       "Card" : 2583972838 ,
