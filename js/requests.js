@@ -205,10 +205,11 @@ function getPackDetails(id){
           "Company Rating" : 6,
           "Contact" : "Contact"};
 
+	pack_id=id
     $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
     $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
-	$('.content#buy-energy #desc-buy-energy .package-description .description .package-important #quantity').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
-    $('.content#buy-energy #desc-buy-energy .package-description .description .package-important #price').html("<strong>Preço:</strong> "+pack["Price"])
+	$('.content#buy-energy #desc-buy-energy .package-description .package-important #quantity').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
+    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> "+pack["Price"])
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
@@ -226,6 +227,30 @@ function getPackDetails(id){
   //   } // RESPOSTA DOS DETALHES DO ID {X}
 
 }
+
+function getConfirmationDetails(id){
+  $.getJSON(url + 'energies/' + id, function(json) {
+    $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+      name = prod.customer_name;
+    })
+    price = parseInt(json.quantity) * json.KWhPrice;
+    pack = {"Name" : json.packName,
+          "Description" : json.packDescript,
+          "Company" : name,
+          "Ammount" : json.quantity,
+          "Price" : price,
+          "Product Rating" : 5,
+          "Company Rating" : 6,
+          "Contact" : "Contact"};
+
+	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(1)').html("<strong><u> Pacote: "+pack["Name"]+"</u></strong>")
+	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(2)').html("<strong>Produtor: </strong> "+pack["Company"])
+	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(3)').html("<strong>Energia: </strong> "+pack["Ammount"]+"Mw")
+	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(4)').html("<strong>Preço:</strong> "+pack["Price"])
+  })
+
+}
+
 
 function updateCreditCard(id){
   console.log(id)
