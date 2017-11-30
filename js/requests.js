@@ -204,12 +204,12 @@ function getPackDetails(id){
 
     $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
     $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
+	$('.content#buy-energy #desc-buy-energy .package-description .description .package-important #quantity').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
+    $('.content#buy-energy #desc-buy-energy .package-description .description .package-important #price').html("<strong>Preço:</strong> "+pack["Price"])
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Preço:</strong> "+pack["Price"])
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(7)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(8)').html("<strong>Contacto:</strong> "+pack["Contact"])
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Contacto:</strong> "+pack["Contact"])
   })
 
   // pack = {"Name" : "GoldEnergy" ,
