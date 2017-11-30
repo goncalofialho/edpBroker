@@ -77,7 +77,7 @@ function toggleView(){
 	}
 	if(viewId == "transactions"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// getTransactions()
+		getTransactions()
 	}
 
 }

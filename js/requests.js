@@ -52,7 +52,10 @@ function getPacks(){
       $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
         name = prod.customer_name;
       });
-      temp = {"Name" : pack.packName, "Company" : name, "Watts" : pack.quantity}
+      temp = {'id' : pack.energy_id,
+            'Name' : pack.packName,
+            'Company' : name,
+            'Watts' : pack.quantity}
       packsArray.push(temp);
     })
 
@@ -138,9 +141,9 @@ function getCreditCardsSettings(){
 }
 
 function getTransactions(){
-  // $.getJSON(url + 'customers/1', function(json) {
-  //
-	// })
+  $.getJSON(url + 'customers/' + user_id + '/transactions', function(json) {
+    console.log(json);
+	})
   l = [{"Value" : "5.00 €"  , "Date" : "24/11/2017" , "Company" : "EDP", "id" : 24},
        {"Value" : "65.00 €" , "Date" : "25/10/2017" , "Company" : "GreenLight", "id" : 54},
        {"Value" : "52.00 €" , "Date" : "26/09/2017" , "Company" : "RedPower", "id" : 14},
