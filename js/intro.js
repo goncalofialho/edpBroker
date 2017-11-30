@@ -5,6 +5,10 @@ $(document).ready(function(){
 	getCurrentEnergy()
 })
 
+var pack_id = ""
+var card_id = ""
+
+
 function enableClicks(){
 	$('body *').off('click');
 	$('.info .verify-energy').click(toggleView);
@@ -112,7 +116,9 @@ function toggleBuyPackets(){
 
 	// CHAMAR AQUI A FUNÇÃO getPackDetails
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-  getPackDetails($(this).attr('id'))
+	
+	pack_id=$(this).attr('id')
+	getPackDetails(pack_id)
 }
 
 function toggleChooseCardgetTransactionDetails(){
@@ -124,9 +130,12 @@ function toggleChooseCardgetTransactionDetails(){
 }
 
 function toggleConfirmBuy(){
+	card_id = ""
+	
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+	getConfirmationDetails(pack_id)
 }
 
 function toggleConfirmedBuy(){
