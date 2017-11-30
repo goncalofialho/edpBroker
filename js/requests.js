@@ -107,6 +107,35 @@ function getCreditCardsMarket(){
   })
 }
 
+function addPackToMyList(pack_id,card_id){
+	$.getJSON(url + 'energies/' + id, function(json) {
+    $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+      name = prod.customer_name;
+    })
+    price = parseInt(json.quantity) * json.KWhPrice;
+    pack = {"Name" : json.packName,
+          "Description" : json.packDescript,
+          "Company" : name,
+          "Ammount" : json.quantity,
+          "Price" : price,
+          "Product Rating" : 5,
+          "Company Rating" : 6,
+          "Contact" : "Contact"};
+
+	pack_id=id
+    $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
+    $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
+	$('.content#buy-energy #desc-buy-energy .package-description .package-important #quantity').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
+    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> "+pack["Price"])
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Contacto:</strong> "+pack["Contact"])
+  })
+
+}
+
+
 function getCreditCardsSettings(){
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
@@ -280,6 +309,3 @@ function updateCreditCard(id){
   }
 }
 
-function buyPackage(id){
-
-}

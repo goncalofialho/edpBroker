@@ -126,12 +126,12 @@ function toggleChooseCardgetTransactionDetails(){
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+	
+	card_id=$(this).attr('id')
 	getCreditCardsMarket()
 }
 
-function toggleConfirmBuy(){
-	card_id = ""
-	
+function toggleConfirmBuy(){	
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
@@ -142,6 +142,7 @@ function toggleConfirmedBuy(){
 	viewId = $(this).attr('target')
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
+	addPackToMyList(pack_id,card_id)
 }
 
 function toggleBackHome(){
