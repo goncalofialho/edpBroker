@@ -158,6 +158,7 @@ function addPackToMyList(pack_id, card_id) {
 
 
 function getCreditCardsSettings() {
+  console.log("updating credit card")
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
     json.forEach(function(card) {
@@ -406,6 +407,7 @@ function create_update_CreditCard(id){
           dataType: "json",
           success: function(msg) {
             console.log('Card edited success: ' + msg);
+            getCreditCardsSettings()
           },
           error: function(err) {
             console.log('ERROR - Credit card editing: ' + err);

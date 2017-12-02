@@ -54,7 +54,6 @@ function toggleSubView(){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 		if(validateCreditCard()){
 			create_update_CreditCard($(this).attr("id"))
-			getCreditCardsSettings()
 		}
 		else
 			return
