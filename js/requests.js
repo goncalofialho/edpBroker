@@ -4,28 +4,27 @@ user_id = localStorage.getItem('user_id')
 
 
 // request current energy
-function getCurrentEnergy(){
-  $.getJSON( url + 'customers/activePack?customer_id=' + user_id, function(json) {
-    console.log(json);
-    if(typeof json.energy_id[0] !== 'undefined' && typeof json.energy_id[0].percentage !== 'undefined'){
+function getCurrentEnergy() {
+  $.getJSON(url + 'customers/activePack?customer_id=' + user_id, function(json) {
+    if (typeof json.energy_id[0] !== 'undefined' && typeof json.energy_id[0].percentage !== 'undefined') {
       percentage = json.energy_id[0].percentage;
     } else {
-      percentage = 0;  // VALUE RETRIEVED
+      percentage = 0; // VALUE RETRIEVED
     }
-    $("#intro .circle .edp-color").removeClass (function (index, className) {
-      return (className.match (/(^|\s)p\S+/g) || []).join(' ');
+    $("#intro .circle .edp-color").removeClass(function(index, className) {
+      return (className.match(/(^|\s)p\S+/g) || []).join(' ');
     });
-    $("#intro .circle .edp-color").addClass('p'+percentage);
-    $("#intro .circle .edp-color span").text(percentage+"%");
-    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage+'%')
-    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage+'%')
+    $("#intro .circle .edp-color").addClass('p' + percentage);
+    $("#intro .circle .edp-color span").text(percentage + "%");
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  .percentage').css('width', percentage + '%')
+    $('.content#verify-energy .packages-list:not(.reserved) .pack .bar  p').text(percentage + '%')
   })
 }
 
-function getReservedPacks(){
+function getReservedPacks() {
   var l = [];
-  $.getJSON( url + 'customers/' + user_id + '/energy', function(json) {
-    $.each(json, function(index, packs){
+  $.getJSON(url + 'customers/' + user_id + '/energy', function(json) {
+    $.each(json, function(index, packs) {
       l.push(packs.packName);
     });
 
@@ -34,7 +33,7 @@ function getReservedPacks(){
     // REMOVING ALL TRASH ELEMENTS
     $('.content#verify-energy .packages-list.reserved .packs:not(.template)').remove()
 
-    l.forEach(function(element){
+    l.forEach(function(element) {
       pack = clone.clone()
       pack.removeClass('template')
       pack.find('.pack > p').text("Pacote   " + element)
@@ -43,31 +42,33 @@ function getReservedPacks(){
   })
 }
 
-function getPacks(){
+function getPacks() {
   packsArray = []
-  $.getJSON( url + 'customers/packsForSale', function(json) {
+  $.getJSON(url + 'customers/packsForSale', function(json) {
     clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
     // REMOVING ALL TRASH
     $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
-    json.energy_id.forEach(function(pack){
-      $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+    json.energy_id.forEach(function(pack) {
+      $.getJSON(url + 'customers/' + pack.producer_id, function(prod) {
         name = prod.customer_name;
       });
-      temp = {'id' : pack.energy_id,
-            'Name' : pack.packName,
-            'Company' : name,
-            'Watts' : pack.quantity}
+      temp = {
+        'id': pack.energy_id,
+        'Name': pack.packName,
+        'Company': name,
+        'Watts': pack.quantity
+      }
       packsArray.push(temp);
     })
 
 
-    packsArray.forEach(function(element){
+    packsArray.forEach(function(element) {
       pack = clone.clone()
       pack.removeClass('template')
       pack.attr('id', element["id"])
-      pack.find('.info .title').text("Pacote "+element["Name"])
+      pack.find('.info .title').text("Pacote " + element["Name"])
       pack.find('.info .producer').text(element["Company"])
-      pack.find('.info .ammount span:first-child').text(element["Watts"]+"Mw")
+      pack.find('.info .ammount span:first-child').text(element["Watts"] + "Mw")
       // pack.find('.info .ammount span:last-child').text(element["Duration"])
       $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
 
@@ -77,16 +78,14 @@ function getPacks(){
   })
 }
 
-function getCreditCardsMarket(){
-  // l = [{"N.C.C" : 1780972838 , "Owner" : "João Rodrigues" , "id" : 1},
-  //      {"N.C.C" : 5420522521 , "Owner" : "Luísa Rodrigues" , "id" : 2}
-  //     ] // VALUES RETRIEVED
-
+function getCreditCardsMarket() {
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
-    json.forEach(function(card){
-      temp = {"N.C.C" : card.creditcard_number,
-            "Owner" : card.card_holder};
+    json.forEach(function(card) {
+      temp = {
+        "N.C.C": card.creditcard_number,
+        "Owner": card.card_holder
+      };
       cards.push(temp);
     })
     clone = $('.content#buy-energy  #method-buy-energy .card.template').clone()
@@ -94,12 +93,12 @@ function getCreditCardsMarket(){
     // REMOVING ALL TRASH
     $('.content#buy-energy  #method-buy-energy .card:not(.template)').remove()
 
-    cards.forEach(function(element){
+    cards.forEach(function(element) {
       pack = clone.clone()
       pack.removeClass('template')
       pack.attr('id', element["id"])
-      pack.find('.info:first-child').html("<strong>N.C.C:</strong> "+element["N.C.C"])
-      pack.find('.info:last-child').html("<strong>Titular:</strong> "+element["Owner"])
+      pack.find('.info:first-child').html("<strong>N.C.C:</strong> " + element["N.C.C"])
+      pack.find('.info:last-child').html("<strong>Titular:</strong> " + element["Owner"])
       $('.content#buy-energy  #method-buy-energy .cards-list .cards').append(pack)
     })
 
@@ -108,10 +107,10 @@ function getCreditCardsMarket(){
   })
 }
 
-function addPackToMyList(pack_id,card_id){
+function addPackToMyList(pack_id, card_id) {
   finalURL = url + 'energies/' + pack_id;
   // console.log("pack_id:" + pack_id);
-  $.getJSON(finalURL, function(json){
+  $.getJSON(finalURL, function(json) {
     json.holder = user_id;
     console.log(json);
 
@@ -123,23 +122,49 @@ function addPackToMyList(pack_id,card_id){
       url: finalURL,
       data: JSON.stringify(json),
       dataType: "json",
-      success: function (msg) {
-          console.log('Success');
+      success: function(msg) {
+        console.log('Success' + msg);
       },
-      error: function (err){
-          console.log(err);
+      error: function(err) {
+        console.log('ERROR' + err);
       }
     });
+
+
+    transaction = {"client_id": user_id,
+                  "energy_id": pack_id,
+                  "production": "string",
+                };
+
+
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: url + 'transactions',
+      data: JSON.stringify(transaction),
+      dataType: "json",
+      success: function(msg) {
+        console.log('Transaction success: ' + msg);
+      },
+      error: function(err) {
+        console.log('ERROR - Transaction: ' + err);
+      }
+    });
+
+
+
   })
 }
 
 
-function getCreditCardsSettings(){
+function getCreditCardsSettings() {
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
-    json.forEach(function(card){
-      temp = {"N.C.C" : card.creditcard_number,
-            "Owner" : card.card_holder};
+    json.forEach(function(card) {
+      temp = {
+        "N.C.C": card.creditcard_number,
+        "Owner": card.card_holder
+      };
       cards.push(temp);
     })
     clone = $('.content#bank-account .cards-list .cards .card.template').clone()
@@ -147,32 +172,34 @@ function getCreditCardsSettings(){
     // REMOVING ALL TRASH
     $('.content#bank-account .cards-list .cards .card:not(.template)').remove()
 
-    cards.forEach(function(element){
+    cards.forEach(function(element) {
       pack = clone.clone()
       pack.removeClass('template')
       pack.attr('id', element["id"])
-      pack.find('.info > div:first-child p').html("<strong>N.C.C:</strong> "+element["N.C.C"])
-      pack.find('.info > div:last-child p').html("<strong>Titular:</strong> "+element["Owner"])
+      pack.find('.info > div:first-child p').html("<strong>N.C.C:</strong> " + element["N.C.C"])
+      pack.find('.info > div:last-child p').html("<strong>Titular:</strong> " + element["Owner"])
       $('.content#bank-account .cards-list .cards').append(pack)
 
-	  })
+    })
     // ENABLING CLICKS FOR NEW ELEMENTS
     enableClicks()
   })
 
 }
 
-function getTransactions(){
+function getTransactions() {
   l = [];
   $.getJSON(url + 'customers/' + user_id + '/transactions', function(json) {
-    json.forEach(function(transaction){
-      $.getJSON(url + 'energies/' + transaction.energy_id , function(energy) {
-        $.getJSON(url + 'customers/' + energy.producer_id , function(provider) {
+    json.forEach(function(transaction) {
+      $.getJSON(url + 'energies/' + transaction.energy_id, function(energy) {
+        $.getJSON(url + 'customers/' + energy.producer_id, function(provider) {
           time = transaction.transaction_time.split('-')
-          obj = {'Value' : parseInt(energy.quantity) * energy.KWhPrice + "€",
-              'Date' : time[2].substring(0,2) + '/' + time[1] + '/' + time[0],
-              'Company' : provider.customer_name,
-              'id' : transaction.transaction_id};
+          obj = {
+            'Value': parseInt(energy.quantity) * energy.KWhPrice + "€",
+            'Date': time[2].substring(0, 2) + '/' + time[1] + '/' + time[0],
+            'Company': provider.customer_name,
+            'id': transaction.transaction_id
+          };
           l.push(obj);
 
           clone = $('.content#transactions #main-transactions .transaction-list .transaction-item.template').clone()
@@ -180,8 +207,8 @@ function getTransactions(){
           // REMOVING ALL TRASH
           $('.content#transactions #main-transactions .transaction-list .transaction-item:not(.template)').remove()
 
-          l.forEach(function(element){
-            transaction  = clone.clone()
+          l.forEach(function(element) {
+            transaction = clone.clone()
             transaction.removeClass('template')
             transaction.find('.date').text(element["Date"])
             transaction.find('.transaction-content p:first-child small').text(element["Value"])
@@ -195,60 +222,64 @@ function getTransactions(){
         })
       })
     })
-	})
+  })
 
 }
 
 // O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
-function getTransactionDetails(id){
+function getTransactionDetails(id) {
   $.getJSON(url + 'transactions/' + id, function(json) {
     $.getJSON(url + 'energies/' + json.energy_id, function(energy) {
       $.getJSON(url + 'customers/' + energy.producer_id, function(producer) {
         date = json.transaction_time.split('-');
         time = json.transaction_time.split('T')[1].split(':');
-    		element = {"Date" : date[2].substring(0,2) + '/' + date[1] + '/' + date[0],
-                  "Time" : time[0] + ':' + time[1] + 'h',
-                  "Card" : 2583972838,
-                  "Company" : producer.customer_name,
-                  "Ammount" : energy.quantity,
-                  "Price" : parseInt(energy.quantity) * energy.KWhPrice + ',00 €'}
+        element = {
+          "Date": date[2].substring(0, 2) + '/' + date[1] + '/' + date[0],
+          "Time": time[0] + ':' + time[1] + 'h',
+          "Card": 2583972838,
+          "Company": producer.customer_name,
+          "Ammount": energy.quantity,
+          "Price": parseInt(energy.quantity) * energy.KWhPrice + ',00 €'
+        }
         $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
         $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
-        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0,4) + " **** ****")
+        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0, 4) + " **** ****")
 
         $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
         $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
         $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
-	   })
-	  })
-	})
+      })
+    })
+  })
 }
 
 // O ARGUMENTO ID TEM O ID DO PACOTE AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
-function getPackDetails(id){
+function getPackDetails(id) {
   $.getJSON(url + 'energies/' + id, function(json) {
-    $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+    $.getJSON(url + 'customers/' + pack.producer_id, function(prod) {
       name = prod.customer_name;
     })
     price = parseInt(json.quantity) * json.KWhPrice;
-    pack = {"Name" : json.packName,
-          "Description" : json.packDescript,
-          "Company" : name,
-          "Ammount" : json.quantity,
-          "Price" : price,
-          "Product Rating" : 5,
-          "Company Rating" : 6,
-          "Contact" : "Contact"};
+    pack = {
+      "Name": json.packName,
+      "Description": json.packDescript,
+      "Company": name,
+      "Ammount": json.quantity,
+      "Price": price,
+      "Product Rating": 5,
+      "Company Rating": 6,
+      "Contact": "Contact"
+    };
 
-	pack_id=id
-    $('.content#buy-energy #desc-buy-energy .title ').text("Pacote "+pack["Name"])
-    $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> "+pack["Description"])
-	$('.content#buy-energy #desc-buy-energy .package-description .package-important #quantity').html("<strong>Energia:</strong> "+pack["Ammount"]+"Mw")
-    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> "+pack["Price"])
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> "+pack["Company"])
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> "+pack["Company Rating"]+"/10")
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> "+pack["Product Rating"]+"/10")
-    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Contacto:</strong> "+pack["Contact"])
+    pack_id = id
+    $('.content#buy-energy #desc-buy-energy .title ').text("Pacote " + pack["Name"])
+    $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> " + pack["Description"])
+    $('.content#buy-energy #desc-buy-energy .package-description .package-important #quantity').html("<strong>Energia:</strong> " + pack["Ammount"] + "Mw")
+    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> " + pack["Price"])
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> " + pack["Company"])
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> " + pack["Company Rating"] + "/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> " + pack["Product Rating"] + "/10")
+    $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(6)').html("<strong>Contacto:</strong> " + pack["Contact"])
   })
 
   // pack = {"Name" : "GoldEnergy" ,
@@ -263,34 +294,36 @@ function getPackDetails(id){
 
 }
 
-function getConfirmationDetails(id){
+function getConfirmationDetails(id) {
   $.getJSON(url + 'energies/' + id, function(json) {
-    $.getJSON(url + 'customers/' + pack.producer_id, function(prod){
+    $.getJSON(url + 'customers/' + pack.producer_id, function(prod) {
       name = prod.customer_name;
     })
     price = parseInt(json.quantity) * json.KWhPrice;
-    pack = {"Name" : json.packName,
-          "Description" : json.packDescript,
-          "Company" : name,
-          "Ammount" : json.quantity,
-          "Price" : price,
-          "Product Rating" : 5,
-          "Company Rating" : 6,
-          "Contact" : "Contact"};
+    pack = {
+      "Name": json.packName,
+      "Description": json.packDescript,
+      "Company": name,
+      "Ammount": json.quantity,
+      "Price": price,
+      "Product Rating": 5,
+      "Company Rating": 6,
+      "Contact": "Contact"
+    };
 
-	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(1)').html("<strong><u> Pacote: "+pack["Name"]+"</u></strong>")
-	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(2)').html("<strong>Produtor: </strong> "+pack["Company"])
-	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(3)').html("<strong>Energia: </strong> "+pack["Ammount"]+"Mw")
-	$('.content#buy-energy #confirm-buy-energy .infos p:nth-child(4)').html("<strong>Preço:</strong> "+pack["Price"])
+    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(1)').html("<strong><u> Pacote: " + pack["Name"] + "</u></strong>")
+    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(2)').html("<strong>Produtor: </strong> " + pack["Company"])
+    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(3)').html("<strong>Energia: </strong> " + pack["Ammount"] + "Mw")
+    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(4)').html("<strong>Preço:</strong> " + pack["Price"])
   })
 
 }
 
 
-function updateCreditCard(id){
+function updateCreditCard(id) {
   console.log(id)
 
-  if(id == null){
+  if (id == null) {
     // CREATE CARD
     $('.content#bank-account #bank-account-edit h1').text("Adicionar Cartão")
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val('')
@@ -298,12 +331,14 @@ function updateCreditCard(id){
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val('')
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val('')
 
-  }else{
+  } else {
     // MODIFY CARD WITH THIS ID
-    card = { "C.C.N" : 123456789482,
-             "Name"  : "João Rodrigues",
-             "Date"  : "12/17" ,
-             "Code"  : 124  } // RETRIEVED DATA FROM CARD ID
+    card = {
+      "C.C.N": 123456789482,
+      "Name": "João Rodrigues",
+      "Date": "12/17",
+      "Code": 124
+    } // RETRIEVED DATA FROM CARD ID
 
     $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"])
