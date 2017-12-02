@@ -163,10 +163,12 @@ function getCreditCardsSettings() {
     json.forEach(function(card) {
       temp = {
         "N.C.C": card.creditcard_number,
-        "Owner": card.card_holder
+        "Owner": card.card_holder,
+        "id" : card.creditcard_id
       };
       cards.push(temp);
     })
+    console.log(cards)
     clone = $('.content#bank-account .cards-list .cards .card.template').clone()
 
     // REMOVING ALL TRASH
