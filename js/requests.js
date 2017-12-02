@@ -362,6 +362,8 @@ function create_update_CreditCard(id){
 
   console.log(id);
   if(validateCreditCard()){
+    uDate = val.split('/');
+    val = (new Date('20' + uDate[1], uDate[0] - 1)).toISOString();
     console.log('The date is: ' + val);
     if(id == "-1"){
       // CREATE NEW CARD
