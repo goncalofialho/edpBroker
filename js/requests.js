@@ -321,7 +321,7 @@ function getConfirmationDetails(id) {
 
 
 function getCreditCard(id){
-
+  console.log('CC ID: ' + id);
   if (id == null) {
     // CREATE CARD
     $('.content#bank-account #bank-account-edit h1').text("Adicionar Cartão")
@@ -333,19 +333,23 @@ function getCreditCard(id){
 
   } else {
     // MODIFY CARD WITH THIS ID
-    card = {
-      "C.C.N": 123456789482,
-      "Name": "João Rodrigues",
-      "Date": "12/17",
-      "Code": 124
-    } // RETRIEVED DATA FROM CARD ID
+    console.log('trying to modify the card');
+    $.getJSON(url + 'creditCards/' + id, function(json) {
+      date = json.expires.split('-');
+      card = {
+        "C.C.N": json.creditcard_number,
+        "Name": json.card_holder,
+        "Date": date[1] + '/' + date[0].substring(2,4),
+        "Code": json.ccv
+      } // RETRIEVED DATA FROM CARD ID
 
-    $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
-    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"].toString().substring(0,3) + " " + card["C.C.N"].toString().substring(3,6) + " " + card["C.C.N"].toString().substring(6 ,9) + " " +  card["C.C.N"].toString().substring(9,12) )
-    $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
-    $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
-    $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
-    $('.content#bank-account #bank-account-edit .add-card').attr('id', card["id"])
+      $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
+      $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"].toString().substring(0,3) + " " + card["C.C.N"].toString().substring(3,6) + " " + card["C.C.N"].toString().substring(6 ,9) + " " +  card["C.C.N"].toString().substring(9,12) )
+      $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
+      $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
+      $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
+      $('.content#bank-account #bank-account-edit .add-card').attr('id', card["id"])
+  	})
 
   }
 }
@@ -355,14 +359,55 @@ function create_update_CreditCard(id){
   name = $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val()
   val  = $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val()
   code = $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val()
+
+  console.log(id);
   if(validateCreditCard()){
+    console.log('The date is: ' + val);
     if(id == "-1"){
       // CREATE NEW CARD
+      card = {"creditcard_number": ncc,
+          "card_holder": name,
+          "ccv": code,
+          "expires": "string",
+          "holder": user_id
+      }
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: url + 'creditCards',
+        data: JSON.stringify(card),
+        dataType: "json",
+        success: function(msg) {
+          console.log('Card created success: ' + msg);
+        },
+        error: function(err) {
+          console.log('ERROR - Credit card creation: ' + err);
+        }
+      });
 
 
     }else{
       // UPDATE EXIST CARD
+      $.getJSON(url + 'creditCards/' + id, function(json) {
+    		json.creditcard_number = ncc;
+    		json.card_holder = name;
+    		json.expires = val ;
+    		json.ccv = code;
 
+        $.ajax({
+          type: "PUT",
+          contentType: "application/json; charset=utf-8",
+          url: url + 'creditCards/' + id,
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: function(msg) {
+            console.log('Card edited success: ' + msg);
+          },
+          error: function(err) {
+            console.log('ERROR - Credit card editing: ' + err);
+          }
+        });
+    	})
 
     }
   }
