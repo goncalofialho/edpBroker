@@ -52,8 +52,10 @@ function toggleSubView(){
 		getCreditCard($(this).closest('.card').attr("id"))
 	}if( viewId == "bank-account-intro" && parentId == "bank-account-edit"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		if(validateCreditCard())
+		if(validateCreditCard()){
 			create_update_CreditCard($(this).attr("id"))
+			getCreditCardsSettings()
+		}
 		else
 			return
 	}
