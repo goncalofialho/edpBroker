@@ -350,7 +350,7 @@ function getCreditCard(id){
       $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
       $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
       $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
-      $('.content#bank-account #bank-account-edit .add-card').attr('id', card["id"])
+      $('.content#bank-account #bank-account-edit .add-card').attr('id', id)
   	})
 
   }
@@ -415,4 +415,8 @@ function create_update_CreditCard(id){
 
     }
   }
+}
+
+function deleteCreditCard(id){
+
 }
