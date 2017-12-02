@@ -41,8 +41,6 @@ function enableClicks(){
 function toggleSubView(){
 	viewId = $(this).attr('target')
 	parentId = $(this).attr('parent')
-	$('#'+parentId).parent().children().addClass('hidden-class')
-	$('#'+parentId).parent().find('#'+viewId).removeClass('hidden-class')
 
 	if(viewId == "transaction-info"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
@@ -50,10 +48,21 @@ function toggleSubView(){
 	}
 	if(viewId == "bank-account-edit"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-		// updateCreditCard($(this).closest('.card').attr("id"))
+		cleanFields()
+		getCreditCard($(this).closest('.card').attr("id"))
+	}if( viewId == "bank-account-intro" && parentId == "bank-account-edit"){
+		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+		if(validateCreditCard())
+			create_update_CreditCard($(this).attr("id"))
+		else
+			return
 	}
 
+	$('#'+parentId).parent().children().addClass('hidden-class')
+	$('#'+parentId).parent().find('#'+viewId).removeClass('hidden-class')
+
 }
+
 function toggleView(){
   viewId = $(this).attr('target')
   /* ESCONDER TODOS AS VIEWS */
@@ -126,7 +135,7 @@ function toggleChooseCardgetTransactionDetails(){
 	$('#buy-energy > div').addClass('hidden-class');
 	$('#buy-energy #'+viewId).removeClass('hidden-class');
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
-	
+
 	card_id=$(this).attr('id')
 	getCreditCardsMarket()
 }
@@ -247,3 +256,24 @@ function toggleStats(){
 
     });
 })(jQuery);
+
+function validateCreditCard(){
+	$('.content#bank-account #bank-account-edit .edit-field input').removeClass('missing')
+	$('.content#bank-account #bank-account-edit .missing-vals').addClass('hidden')
+	$('.content#bank-account #bank-account-edit .edit-field input').each(function(){
+		if($(this).val() == "")
+			$(this).addClass('missing')
+	})
+
+	if($('.content#bank-account #bank-account-edit .edit-field input.missing').length > 0){
+		$('.content#bank-account #bank-account-edit .missing-vals').removeClass('hidden')
+		return false
+	}else{
+		$('.content#bank-account #bank-account-edit .missing-vals').addClass('hidden')
+	}
+	return true
+}
+function cleanFields(){
+	$('.content#bank-account #bank-account-edit .edit-field input').removeClass('missing')
+	$('.content#bank-account #bank-account-edit .missing-vals').addClass('hidden')
+}
