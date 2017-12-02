@@ -158,7 +158,6 @@ function addPackToMyList(pack_id, card_id) {
 
 
 function getCreditCardsSettings() {
-  console.log("updating credit card")
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
     json.forEach(function(card) {
@@ -169,7 +168,6 @@ function getCreditCardsSettings() {
       };
       cards.push(temp);
     })
-    console.log(cards)
     clone = $('.content#bank-account .cards-list .cards .card.template').clone()
 
     // REMOVING ALL TRASH
@@ -324,7 +322,6 @@ function getConfirmationDetails(id) {
 
 
 function getCreditCard(id){
-  console.log('CC ID: ' + id);
   if (id == null) {
     // CREATE CARD
     $('.content#bank-account #bank-account-edit h1').text("Adicionar Cartão")
@@ -336,7 +333,6 @@ function getCreditCard(id){
 
   } else {
     // MODIFY CARD WITH THIS ID
-    console.log('trying to modify the card');
     $.getJSON(url + 'creditCards/' + id, function(json) {
       date = json.expires.split('-');
       card = {
@@ -363,17 +359,15 @@ function create_update_CreditCard(id){
   val  = $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val()
   code = $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val()
 
-  console.log(id);
   if(validateCreditCard()){
     uDate = val.split('/');
-    val = (new Date('20' + uDate[1], uDate[0] - 1)).toISOString(); // Generates a date in mySQL format 
-    console.log('The date is: ' + val);
-    if(id == "-1"){
+    val = (new Date('20' + uDate[1], uDate[0] - 1)).toISOString(); // Generates a date in mySQL format
+     if(id == "-1"){
       // CREATE NEW CARD
       card = {"creditcard_number": ncc,
           "card_holder": name,
           "ccv": code,
-          "expires": "string",
+          "expires": val,
           "holder": user_id
       }
       $.ajax({
@@ -385,8 +379,8 @@ function create_update_CreditCard(id){
         success: function(msg) {
           console.log('Card created success: ' + msg);
         },
-        error: function(err) {
-          console.log('ERROR - Credit card creation: ' + err);
+        error: function(xhr, status, error) {
+          console.log(error);
         }
       });
 
@@ -420,5 +414,7 @@ function create_update_CreditCard(id){
 }
 
 function deleteCreditCard(id){
+
+
 
 }
