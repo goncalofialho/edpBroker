@@ -111,6 +111,18 @@
   width: 100%;
   font-size: 120%;
   height: 32px;
+  transition: all 400ms ease-in-out;
+}
+.content#bank-account #bank-account-edit .edit-field input.missing{
+  border: solid 2px #c30000;
+}
+.content#bank-account #bank-account-edit .missing-vals{
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: -10px;
+  color: #c30000;
+  font-family: Edp preon Medium;
+  font-size: 16px;
 }
 @media (min-width460px){
 }

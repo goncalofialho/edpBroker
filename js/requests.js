@@ -287,8 +287,7 @@ function getConfirmationDetails(id){
 }
 
 
-function updateCreditCard(id){
-  console.log(id)
+function getCreditCard(id){
 
   if(id == null){
     // CREATE CARD
@@ -297,20 +296,41 @@ function updateCreditCard(id){
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val('')
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val('')
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val('')
+    $('.content#bank-account #bank-account-edit .add-card').attr('id', '-1')
 
   }else{
-    // MODIFY CARD WITH THIS ID
+    // GET CREDIT CARD WITH ID CARD WITH THIS ID
+    // FAZER UM REQUEST AQUI
     card = { "C.C.N" : 123456789482,
              "Name"  : "João Rodrigues",
              "Date"  : "12/17" ,
-             "Code"  : 124  } // RETRIEVED DATA FROM CARD ID
+             "Code"  : 124,
+             "id"    : 1 } // RETRIEVED DATA FROM CARD ID
 
     $('.content#bank-account #bank-account-edit h1').text("Editar Cartão")
-    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"])
+    $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val(card["C.C.N"].toString().substring(0,3) + " " + card["C.C.N"].toString().substring(3,6) + " " + card["C.C.N"].toString().substring(6 ,9) + " " +  card["C.C.N"].toString().substring(9,12) )
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val(card["Name"])
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val(card["Date"])
     $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val(card["Code"])
+    $('.content#bank-account #bank-account-edit .add-card').attr('id', card["id"])
+
+  }
+}
+
+function create_update_CreditCard(id){
+  ncc  = $('.content#bank-account #bank-account-edit .edit-field:nth-child(2) input').val().split(' ').join('')
+  name = $('.content#bank-account #bank-account-edit .edit-field:nth-child(3) input').val()
+  val  = $('.content#bank-account #bank-account-edit .edit-field:nth-child(4) input').val()
+  code = $('.content#bank-account #bank-account-edit .edit-field:nth-child(5) input').val()
+  if(validateCreditCard()){
+    if(id == "-1"){
+      // CREATE NEW CARD
 
 
+    }else{
+      // UPDATE EXIST CARD
+
+
+    }
   }
 }
