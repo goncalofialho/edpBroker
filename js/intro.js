@@ -92,6 +92,9 @@ function toggleView(){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 		getTransactions()
 	}
+	if(viewId == "bank-account"){
+		getCreditCardsSettings()
+	}
 
 }
 
