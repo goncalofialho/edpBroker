@@ -202,10 +202,7 @@ module.exports = function(Customers) {
 		}
 		);
 
-	Customers.enOrderPriceA = function(cb){
-		// const connector = Customers.app.dataSources.db.connector
-		// const sql = 'select * , (KWhPrice * quantity) as n from energy order by n;'
-		// connector.execute(sql, null, (err, resultobjects) => )
+	Customers.enOrderKWHA = function(cb){
 
 		var filter = { include : [ 'energy'] };
 
@@ -220,9 +217,9 @@ module.exports = function(Customers) {
 	}
 
 	Customers.remoteMethod(
-		'enOrderPriceA',
+		'enOrderKWHA',
 		{
-			http: {path: '/enOrderPriceA', verb: 'get'},
+			http: {path: '/enOrderKWHA', verb: 'get'},
 			// accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
 			returns: [
 			{arg: 'energy_id', type: 'number'},
@@ -236,7 +233,7 @@ module.exports = function(Customers) {
 		}
 		);
 
-	Customers.enOrderPriceD = function(cb){
+	Customers.enOrderKWHD = function(cb){
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
@@ -249,9 +246,9 @@ module.exports = function(Customers) {
 	}
 
 	Customers.remoteMethod(
-		'enOrderPriceD',
+		'enOrderKWHD',
 		{
-			http: {path: '/enOrderPriceD', verb: 'get'},
+			http: {path: '/enOrderKWHD', verb: 'get'},
 			// accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
 			returns: [
 			{arg: 'energy_id', type: 'number'},
@@ -289,6 +286,66 @@ module.exports = function(Customers) {
 		{
 			http: {path: '/enOrderProducer', verb: 'get'},
 			accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			returns: [
+			{arg: 'energy_id', type: 'number'},
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'quatity', type: 'number'},
+			{arg: 'packName', type: 'string'},
+			{arg: 'packDescript', type: 'string'},
+			{arg: 'posted_time', type: 'date'},
+			{arg: 'holder', type: 'number'}
+			]
+		}
+		);
+
+	Customers.enOrderPriceA = function(cb){
+
+		var filter = { include : [ 'energy'] };
+
+		var capp = Customers.app;
+		var e = capp.models.Energy;
+		e.find({where:{or: [{holder: null}, {holder: 0}]} , order: 'finalPrice ASC'}, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'enOrderPriceA',
+		{
+			http: {path: '/enOrderPriceA', verb: 'get'},
+			// accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			returns: [
+			{arg: 'energy_id', type: 'number'},
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'quatity', type: 'number'},
+			{arg: 'packName', type: 'string'},
+			{arg: 'packDescript', type: 'string'},
+			{arg: 'posted_time', type: 'date'},
+			{arg: 'holder', type: 'number'}
+			]
+		}
+		);
+
+	Customers.enOrderPriceD = function(cb){
+		var filter = { include : [ 'energy'] };
+		var capp = Customers.app;
+		var e = capp.models.Energy;
+		e.find({where:{or: [{holder: null}, {holder: 0}]} , order: 'finalPrice DESC'}, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'enOrderPriceD',
+		{
+			http: {path: '/enOrderPriceD', verb: 'get'},
+			// accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
 			returns: [
 			{arg: 'energy_id', type: 'number'},
 			{arg: 'producer_id', type: 'number'},

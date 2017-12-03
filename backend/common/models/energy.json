@@ -42,6 +42,9 @@
     "percentage": {
       "type": "number",
       "default": 100
+    },
+    "finalPrice": {
+      "type": "number"
     }
   },
   "validations": [],
