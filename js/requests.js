@@ -84,11 +84,13 @@ function getCreditCardsMarket() {
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
     json.forEach(function(card) {
-      temp = {
-        "N.C.C": card.creditcard_number,
-        "Owner": card.card_holder
-      };
-      cards.push(temp);
+      if (card.active === 1) {
+        temp = {
+          "N.C.C": card.creditcard_number,
+          "Owner": card.card_holder
+        };
+        cards.push(temp);
+      }
     })
     clone = $('.content#buy-energy  #method-buy-energy .card.template').clone()
 
@@ -111,10 +113,8 @@ function getCreditCardsMarket() {
 
 function addPackToMyList(pack_id, card_id) {
   finalURL = url + 'energies/' + pack_id;
-  // console.log("pack_id:" + pack_id);
   $.getJSON(finalURL, function(json) {
     json.holder = user_id;
-    console.log(json);
 
 
 
@@ -163,12 +163,14 @@ function getCreditCardsSettings() {
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
     json.forEach(function(card) {
-      temp = {
-        "N.C.C": card.creditcard_number,
-        "Owner": card.card_holder,
-        "id" : card.creditcard_id
-      };
-      cards.push(temp);
+      if (card.active == 1) {
+        temp = {
+          "N.C.C": card.creditcard_number,
+          "Owner": card.card_holder,
+          "id" : card.creditcard_id
+        };
+        cards.push(temp);
+      }
     })
     clone = $('.content#bank-account .cards-list .cards .card.template').clone()
 
@@ -417,7 +419,24 @@ function create_update_CreditCard(id){
 }
 
 function deleteCreditCard(id){
+  console.log('CC ID' + id);
+  $.getJSON(url + 'creditCards/' + id, function(json) {
+    json.active = 0;
 
-
+    $.ajax({
+      type: "PUT",
+      contentType: "application/json; charset=utf-8",
+      url: url + 'creditCards/' + id,
+      data: JSON.stringify(json),
+      dataType: "json",
+      success: function(msg) {
+        console.log('Card delete success: ' + msg);
+        getCreditCardsSettings()
+      },
+      error: function(err) {
+        console.log('ERROR - Credit card editing: ' + err);
+      }
+    });
+  })
 
 }
