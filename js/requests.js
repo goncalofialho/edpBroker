@@ -136,6 +136,7 @@ function addPackToMyList(pack_id, card_id) {
     transaction = {"client_id": user_id,
                   "energy_id": pack_id,
                   "production": "string",
+                  "creditcard_used": card_id
                 };
 
 
@@ -233,26 +234,28 @@ function getTransactions() {
 
 // O ARGUMENTO ID TEM O ID DA TRANSACAO AO QUAL VAMOS FAZER UM REQUEST COM OS SEUS DETALHES
 function getTransactionDetails(id) {
-  $.getJSON(url + 'transactions/' + id, function(json) {
-    $.getJSON(url + 'energies/' + json.energy_id, function(energy) {
+  $.getJSON(url + 'transactions/' + id, function(transaction) {
+    $.getJSON(url + 'energies/' + transaction.energy_id, function(energy) {
       $.getJSON(url + 'customers/' + energy.producer_id, function(producer) {
-        date = json.transaction_time.split('-');
-        time = json.transaction_time.split('T')[1].split(':');
-        element = {
-          "Date": date[2].substring(0, 2) + '/' + date[1] + '/' + date[0],
-          "Time": time[0] + ':' + time[1] + 'h',
-          "Card": 2583972838,
-          "Company": producer.customer_name,
-          "Ammount": energy.quantity,
-          "Price": parseInt(energy.quantity) * energy.KWhPrice + ',00 €'
-        }
-        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
-        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
-        $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0, 4) + " **** ****")
+        $.getJSON(url + 'creditCards/' + transaction.creditcard_used, function(card) {
+          date = transaction.transaction_time.split('-');
+          time = transaction.transaction_time.split('T')[1].split(':');
+          element = {
+            "Date": date[2].substring(0, 2) + '/' + date[1] + '/' + date[0],
+            "Time": time[0] + ':' + time[1] + 'h',
+            "Card": card.creditcard_number,
+            "Company": producer.customer_name,
+            "Ammount": energy.quantity,
+            "Price": parseInt(energy.quantity) * energy.KWhPrice + ',00 €'
+          }
+          $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(1) small').text(element["Date"])
+          $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(2) small').text(element["Time"])
+          $('.content#transactions #transaction-info .transaction-section:first-child .section-area p:nth-child(3) small').text(element["Card"].toString().substring(0, 4) + " **** ****")
 
-        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
-        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
-        $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
+          $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
+          $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
+          $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
+        })
       })
     })
   })
