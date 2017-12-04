@@ -23,6 +23,9 @@
     },
     "transaction_time": {
       "type": "date"
+    },
+    "creditcard_used": {
+      "type": "number"
     }
   },
   "validations": [],
