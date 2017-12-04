@@ -1,5 +1,7 @@
 // THIS FILE CONTAINS THE REQUESTS TO THE APP
-var url = 'http://85.247.219.175:4567/api/';
+// var url = 'http://85.247.219.175:4567/api/';
+var url = 'http://localhost:3000/api/';
+
 user_id = localStorage.getItem('user_id')
 
 
@@ -378,6 +380,7 @@ function create_update_CreditCard(id){
         dataType: "json",
         success: function(msg) {
           console.log('Card created success: ' + msg);
+          getCreditCardsSettings()
         },
         error: function(xhr, status, error) {
           console.log(error);
