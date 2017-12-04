@@ -383,7 +383,7 @@
                 <p>
                   <strong>Titular: </strong>João Rodrigues
                 </p>
-                <svg class="delete"><use xlink:href="images/icons.svg#delete"></svg>
+                <svg class="delete" target="confirm-delete-card"><use xlink:href="images/icons.svg#delete"></svg>
               </div>
    					</div>
    				</div>
@@ -399,7 +399,7 @@
                 <p>
                   <strong>Titular: </strong>João Rodrigues
                 </p>
-                <svg class="delete"><use xlink:href="images/icons.svg#delete"></svg>
+                <svg class="delete" target="confirm-delete-card"><use xlink:href="images/icons.svg#delete"></svg>
               </div>
    					</div>
    				</div>
@@ -425,6 +425,27 @@
         </div>
       </div>
     </div>
+	
+	<div id="confirm-delete-card" class="col-xs-12 hidden-class">
+		<p class="title">Está prestes a apagar o seguinte cartão:</p>
+	<div class="item-infos col-xs-12 reserved">
+		<div class="infos">
+			<p class="info"><strong>N.C.C: </strong>1780972838</p>
+			<p class="info"><strong>Titular: </strong>João Rodrigues</p>
+			<p target="confirmed-delete-card" class="finalize"> Apagar </p>
+		</div>
+	</div>
+	</div>
+	
+	<div id="confirmed-delete-card" class="col-xs-12 hidden-class">
+		<p class="title">Cartão Apagado com Sucesso.</p>
+		<div class="item-infos col-xs-12 reserved">
+			<div class="infos">
+				<p target="bank-account-intro" class="finalized"> Continuar </p>
+			</div>
+		</div>
+	</div>
+	
     <div id="bank-account-edit" class="col-xs-12 hidden-class">
       <h1 class="title col-xs-12">Editar Cartão</h1>
       <div class="col-xs-12 edit-field">

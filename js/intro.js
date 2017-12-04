@@ -30,6 +30,9 @@ function enableClicks(){
 	/* BANK ACCOUNT */
 	$('#bank-account #bank-account-intro *[target="bank-account-edit"]').click(toggleSubView)
 	$('#bank-account #bank-account-edit *[target="bank-account-intro"]').click(toggleSubView)
+	$('#bank-account #bank-account-intro .cards-list .cards .card  .delete ').click(toggleConfirmDelete)
+	$('#bank-account #confirm-delete-card .item-infos .infos .finalize').click(toggleConfirmedDelete)
+	$('#bank-account #confirmed-delete-card .item-infos .infos .finalized').click(toggleGoToCards)
 
 	/* TRANSACTION */
 	$('#transactions #main-transactions .transaction-content').click(toggleSubView)
@@ -62,6 +65,25 @@ function toggleSubView(){
 	$('#'+parentId).parent().children().addClass('hidden-class')
 	$('#'+parentId).parent().find('#'+viewId).removeClass('hidden-class')
 
+}
+
+function toggleConfirmDelete(){
+	viewId = $(this).attr('target')
+	$('#bank-account  > div').addClass('hidden-class');
+	$('#bank-account  #'+viewId).removeClass('hidden-class');
+}
+
+function toggleConfirmedDelete(){
+	viewId = $(this).attr('target')
+	$('#bank-account  > div').addClass('hidden-class');
+	$('#bank-account  #'+viewId).removeClass('hidden-class');
+}
+
+function toggleGoToCards(){
+	viewId = $(this).attr('target')
+	$('#bank-account  > div').addClass('hidden-class');
+	$('#bank-account  #'+viewId).removeClass('hidden-class');
+	getCreditCardsSettings()
 }
 
 function toggleView(){
