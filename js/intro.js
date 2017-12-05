@@ -44,7 +44,7 @@ function enableClicks(){
 function toggleSubView(){
 	viewId = $(this).attr('target')
 	parentId = $(this).attr('parent')
-
+	console.log(viewId)
 	if(viewId == "transaction-info"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 		getTransactionDetails($(this).parent().attr("id"));
@@ -71,12 +71,22 @@ function toggleConfirmDelete(){
 	viewId = $(this).attr('target')
 	$('#bank-account  > div').addClass('hidden-class');
 	$('#bank-account  #'+viewId).removeClass('hidden-class');
+	if( viewId == "confirm-delete-card"){
+		id =  $(this).parent().closest('.card').attr('id')
+		number = $(this).parent().closest('.card').find('.info div:first-child p').text().substring(7)
+		titular = $(this).parent().closest('.card').find('.info div:last-child p').text().substring(9)
+		$('#bank-account #'+viewId+' .infos .info:first-child').html('<strong>N.C.C: </strong>'+number)
+		$('#bank-account #'+viewId+' .infos .info:nth-child(2)').html('<strong>Titular: </strong>'+titular)
+		$('#bank-account #'+viewId+' .infos p:nth-child(3)').attr('id',id)
+	}
 }
 
 function toggleConfirmedDelete(){
 	viewId = $(this).attr('target')
 	$('#bank-account  > div').addClass('hidden-class');
 	$('#bank-account  #'+viewId).removeClass('hidden-class');
+	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+	deleteCreditCard($(this).attr('id'))
 }
 
 function toggleGoToCards(){
@@ -125,6 +135,9 @@ function toggleView(){
 function toggleBackView(){
 	if(! $('.content:not(.hidden-class) > *').hasClass('hidden-class')){
 		goToIntro()
+	}else if($('.content:not(.hidden-class)').attr('id') == "bank-account" && $('.content:not(.hidden-class) > div:not(.hidden-class)').attr('id') == 'confirm-delete-card'){
+		$('.content:not(.hidden-class) > div').addClass('hidden-class')
+		$('.content:not(.hidden-class) > div#bank-account-intro').removeClass('hidden-class')
 	}else{
 		el = $('.content:not(.hidden-class)')
 		index = $('.container .content:not(.hidden-class) > div').index($('.container .content:not(.hidden-class) > div:not(.hidden-class)'))
