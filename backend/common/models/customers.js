@@ -114,6 +114,66 @@ module.exports = function(Customers) {
 			]
 		}
 		);
+	
+	Customers.soldPacks = function(customer_id, cb){
+		var filter = { include : [ 'energy'] };
+		var capp = Customers.app;
+		var e = capp.models.Energy;
+		e.find({where: {and: [{producer_id: customer_id}, {not:{holder: customer_id}}]}}, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'soldPacks',
+		{
+			http: {path: '/soldPacks', verb: 'get'},
+			accepts: {arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			returns: [
+			{arg: 'energy_id', type: 'number'},
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'quatity', type: 'number'},
+			{arg: 'packName', type: 'string'},
+			{arg: 'packDescript', type: 'string'},
+			{arg: 'posted_time', type: 'date'},
+			{arg: 'holder', type: 'number'}
+			]
+		}
+		);
+
+		
+	Customers.producedTimeFrame = function(customer_id, begin, end, cb){
+		var filter = { include : [ 'producedenergy'] };
+		var capp = Customers.app;
+		var e = capp.models.Producedenergy;
+		e.find({where: {and: [{producer_id: customer_id},{posted_time:{between:[begin,end]}}]}}, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'producedTimeFrame',
+		{
+			http: {path: '/producedTimeFrame', verb: 'get'},
+			accepts: [
+			{arg: 'customer_id', type: 'number', http: {source: 'query'}},
+			{arg: 'begin', type: 'date', http: {source: 'query'}},
+			{arg: 'end', type: 'date', http: {source: 'query'}}
+			],
+			returns: [
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'increment_id', type: 'number'},
+			{arg: 'quatity', type: 'number'},
+			{arg: 'posted_time', type: 'date'},
+			]
+		}
+		);
 
 	Customers.producedEnergy = function(customer_id,cb){
 		var filter = { include : [ 'energy'] };
