@@ -237,13 +237,13 @@ function getTransactionDetails(id) {
   $.getJSON(url + 'transactions/' + id, function(transaction) {
     $.getJSON(url + 'energies/' + transaction.energy_id, function(energy) {
       $.getJSON(url + 'customers/' + energy.producer_id, function(producer) {
-        $.getJSON(url + 'creditCards/' + transaction.creditcard_used, function(card) {
+        //$.getJSON(url + 'creditCards/' + transaction.creditcard_used, function(card) { FIXME
           date = transaction.transaction_time.split('-');
           time = transaction.transaction_time.split('T')[1].split(':');
           element = {
             "Date": date[2].substring(0, 2) + '/' + date[1] + '/' + date[0],
             "Time": time[0] + ':' + time[1] + 'h',
-            "Card": card.creditcard_number,
+            "Card": 789789789,// card.creditcard_number, FIXME
             "Company": producer.customer_name,
             "Ammount": energy.quantity,
             "Price": parseInt(energy.quantity) * energy.KWhPrice + ',00 €'
@@ -255,7 +255,7 @@ function getTransactionDetails(id) {
           $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(1) small').text(element["Company"])
           $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(2) small').text(element["Ammount"] + "Mw")
           $('.content#transactions #transaction-info .transaction-section:nth-child(2) .section-area p:nth-child(3) small').text(element["Price"])
-        })
+      //  }) FIXME
       })
     })
   })

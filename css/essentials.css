@@ -83,7 +83,73 @@ strong{
 .btn.btn-primary.active, .btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:hover {
     background: #96172e!important;
 }
+.filters .tab-filters{
+  text-transform: uppercase;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  transition: all 300ms ease-in-out;
+}
+.filters .tab-filters.search-options{
 
+}
+.filters .tab-filters .filter-items{
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+}
+.filters .tab-filters.search-options .filter-items{
+  float: left;
+  width: 100%;
+  margin-left: 2px;
+  max-height: 40px;
+}
+.filters .tab-filters p{
+  float: left;
+  margin-top: 4px;
+  font-size: 13px;
+  width:100%;
+  text-align: center;
+}
+.filters .tab-filters .filter-items > div{
+  text-transform: none;
+  font-size: 15px;
+  float: left;
+  border: solid 1px;
+  border-radius: 5px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  transition: all 400ms ease-in-out;
+  overflow: hidden;
+  max-width: 0px;
+  max-height: 33px;
+  border-width:0px;
+  padding: 5px 0px;
+}
+.filters .tab-filters .filter-items > div.selected{
+  max-width: 100px;
+  padding: 5px 5px;
+  border-width:1px;
+  opacity:1;
+}
+.filters .tab-filters.open svg{
+  transform: rotate(-90deg);
+
+}
+.filters .tab-filters svg{
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+  transition: transform 300ms ease-in-out;
+}
+.filters .tab-filters .filter-items > div svg{
+  width: 0px;
+  height: 0px;
+}
+.filters .tab-filters .filter-items > div.selected svg{
+  width: 10px;
+  height: 10px;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 

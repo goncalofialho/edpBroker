@@ -40,6 +40,9 @@ function enableClicks(){
 
 	/* TOGGLE STATS BOXES */
 	$('#energy-stats .stats-section .title').click(toggleStats)
+
+	/* FILTERS */
+	$('.filters .tab-filters .filter-items > div svg').click(removeSearchLabel)
 }
 function toggleSubView(){
 	viewId = $(this).attr('target')
@@ -315,4 +318,17 @@ function validateCreditCard(){
 function cleanFields(){
 	$('.content#bank-account #bank-account-edit .edit-field input').removeClass('missing')
 	$('.content#bank-account #bank-account-edit .missing-vals').addClass('hidden')
+}
+
+
+function searchFor(category){
+	if(! $('.tab-filters').hasClass('search-options'))
+		$('.tab-filters').addClass('search-options')
+	$('.tab-filters .filter-items > div[searchFor="'+category+'"]').addClass('selected')
+}
+
+function removeSearchLabel(){
+	$(this).parent().removeClass('selected')
+	if( $('.tab-filters .filter-items > div.selected ').length == 0)
+		$('.tab-filters').removeClass('search-options')
 }
