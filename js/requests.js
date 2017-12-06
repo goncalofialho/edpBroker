@@ -80,6 +80,20 @@ function getPacks() {
   })
 }
 
+// SE FILTROS VAZIOS FAZ REQUEST A TODOS OS PACOTES funcao getPacks()
+function getPacksFiltered(){
+  filters = getFilters()
+  // SE NAO HA FILTROS FAZ REQUEST A TODOS OS PACKS
+  if(Object.keys(filters).length == 0){
+    console.log("requesting all packs ")
+    getPacks()
+
+  // SE HOUVER FILTROS FAZER REQUEST COM OS MESMOS
+  }else{
+    console.log("requesting new filtered packs width filters ")
+  }
+}
+
 function getCreditCardsMarket() {
   $.getJSON(url + 'customers/' + user_id + '/creditCards', function(json) {
     cards = [];
@@ -442,4 +456,15 @@ function deleteCreditCard(id){
     });
   })
 
+}
+
+// FIXME
+function getProducersList(){
+  l = ['produtor1','produtor2','produtor3','produtor4','produtor42','produtor12','produtor67','produtor51','produtor22','produtor49']
+  $('#buy-energy #main-buy-energy .filters .well ul').empty()
+  l.forEach(function(element){
+    html = '<li class="list-group-item">'+element+'</li>'
+    $('#buy-energy #main-buy-energy .filters .well ul').append(html)
+  })
+  enableCombobox()
 }
