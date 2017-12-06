@@ -124,6 +124,7 @@ function toggleView(){
 	if(viewId == "buy-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 		getPacks()
+		getProducersList()
 	}
 	if(viewId == "verify-energy"){
 		// UNCOMMENT TO MAKE DYNAMIC REQUESTS
@@ -334,6 +335,8 @@ function searchFor(category){
 	if(! $('.tab-filters').hasClass('search-options'))
 		$('.tab-filters').addClass('search-options')
 	$('.tab-filters .filter-items > div[searchFor="'+category+'"]').addClass('selected')
+	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
+	getPacksFiltered()
 }
 
 function removeSearchLabel(){
@@ -342,6 +345,8 @@ function removeSearchLabel(){
 	$('.filters .tab-filters .search-options .search-option[filter="'+filter+'"] .search-option-area .accept-remove-buttons p').toggleClass('hide')
 	if( $('.tab-filters .filter-items > div.selected ').length == 0)
 		$('.tab-filters').removeClass('search-options')
+	getPacksFiltered()
+
 }
 function toggleFilters(){
 	$('.tab-filters').toggleClass('open')
@@ -419,18 +424,21 @@ function addFilter(){
 	filter = $(this).closest('.search-option').attr('filter')
 	searchFor(filter)
 	$(this).parent().find('p').toggleClass('hide')
+
 }
 
 function removeFilter(){
 	filter = $(this).closest('.search-option').attr('filter')
 	removeLabel(filter)
 	$(this).parent().find('p').toggleClass('hide')
+
 }
 
 function removeLabel(filter){
 	$('.tab-filters .filter-items > div[searchFor="'+filter+'"]').removeClass('selected')
 	if( $('.tab-filters .filter-items > div.selected ').length == 0)
 		$('.tab-filters').removeClass('search-options')
+
 }
 
 function enableCombobox(){
@@ -529,5 +537,20 @@ function enableCombobox(){
 }
 
 function getFilters(){
-	
+	filters = {	}
+	$('.filters .tab-filters.search-options .filter-items > .selected').each(function(){
+		filter_type = $(this).attr('searchfor')
+
+		data = $(this).closest('.tab-filters').find('.search-options > div[filter="'+filter_type+'"]')
+		var val = [];
+		if(filter_type == 'price' || filter_type=='watts'){
+			val = [parseInt(data.find('input').first().val()) , parseInt(data.find('input').last().val()) ]
+		}else if (filter_type=='producer'){
+			data.find('ul li.active').each(function(){
+				val.push($(this).text())
+			})
+		}
+		filters[filter_type] = val
+	})
+	return filters
 }
