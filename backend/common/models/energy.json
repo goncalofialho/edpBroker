@@ -33,7 +33,7 @@
     },
     "holder": {
       "type": "number",
-      "default": null
+      "default": 0
     },
     "active": {
       "type": "number",
