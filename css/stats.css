@@ -1,9 +1,11 @@
 .content#energy-stats{
 
 }
-.content#energy-stats .stats-section-first:first-child{
+.content#energy-stats .stats-section:first-child{
   margin-top: 10px;
 }
+
+.content#energy-stats .stats-section-second,
 .content#energy-stats .stats-section{
     padding: 0;
     overflow: hidden;
@@ -20,6 +22,8 @@
   margin-top:1px;
   border-bottom: 0px;
 }
+
+.content#energy-stats .stats-section-second.open .title,
 .content#energy-stats .stats-section.open .title{
 
 }
@@ -32,6 +36,8 @@
   transform: rotate(90deg);
   transition: transform 500ms ease-in-out;
 }
+
+.content#energy-stats .stats-section-second.open .title svg,
 .content#energy-stats .stats-section.open .title svg{
   transform: rotate(-90deg);
 }
@@ -48,6 +54,15 @@
   padding-top: 10px;
   overflow-y: auto;
 }
+
+.content#energy-stats .stats-section-second.open .stats-area{
+  max-height: 165px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  overflow-x: auto;
+}
+
 .content#energy-stats .stats-area .desc-current-consumption{
   width: 50%;
   float: left;
@@ -61,6 +76,8 @@
   transition: opacity 250ms ease-in-out;
   opacity: 0;
 }
+
+.content#energy-stats .stats-section-second.open .stats-area img,
 .content#energy-stats .stats-section.open .stats-area img{
   opacity: 1;
 }
