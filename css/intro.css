@@ -160,11 +160,15 @@
 }
 .container .header svg{
 	width: 38px;
-    height: 38px;
-    top: 0%;
-    position: absolute;
-    border: solid 1px #333;
-    padding: 3px;
+  height: 38px;
+  top: 0%;
+  position: absolute;
+  border: solid 1px #333;
+  padding: 3px;
+}
+.container .header svg:not(:first-child){
+  background: #d52b1e;
+  fill: white;
 }
 .container .header .back{
 	left: 3%;
