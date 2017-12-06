@@ -92,6 +92,23 @@ function getPacksFiltered(){
   // SE HOUVER FILTROS FAZER REQUEST COM OS MESMOS
   }else{
     console.log("requesting new filtered packs width filters ")
+    packsArray = []
+    clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
+    // REMOVING ALL TRASH
+    $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
+    packsArray.forEach(function(element) {
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.attr('id', element["id"])
+      pack.find('.info .title').text("Pacote " + element["Name"])
+      pack.find('.info .producer').text(element["Company"])
+      pack.find('.info .ammount span:first-child').text(element["Watts"] + "Mw")
+      // pack.find('.info .ammount span:last-child').text(element["Duration"])
+      $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+
+    })
+    // ENABLING CLICKS FOR NEW ELEMENTS
+    enableClicks()
   }
 }
 
