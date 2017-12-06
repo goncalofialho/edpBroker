@@ -119,7 +119,7 @@ module.exports = function(Customers) {
 		var filter = { include : [ 'energy'] };
 		var capp = Customers.app;
 		var e = capp.models.Energy;
-		e.find({where: {and: [{producer_id: customer_id}, {not:{holder: customer_id}}]}}, function(err, instance) {
+		e.find({where: {and: [{producer_id: customer_id}, {or:[{not:{holder: customer_id}}, {not:{holder: 0}}]}]}}, function(err, instance) {
 			var response = instance;
 			cb(null, response);
 			console.log(response);
