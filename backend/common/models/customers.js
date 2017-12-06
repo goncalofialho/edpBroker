@@ -527,4 +527,50 @@ module.exports = function(Customers) {
 			]
 		}
 		);
+
+	Customers.enFilterAll = function(minP, maxP, minQ, maxQ, producer_id, packName, cb){
+		var filter = { include : [ 'energy'] };
+		var capp = Customers.app;
+		var e = capp.models.Energy;
+		e.find({where:
+			{and : [ 
+				{or: [{holder: null}, {holder: 0}]},
+				{finalPrice: {gte: minP}},
+				{finalPrice: {lte: maxP}},
+				{quantity: {gte: minQ}},
+				{quantity: {lte: maxQ}},
+				{producer_id: producer_id},
+				{packName: packName}
+			]
+			}}, function(err, instance) {
+			var response = instance;
+			cb(null, response);
+			console.log(response);
+		})
+		
+	}
+
+	Customers.remoteMethod(
+		'enFilterAll',
+		{
+			http: {path: '/enFilterAll', verb: 'get'},
+			accepts: [
+			{arg: 'minP', type: 'number', http: {source: 'query'}},
+			{arg: 'maxP', type: 'number', http: {source: 'query'}},
+			{arg: 'minQ', type: 'number', http: {source: 'query'}},
+			{arg: 'maxQ', type: 'number', http: {source: 'query'}},
+			{arg: 'producer_id', type: 'number', http: {source: 'query'}},
+			{arg: 'packName', type: 'string', http: {source: 'query'}}
+			],
+			returns: [
+			{arg: 'energy_id', type: 'number'},
+			{arg: 'producer_id', type: 'number'},
+			{arg: 'quantity', type: 'number'},
+			{arg: 'packName', type: 'string'},
+			{arg: 'packDescript', type: 'string'},
+			{arg: 'posted_time', type: 'date'},
+			{arg: 'holder', type: 'number'}
+			]
+		}
+		);
 };
