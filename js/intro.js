@@ -4,7 +4,7 @@ $(document).ready(function(){
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 	getCurrentEnergy()
 })
-
+var checkedItems = {}, counter = 0;
 var pack_id = ""
 var card_id = ""
 
@@ -50,6 +50,7 @@ function enableClicks(){
 
 	startSlider()
 	minMaxVerify()
+	enableCombobox()
 }
 
 function toggleSubView(){
@@ -430,4 +431,103 @@ function removeLabel(filter){
 	$('.tab-filters .filter-items > div[searchFor="'+filter+'"]').removeClass('selected')
 	if( $('.tab-filters .filter-items > div.selected ').length == 0)
 		$('.tab-filters').removeClass('search-options')
+}
+
+function enableCombobox(){
+	$('.list-group.checked-list-box .list-group-item').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $checkbox = $('<input type="checkbox" class="hidden" />'),
+            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        $widget.css('cursor', 'pointer')
+        $widget.append($checkbox);
+
+        // Event Handlers
+        $widget.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $widget.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $widget.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $widget.addClass(style + color + ' active');
+            } else {
+                $widget.removeClass(style + color + ' active');
+            }
+
+						// Update lists
+						checkedItems = {}
+						counter = 0
+						$(".checked-list-box li.active").each(function(idx, li) {
+							checkedItems[counter] = $(li).text();
+							counter++;
+        		})
+					}
+
+        // Initialization
+        function init() {
+
+            if ($widget.data('checked') == true) {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+            }
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($widget.find('.state-icon').length == 0) {
+                $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+            }
+        }
+        init();
+
+
+
+
+    });
+
+		$('.filters .tab-filters .search-option[filter="producer"] .option-section input').keyup(enableFiltering)
+
+		function enableFiltering(){
+			var that = this, $allListElements = $(this).parent().find('.well ul > li');
+
+			var $matchingListElements = $allListElements.filter(function(i, li){
+					var listItemText = $(li).text().toUpperCase(), searchText = that.value.toUpperCase();
+					return ~listItemText.indexOf(searchText);
+			});
+
+			$allListElements.hide();
+			$matchingListElements.show();
+		}
+}
+
+function getFilters(){
+	
 }

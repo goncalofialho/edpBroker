@@ -41,7 +41,9 @@
     margin-left: 2%;
 
 }
-
+.content#buy-energy #main-buy-energy {
+  max-height: 3620px;
+}
 .content#buy-energy .packages-list{
 	max-height: 400px;
 	padding:0px;
@@ -114,7 +116,7 @@
     margin-top: 20px;
 }
 .content#buy-energy #desc-buy-energy .package-description{
-	
+
 }
 
 .content#buy-energy #desc-buy-energy .package-description .package-important {
