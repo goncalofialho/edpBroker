@@ -165,8 +165,6 @@
   position: absolute;
   border: solid 1px #333;
   padding: 3px;
-}
-.container .header svg:not(:first-child){
   background: #d52b1e;
   fill: white;
 }
