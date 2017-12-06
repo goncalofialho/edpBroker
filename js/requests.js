@@ -58,7 +58,8 @@ function getPacks() {
         'id': pack.energy_id,
         'Name': pack.packName,
         'Company': name,
-        'Watts': pack.quantity
+        'Watts': pack.quantity,
+		"Price": pack.finalPrice,
       }
       packsArray.push(temp);
     })
@@ -71,7 +72,7 @@ function getPacks() {
       pack.find('.info .title').text("Pacote " + element["Name"])
       pack.find('.info .producer').text(element["Company"])
       pack.find('.info .ammount span:first-child').text(element["Watts"] + "Mw")
-      // pack.find('.info .ammount span:last-child').text(element["Duration"])
+      pack.find('.info .ammount span:last-child').text(element["Price"] + "€")
       $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
 
     })
@@ -297,7 +298,7 @@ function getPackDetails(id) {
     $('.content#buy-energy #desc-buy-energy .title ').text("Pacote " + pack["Name"])
     $('.content#buy-energy #desc-buy-energy .package-description .description').html("<strong>Descrição:</strong> " + pack["Description"])
     $('.content#buy-energy #desc-buy-energy .package-description .package-important #quantity').html("<strong>Energia:</strong> " + pack["Ammount"] + "Mw")
-    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> " + pack["Price"])
+    $('.content#buy-energy #desc-buy-energy .package-description .package-important #price').html("<strong>Preço:</strong> " + pack["Price"]+"€")
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(3)').html("<strong>Produtor:</strong> " + pack["Company"])
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(4)').html("<strong>Avaliação do Produtor:</strong> " + pack["Company Rating"] + "/10")
     $('.content#buy-energy #desc-buy-energy .package-description p:nth-child(5)').html("<strong>Avaliação do Produto:</strong> " + pack["Product Rating"] + "/10")
@@ -336,7 +337,7 @@ function getConfirmationDetails(id) {
     $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(1)').html("<strong><u> Pacote: " + pack["Name"] + "</u></strong>")
     $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(2)').html("<strong>Produtor: </strong> " + pack["Company"])
     $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(3)').html("<strong>Energia: </strong> " + pack["Ammount"] + "Mw")
-    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(4)').html("<strong>Preço:</strong> " + pack["Price"])
+    $('.content#buy-energy #confirm-buy-energy .infos p:nth-child(4)').html("<strong>Preço:</strong> " + pack["Price"]+"€")
   })
 
 }
