@@ -81,6 +81,11 @@
 .content#energy-stats .stats-section.open .stats-area img{
   opacity: 1;
 }
+.content#energy-stats .stats-section-second.open .stats-area img{
+  overflow-x: auto;
+  height: 153px;
+  width: auto;
+}
 @media (min-width:460px){
 
 }
