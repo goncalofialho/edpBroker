@@ -5,14 +5,15 @@
   margin-top: 10px;
 }
 
-.content#energy-stats .stats-section-second,
+.content#energy-stats .stats-section.second,
 .content#energy-stats .stats-section{
     padding: 0;
     overflow: hidden;
     margin-bottom: 15px;
 }
 .content#energy-stats .title{
-  font-size: 150%;
+  font-size: 135%;
+  padding-top: 3px;
   font-family: Edp Preon Medium;
   position: relative;
   text-transform: uppercase;
@@ -23,9 +24,13 @@
   border-bottom: 0px;
 }
 
-.content#energy-stats .stats-section-second.open .title,
+.content#energy-stats .stats-section.second.open .title,
 .content#energy-stats .stats-section.open .title{
 
+}
+.content#energy-stats .title small{
+  font-size: 13px;
+  font-family: Edp Preon;
 }
 .content#energy-stats .title svg{
   width: 20px;
@@ -37,7 +42,7 @@
   transition: transform 500ms ease-in-out;
 }
 
-.content#energy-stats .stats-section-second.open .title svg,
+.content#energy-stats .stats-section.second.open .title svg,
 .content#energy-stats .stats-section.open .title svg{
   transform: rotate(-90deg);
 }
@@ -55,7 +60,7 @@
   overflow-y: auto;
 }
 
-.content#energy-stats .stats-section-second.open .stats-area{
+.content#energy-stats .stats-section.second.open .stats-area{
   max-height: 165px;
   padding-left: 0;
   padding-right: 0;
@@ -77,11 +82,11 @@
   opacity: 0;
 }
 
-.content#energy-stats .stats-section-second.open .stats-area img,
+.content#energy-stats .stats-section.second.open .stats-area img,
 .content#energy-stats .stats-section.open .stats-area img{
   opacity: 1;
 }
-.content#energy-stats .stats-section-second.open .stats-area img{
+.content#energy-stats .stats-section.second.open .stats-area img{
   overflow-x: auto;
   height: 153px;
   width: auto;

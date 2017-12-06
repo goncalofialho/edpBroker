@@ -47,6 +47,7 @@ function enableClicks(){
 	$('.filters .tab-filters .search-options .title').click(toggleFilterSubSection)
 	$('.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .accept').click(addFilter)
 	$('.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .delete').click(removeFilter)
+	$('.content#buy-energy  .filters > input').keyup(filterPackName)
 
 	startSlider()
 	minMaxVerify()
@@ -534,6 +535,19 @@ function enableCombobox(){
 			$allListElements.hide();
 			$matchingListElements.show();
 		}
+}
+
+
+function filterPackName(){
+	var that = this, $allListElements = $('.content#buy-energy  .pack');
+
+	var $matchingListElements = $allListElements.filter(function(i, li){
+			var listItemText = $(li).text().toUpperCase(), searchText = that.value.toUpperCase();
+			return ~listItemText.indexOf(searchText);
+	});
+
+	$allListElements.hide();
+	$matchingListElements.show();
 }
 
 function getFilters(){
