@@ -124,6 +124,9 @@
   padding:0px;
   transition: all 450ms ease-in-out;
 }
+#buy-energy.content{
+  max-height: 3600px;
+}
 .container{
 }
 .content.hidden-class,

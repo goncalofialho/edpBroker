@@ -83,6 +83,9 @@ strong{
 .btn.btn-primary.active, .btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:hover {
     background: #96172e!important;
 }
+.filters .input-name{
+  padding-left: 5px;
+}
 .filters .tab-filters{
   text-transform: uppercase;
   padding: 0;
@@ -104,12 +107,17 @@ strong{
   margin-left: 2px;
   max-height: 40px;
 }
-.filters .tab-filters p{
+.filters .tab-filters > p{
   float: left;
   margin-top: 4px;
   font-size: 13px;
   width:100%;
   text-align: center;
+  margin:0px;
+  margin-top: 10px;
+}
+.filters .tab-filters > p small{
+  font-size: 13px;
 }
 .filters .tab-filters .filter-items > div{
   text-transform: none;
@@ -132,16 +140,127 @@ strong{
   border-width:1px;
   opacity:1;
 }
-.filters .tab-filters.open svg{
+.filters .tab-filters.open > svg{
   transform: rotate(-90deg);
 
 }
-.filters .tab-filters svg{
+
+.filters .tab-filters .search-options{
+  width: 100%;
+  float: left;
+  max-height: 0px;
+  overflow:hidden;
+  transition: all 300ms ease-in-out;
+}
+.filters .tab-filters.open .search-options{
+  max-height: 1000px;
+
+}
+.filters .tab-filters .search-options .title{
+  font-size: 150%;
+  float: left;
+  font-family: Edp Preon Medium;
+  position: relative;
+  text-transform: uppercase;
+  border: solid 1px #333;
+  transition: border-color 250ms ease-in-out;
+  margin-bottom: 0px;
+  margin-top: 1px;
+  border-bottom: 0px;
+}
+.filters .tab-filters .search-options .search-option .title svg{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  transform: rotate(90deg);
+  transition: transform 500ms ease-in-out;
+}
+.filters .tab-filters .search-options .search-option{
+
+}
+.filters .tab-filters .search-options .search-option.open .title svg{
+  transform: rotate(-90deg);
+}
+.filters .tab-filters .search-options .search-option-area {
+  max-height: 0px;
+  transition: max-height 500ms ease-in-out, padding 500ms ease-in-out;
+  border: solid 1px #333;
+  border-top: 0;
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.filters .tab-filters .search-options .search-option-area .accept-remove-buttons{
+  width: 100%;
+  margin: auto;
+  float: left;
+}
+.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .accept,
+.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .delete{
+  border: solid 1px;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 7px;
+  margin-bottom: 10px;
+}
+.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .accept svg,
+.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .delete svg{
+  width: 14px;
+  height: 14px;
+  margin-left: 7px;
+}
+.filters .tab-filters > p svg{
   width: 12px;
   height: 12px;
   transform: rotate(90deg);
-  transition: transform 300ms ease-in-out;
+  transition: transform 500ms ease-in-out;
 }
+
+.filters .tab-filters .search-option.open .search-option-area{
+  max-height: 200px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
+.filters .tab-filters .search-option .search-option-area .option-section{
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  float: left;
+}
+.filters .tab-filters .search-options .search-option-area .option-section > div:first-child{
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  margin-left: 2.5%;
+}
+.filters .tab-filters .search-options .search-option-area .option-section .ranges{
+  width: 95%;
+  margin: auto;
+  float: left;
+  margin-bottom: 10px;
+  margin-left: 2.5%;
+}
+.filters .tab-filters .search-options .search-option-area .option-section > div:first-child input{
+  width: 30px !important;
+  border: none !important;
+  border-bottom: solid 1px !important;
+  padding-bottom: 0px;
+  margin: 0px 5px;
+  text-align: center;
+}
+.filters .tab-filters .search-options .search-option-area .option-section > div:first-child span{
+  float: left;
+  text-transform: none;
+}
+
 .filters .tab-filters .filter-items > div svg{
   width: 0px;
   height: 0px;

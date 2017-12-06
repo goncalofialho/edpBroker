@@ -42,8 +42,16 @@ function enableClicks(){
 	$('#energy-stats .stats-section .title').click(toggleStats)
 
 	/* FILTERS */
+	$('.filters .tab-filters > p').click(toggleFilters)
 	$('.filters .tab-filters .filter-items > div svg').click(removeSearchLabel)
+	$('.filters .tab-filters .search-options .title').click(toggleFilterSubSection)
+	$('.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .accept').click(addFilter)
+	$('.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .delete').click(removeFilter)
+
+	startSlider()
+	minMaxVerify()
 }
+
 function toggleSubView(){
 	viewId = $(this).attr('target')
 	parentId = $(this).attr('parent')
@@ -329,6 +337,97 @@ function searchFor(category){
 
 function removeSearchLabel(){
 	$(this).parent().removeClass('selected')
+	filter = $(this).parent().attr('searchfor')
+	$('.filters .tab-filters .search-options .search-option[filter="'+filter+'"] .search-option-area .accept-remove-buttons p').toggleClass('hide')
+	if( $('.tab-filters .filter-items > div.selected ').length == 0)
+		$('.tab-filters').removeClass('search-options')
+}
+function toggleFilters(){
+	$('.tab-filters').toggleClass('open')
+	$('.tab-filters > p small').toggleClass('hide')
+}
+function toggleFilterSubSection(){
+	$(this).parent().toggleClass('open')
+}
+function startSlider(){
+	$( function() {
+		$( "#price-range" ).slider({
+			range: true,
+			min: 0,
+			max: 300,
+			values: [ 0, 50 ],
+			slide: function( event, ui ) {
+				$('.filters .tab-filters .search-options .price-option .search-option-area .option-section > div:first-child input').first().val(ui.values[ 0 ])
+				$('.filters .tab-filters .search-options .price-option .search-option-area .option-section > div:first-child input').last().val(ui.values[ 1 ])
+
+			}
+		});
+		$('.filters .tab-filters .search-options .price-option .search-option-area .option-section > div:first-child input').first().val(0)
+		$('.filters .tab-filters .search-options .price-option .search-option-area .option-section > div:first-child input').last().val(50)
+
+		$( "#watts-range" ).slider({
+			range: true,
+			min: 0,
+			max: 500,
+			values: [ 50, 300 ],
+			slide: function( event, ui ) {
+				$('.filters .tab-filters .search-options .watts-option .search-option-area .option-section > div:first-child input').first().val(ui.values[ 0 ])
+				$('.filters .tab-filters .search-options .watts-option .search-option-area .option-section > div:first-child input').last().val(ui.values[ 1 ])
+
+			}
+		});
+		$('.filters .tab-filters .search-options .watts-option .search-option-area .option-section > div:first-child input').first().val(50)
+		$('.filters .tab-filters .search-options .watts-option .search-option-area .option-section > div:first-child input').last().val(300)
+
+
+		});
+}
+
+function minMaxVerify(){
+     $( "input[type='number']" ).bind("change paste keyup",function() {
+        var max = parseInt($(this).attr('max'));
+        var min = parseInt($(this).attr('min'));
+
+				if($(this).val() != ''){
+					if($(this).index() == 1){
+						if(parseInt($(this).val()) > parseInt($($(this).parent().find("input")[1]).val()))
+							$(this).val($($(this).parent().find("input")[1]).val())
+					}else{
+						if(parseInt($(this).val()) < parseInt($($(this).parent().find("input")[0]).val()))
+							$(this).val($($(this).parent().find("input")[0]).val())
+					}
+				}
+        if ($(this).val() > max)
+        {
+            $(this).val(max);
+        }
+        else if ($(this).val() < min || $(this).val() == '')
+        {
+            $(this).val(min);
+        }else if ($(this).val()[0] == '0' && $(this).val().length > 1){
+					$(this).val($(this).val().substring(1))
+				}
+
+				$(this).parent().parent().find('.ui-slider').slider('values',0,parseInt($($(this).parent().find("input")[0]).val()))
+				$(this).parent().parent().find('.ui-slider').slider('values',	1,parseInt($($(this).parent().find("input")[1]).val()))
+      });
+
+  }
+
+function addFilter(){
+	filter = $(this).closest('.search-option').attr('filter')
+	searchFor(filter)
+	$(this).parent().find('p').toggleClass('hide')
+}
+
+function removeFilter(){
+	filter = $(this).closest('.search-option').attr('filter')
+	removeLabel(filter)
+	$(this).parent().find('p').toggleClass('hide')
+}
+
+function removeLabel(filter){
+	$('.tab-filters .filter-items > div[searchFor="'+filter+'"]').removeClass('selected')
 	if( $('.tab-filters .filter-items > div.selected ').length == 0)
 		$('.tab-filters').removeClass('search-options')
 }
