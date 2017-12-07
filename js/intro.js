@@ -563,7 +563,7 @@ function getFilters(){
 			val = [parseInt(data.find('input').first().val()) , parseInt(data.find('input').last().val()) ]
 		}else if (filter_type=='producer'){
 			data.find('ul li.active').each(function(){
-				val.push($(this).text())
+				val.push($(this).attr('user-id'))
 			})
 		}
 		filters[filter_type] = val

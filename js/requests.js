@@ -82,7 +82,7 @@ function getPacks() {
 }
 
 function getFilteredPacks(filters) {
-		
+
   packsArray = []
   minP="minP=0"
   maxP="maxP=100000000"
@@ -90,7 +90,7 @@ function getFilteredPacks(filters) {
   maxQ="maxQ=100000000"
   producer_id=""
   packName=""
-    
+
   for(key in filters){
 	var value = filters[key];
 	if (key == 'price'){
@@ -106,7 +106,7 @@ function getFilteredPacks(filters) {
 	}
   }
 
-  $.getJSON(url + 'customers/enFilterAll?'+minP+"&"+maxP +"&"+minQ+"&"+maxQ+"&"+producer_id+"&"+packName, function(json) {		
+  $.getJSON(url + 'customers/enFilterAll?'+minP+"&"+maxP +"&"+minQ+"&"+maxQ+"&"+producer_id+"&"+packName, function(json) {
     clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
     // REMOVING ALL TRASH
     $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
@@ -522,11 +522,28 @@ function deleteCreditCard(id){
 
 // FIXME
 function getProducersList(){
-  l = ['produtor1','produtor2','produtor3','produtor4','produtor42','produtor12','produtor67','produtor51','produtor22','produtor49']
-  $('#buy-energy #main-buy-energy .filters .well ul').empty()
-  l.forEach(function(element){
-    html = '<li class="list-group-item">'+element+'</li>'
-    $('#buy-energy #main-buy-energy .filters .well ul').append(html)
-  })
-  enableCombobox()
+  l = []
+
+    $.getJSON(url + 'producers/', function(json) {
+      json.forEach(function(producer){
+          $.getJSON(url + 'customers/' + producer.producer_id , function(customer) {
+            producer_id = producer.producer_id
+            producer_name = customer.customer_name
+            console.log( producer_id  + " "  +producer_name)
+            l.push([producer_name, producer_id])
+            $('#buy-energy #main-buy-energy .filters .well ul').empty()
+            console.log(l)
+            l.forEach(function(element){
+              console.log(element)
+              html = '<li user-id="'+element[1]+'" class="list-group-item">'+element[0]+'</li>'
+              $('#buy-energy #main-buy-energy .filters .well ul').append(html)
+            })
+            enableCombobox()
+          })
+      })
+
+
+    })
+/*
+*/
 }
