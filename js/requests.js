@@ -77,7 +77,67 @@ function getPacks() {
 
     })
     // ENABLING CLICKS FOR NEW ELEMENTS
-    enableClicks()
+    enableClicks(true)
+  })
+}
+
+function getFilteredPacks(filters) {
+		
+  packsArray = []
+  minP="minP=0"
+  maxP="maxP=100000000"
+  minQ="minQ=0"
+  maxQ="maxQ=100000000"
+  producer_id=""
+  packName=""
+    
+  for(key in filters){
+	var value = filters[key];
+	if (key == 'price'){
+		minP="minP="+value[0];
+		maxP="maxP="+value[1];
+	}
+	else if (key == 'watts'){
+		minQ="minQ="+value[0];
+		maxQ="maxQ="+value[1];
+	}
+	else if (key == 'producer'){
+		producer_id="producer_id="+value;
+	}
+  }
+
+  $.getJSON(url + 'customers/enFilterAll?'+minP+"&"+maxP +"&"+minQ+"&"+maxQ+"&"+producer_id+"&"+packName, function(json) {		
+    clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
+    // REMOVING ALL TRASH
+    $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
+    json.energy_id.forEach(function(pack) {
+      $.getJSON(url + 'customers/' + pack.producer_id, function(prod) {
+        name = prod.customer_name;
+      });
+      temp = {
+        'id': pack.energy_id,
+        'Name': pack.packName,
+        'Company': name,
+        'Watts': pack.quantity,
+		"Price": pack.finalPrice,
+      }
+      packsArray.push(temp);
+    })
+
+
+    packsArray.forEach(function(element) {
+      pack = clone.clone()
+      pack.removeClass('template')
+      pack.attr('id', element["id"])
+      pack.find('.info .title').text("Pacote " + element["Name"])
+      pack.find('.info .producer').text(element["Company"])
+      pack.find('.info .ammount span:first-child').text(element["Watts"] + "Mw")
+      pack.find('.info .ammount span:last-child').text(element["Price"] + "€")
+      $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
+
+    })
+    // ENABLING CLICKS FOR NEW ELEMENTS
+    enableClicks(false)
   })
 }
 
@@ -92,23 +152,7 @@ function getPacksFiltered(){
   // SE HOUVER FILTROS FAZER REQUEST COM OS MESMOS
   }else{
     console.log("requesting new filtered packs width filters ")
-    packsArray = []
-    clone = $('.content#buy-energy #main-buy-energy .pack.template').clone()
-    // REMOVING ALL TRASH
-    $('.content#buy-energy #main-buy-energy .pack:not(.template)').remove()
-    packsArray.forEach(function(element) {
-      pack = clone.clone()
-      pack.removeClass('template')
-      pack.attr('id', element["id"])
-      pack.find('.info .title').text("Pacote " + element["Name"])
-      pack.find('.info .producer').text(element["Company"])
-      pack.find('.info .ammount span:first-child').text(element["Watts"] + "Mw")
-      // pack.find('.info .ammount span:last-child').text(element["Duration"])
-      $('.content#buy-energy #main-buy-energy .packages-list .packs').append(pack)
-
-    })
-    // ENABLING CLICKS FOR NEW ELEMENTS
-    enableClicks()
+	getFilteredPacks(filters)
   }
 }
 
@@ -139,7 +183,7 @@ function getCreditCardsMarket() {
     })
 
     // ENABLING CLICKS FOR NEW ELEMENTS
-    enableClicks()
+    enableClicks(true)
   })
 }
 
@@ -220,7 +264,7 @@ function getCreditCardsSettings() {
 
     })
     // ENABLING CLICKS FOR NEW ELEMENTS
-    enableClicks()
+    enableClicks(true)
   })
 
 }
@@ -256,7 +300,7 @@ function getTransactions() {
           })
 
           // ENABLING CLICKS FOR NEW ELEMENTS
-          enableClicks()
+          enableClicks(true)
         })
       })
     })

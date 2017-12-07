@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	enableClicks();
+	enableClicks(true);
 
 	// UNCOMMENT TO MAKE DYNAMIC REQUESTS
 	getCurrentEnergy()
@@ -9,7 +9,7 @@ var pack_id = ""
 var card_id = ""
 
 
-function enableClicks(){
+function enableClicks(refresh){
 	$('body *').off('click');
 	$('.info .verify-energy').click(toggleView);
 	$('#intro .car-icon').click(toggleView);
@@ -49,7 +49,9 @@ function enableClicks(){
 	$('.filters .tab-filters .search-options .search-option-area .accept-remove-buttons .delete').click(removeFilter)
 	$('.content#buy-energy  .filters > input').keyup(filterPackName)
 
-	startSlider()
+	if (refresh){
+		startSlider()
+	}
 	minMaxVerify()
 	enableCombobox()
 }
@@ -439,7 +441,7 @@ function removeLabel(filter){
 	$('.tab-filters .filter-items > div[searchFor="'+filter+'"]').removeClass('selected')
 	if( $('.tab-filters .filter-items > div.selected ').length == 0)
 		$('.tab-filters').removeClass('search-options')
-
+	getPacksFiltered()
 }
 
 function enableCombobox(){
