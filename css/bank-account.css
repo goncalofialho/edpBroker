@@ -181,6 +181,19 @@
   background: #d52b1e;
   color: #ffffff;
 }
+.content#bank-account  .card .info svg.delete{
+  top: -24px;
+  right: -2px;
+  width: 40px;
+height: 40px;
+}
+.content#bank-account  .card .info svg.edit{
+  right: 43px;
+  top: 10px;
+  width: 40px;
+height: 40px;
+}
+
 
 @media (min-width460px){
 }
