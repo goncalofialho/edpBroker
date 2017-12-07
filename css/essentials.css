@@ -33,7 +33,7 @@ strong{
   font-family: "Edp Preon Medium";
 }
 .template{
-  display: none;
+  display: none !important;
 }
 .edpOn-logo{
   text-align: center;
